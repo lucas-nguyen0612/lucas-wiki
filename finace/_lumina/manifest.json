@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 4,
+  "packageVersion": "1.10.1",
+  "locale": "en",
+  "installedAt": "2026-07-26T07:31:03.089Z",
+  "updatedAt": "2026-07-26T07:31:03.089Z",
+  "packs": {
+    "core": {
+      "version": "1.10.1",
+      "source": "built-in"
+    }
+  },
+  "ideTargets": [
+    "claude_code"
+  ],
+  "profile": "full",
+  "symlinkStrategies": {
+    "lumi-init": "symlink",
+    "lumi-ingest": "symlink",
+    "lumi-ask": "symlink",
+    "lumi-edit": "symlink",
+    "lumi-check": "symlink",
+    "lumi-reset": "symlink",
+    "lumi-verify": "symlink",
+    "lumi-migrate-legacy": "symlink",
+    "lumi-help": "symlink"
+  },
+  "resolvedPaths": {
+    "projectRoot": "/Users/lucas/Documents/Lucas/lucas-wiki/finace",
+    "wiki": "/Users/lucas/Documents/Lucas/lucas-wiki/finace/wiki",
+    "raw": "/Users/lucas/Documents/Lucas/lucas-wiki/finace/raw",
+    "agents": "/Users/lucas/Documents/Lucas/lucas-wiki/finace/.agents",
+    "lumina": "/Users/lucas/Documents/Lucas/lucas-wiki/finace/_lumina"
+  }
+}
