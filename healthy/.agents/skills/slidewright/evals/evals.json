@@ -1,0 +1,50 @@
+{
+  "skill_name": "slidewright",
+  "evals": [
+    {
+      "id": 0,
+      "name": "html-quick",
+      "prompt": "Tôi cần dựng deck cho buổi chia sẻ nội bộ tuần sau về 'AI trong quy trình tuyển dụng', khoảng 8 slide, làm nhanh gọn, mở file là chạy được không cần cài đặt gì.",
+      "expected_output": "A single self-contained index.html plain-HTML deck (~8 slides) that opens in a browser with no build step, with bottom navigation slider + slide counter, projection-legible typography, and no input/forms.",
+      "files": [],
+      "assertions": [
+        "Produces a single self-contained index.html that runs by opening it in a browser (no build step, no npm install required)",
+        "Contains roughly 8 slides on the topic of AI in recruitment",
+        "Has a visible bottom navigation control (prev/next or dot strip) AND a slide number/counter",
+        "Slide body text is projection-legible: does not use web-reading sizes (text-sm, text-base, 16px, 1rem) for slide body content; titles are large",
+        "Contains no text input, textarea, form, or Submit/Save controls (presenter-only interaction)",
+        "Supports keyboard navigation (ArrowRight/ArrowLeft or Space)"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "react-substantial",
+      "prompt": "Làm cho tôi một presentation website xịn về 'Context Engineering' để đi nói ở hội thảo. Nhiều slide, có animation, và tôi sẽ chỉnh sửa, tái dùng nhiều lần về sau.",
+      "expected_output": "A Vite + React + TypeScript project with Tailwind + Framer Motion, an App -> Deck -> Slide architecture, multiple slide components registered in a slides index, a navigation slider + counter, projection-legible type, and no forms.",
+      "files": [],
+      "assertions": [
+        "Creates a Vite + React + TypeScript project (package.json includes react and vite)",
+        "Tailwind CSS is installed and wired, and framer-motion is present for animation",
+        "Uses a separated architecture: a Deck/navigation component, a Slide frame, and multiple slide components registered in a slides index/array",
+        "Has a visible navigation slider (dot strip) AND a slide counter",
+        "Multiple distinct slides on the Context Engineering topic",
+        "Contains no text input, textarea, form, or Submit/Save controls",
+        "Slide content uses projection-legible sizes, not web-reading sizes for body text"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "projection-typography",
+      "prompt": "Tạo một bài trình chiếu 5 slide về 'Vì sao slide hay bị chữ quá nhỏ và cách khắc phục'. Mình sẽ chiếu lên màn lớn cho khoảng 100 người ngồi trong hội trường.",
+      "expected_output": "A 5-slide deck (either track) that itself respects the projection typography floor — body text large enough to read from the back of a hall — with navigation + counter and no forms.",
+      "files": [],
+      "assertions": [
+        "Produces a runnable deck of about 5 slides on the topic",
+        "The deck's own typography respects the projection floor: body text is large (no text-sm/text-base/16px/1rem for slide body), titles are very large",
+        "Has a visible navigation control AND a slide number/counter",
+        "Contains no text input, textarea, form, or Submit/Save controls",
+        "Designed as projection (one presenter controls; audience only views) rather than an interactive web app"
+      ]
+    }
+  ]
+}

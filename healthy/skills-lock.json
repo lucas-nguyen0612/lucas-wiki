@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "slidewright": {
+      "source": "tronghieu/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/slidewright/SKILL.md",
+      "computedHash": "78f3a9b1551c227bdca07dbfed7267556b7eb8350437f842e2639c214883a6eb"
+    }
+  }
+}

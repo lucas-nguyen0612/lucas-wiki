@@ -19,7 +19,7 @@ urls: []
 raw_paths:
   - raw/sources/Hoc_cach_hoc.pdf
 provenance: replayable
-ingest_status: linted
+ingest_status: finalized
 id: sources/hoc-cach-hoc
 created: 2026-07-26
 updated: 2026-07-26
@@ -107,9 +107,9 @@ Từ câu chuyện của Santiago Ramón y Cajal (cậu bé 11 tuổi vào tù, 
 - [[concepts/thuc-hanh-cach-quang]] — học trải đều nhiều ngày có giấc ngủ xen kẽ. Như xây tường gạch: cần thời gian cho vữa khô
 - [[concepts/xen-ke]] — xáo trộn các kỹ thuật/chủ đề khác nhau trong một buổi học. Dạy não biết khi nào dùng kỹ thuật nào
 - [[concepts/an-du]] — công cụ học tập mạnh nhất: tận dụng liên kết cũ để hiểu khái niệm mới
-- **Luyện tập chủ động (active practice)** — tập trung vào phần khó, tự làm thay vì xem lời giải. Đừng chỉ lặp lại thứ dễ dàng
-- **Học tập thụ động (passive learning)** — lặp lại điều đã biết, đọc lại, nhìn lời giải. Không tạo ra liên kết não bộ mới
-- **Cung điện ký ức (memory palace)** — kỹ thuật 2.500 năm: đặt thông tin vào vị trí quen thuộc trong không gian tưởng tượng
+- [[concepts/luyen-tap-chu-dong|Luyện tập chủ động (active practice)]] — tập trung vào phần khó, tự làm thay vì xem lời giải. Đừng chỉ lặp lại thứ dễ dàng
+- **Học tập thụ động (passive learning)** — lặp lại điều đã biết, đọc lại, nhìn lời giải. Không tạo ra liên kết não bộ mới (xem thêm [[concepts/luyen-tap-chu-dong|Luyện tập chủ động]])
+- [[concepts/cung-dien-ky-uc|Cung điện ký ức (memory palace)]] — kỹ thuật 2.500 năm: đặt thông tin vào vị trí quen thuộc trong không gian tưởng tượng
 - **Kỹ thuật bắt-đầu-từ-cái-khó** — bắt đầu bài kiểm tra với câu khó nhất 1-2 phút, khi bí thì chuyển sang câu dễ, để chế độ phân tán xử lý câu khó trong nền
 
 ### Cạm bẫy và khái niệm khác
@@ -120,8 +120,8 @@ Từ câu chuyện của Santiago Ramón y Cajal (cậu bé 11 tuổi vào tù, 
 - **Nhồi nhét (cramming)** — học dồn phút chót, không có giấc ngủ → không có synap mới → kiến thức không bền vững
 - **Máy hút synap (synaptic broom)** — cơ chế dọn dẹp đuôi gai không dùng. "Dùng thì giữ, không dùng thì mất"
 - **Zombie thói quen** — hành vi tự động. Có thể huấn luyện zombie tốt thay thế zombie xấu
-- **Đa nhiệm (multitasking)** — huyền thoại: não chỉ tập trung một thứ tại một thời điểm. Chuyển đổi qua lại lãng phí năng lượng
-- **Chuyển đổi (transfer)** — liên kết não bộ trong lĩnh vực này giúp xây dựng liên kết trong lĩnh vực khác
+- [[concepts/da-nhiem|Đa nhiệm (multitasking)]] — huyền thoại: não chỉ tập trung một thứ tại một thời điểm. Chuyển đổi qua lại lãng phí năng lượng
+- [[concepts/chuyen-doi|Chuyển đổi (transfer)]] — liên kết não bộ trong lĩnh vực này giúp xây dựng liên kết trong lĩnh vực khác
 - **Định luật May Mắn (Law of Serendipity)** — "Nữ thần May Mắn luôn phù trợ những ai cố gắng": khái niệm đầu khó nhất, khái niệm sau dễ hơn
 - **Bộ não Xe đua vs Người đi bộ** — nghĩ nhanh vs nghĩ chậm; cả hai đều có thể học tốt, người đi bộ đôi khi thấy nhiều chi tiết hơn
 

@@ -3,7 +3,7 @@ type: person
 title: Benjamin Franklin
 slug: benjamin-franklin
 date_added: 2026-07-26
-affiliation: []
+affiliation: ""
 tags:
   - lịch-sử
   - tự-học
@@ -14,7 +14,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations: []
 ---
 
 # Benjamin Franklin
@@ -35,5 +34,6 @@ Kết quả: từ một người viết rất kém, Franklin trở thành một 
 
 - [[concepts/chu-dong-hoi-tuong]]
 - [[concepts/lien-ket-nao-bo]]
+- [[concepts/luyen-tap-chu-dong]]
 
 ## Notes

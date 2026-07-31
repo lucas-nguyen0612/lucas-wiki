@@ -13,8 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations:
-  - Đại học Barcelona
 ---
 
 # Santiago Ramón y Cajal

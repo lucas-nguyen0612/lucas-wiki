@@ -3,7 +3,7 @@ type: person
 title: Alistair McConville
 slug: alistair-mcconville
 date_added: 2026-07-26
-affiliation: []
+affiliation: ""
 tags:
   - tác-giả
   - giáo-dục
@@ -13,7 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations: []
 ---
 
 # Alistair McConville
@@ -36,5 +35,6 @@ Trải nghiệm "trở lại làm người mới học" ở tuổi trung niên c
 - [[concepts/chu-dong-hoi-tuong]]
 - [[concepts/ky-thuat-pomodoro]]
 - [[concepts/lien-ket-nao-bo]]
+- [[concepts/luyen-tap-chu-dong]]
 
 ## Notes

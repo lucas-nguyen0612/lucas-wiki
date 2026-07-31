@@ -1,17 +1,19 @@
 ---
 id: concepts/glucose-va-insulin
 type: concept
-title: "Glucose và Insulin"
+title: Glucose và Insulin
 slug: glucose-va-insulin
 created: 2026-07-26
-updated: 2026-07-26
+updated: 2026-07-30
 date_added: 2026-07-26
 confidence: low
 key_sources:
   - thong-minh-suc-khoe-20-80
+  - why-we-sleep
 related_concepts:
   - nghien-duong
   - he-vi-sinh-duong-ruot
+  - rau-ho-cai
 tags:
   - dinh-dưỡng
   - chuyển-hóa
@@ -46,11 +48,13 @@ Khoa học đếm calo từ những năm 1800. Nguồn calo và khả năng phâ
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — Thứ tự ăn (rau → đạm + béo → tinh bột) có thể giảm 75% đỉnh đường huyết; đếm calo là khoa học lỗi thời
+- [[why-we-sleep]] — sáu đêm ngủ 4 tiếng làm tế bào trơ với insulin, giảm 40% khả năng hấp thu glucose
 
 ## Related Concepts
 
 - [[nghien-duong]] — Đường huyết tụt gây thèm đường, tạo vòng lặp nghiện
 - [[he-vi-sinh-duong-ruot]] — Chất tạo ngọt nhân tạo tác động đến hệ vi sinh và đường huyết
+- [[rau-ho-cai]] — Ăn rau họ cải cải thiện kiểm soát đường huyết so với rau củ/bí (thử nghiệm VESSEL 2024)
 
 ## Mentioned in
 

@@ -1,0 +1,14 @@
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/smart-money-concept"}
+{"from":"concepts/smart-money-concept","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/cau-truc-thi-truong"}
+{"from":"concepts/cau-truc-thi-truong","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/order-block"}
+{"from":"concepts/order-block","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/break-of-structure"}
+{"from":"concepts/break-of-structure","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/thanh-khoan"}
+{"from":"concepts/thanh-khoan","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/ly-thuyet-wyckoff"}
+{"from":"concepts/ly-thuyet-wyckoff","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}
+{"from":"sources/he-thong-smart-money-concept-smc","type":"introduces_concept","to":"concepts/a-khung-thoi-gian"}
+{"from":"concepts/a-khung-thoi-gian","type":"introduced_in","to":"sources/he-thong-smart-money-concept-smc"}

@@ -51,16 +51,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "wiki/concepts/che-do-tap-trung.md",
+                "file": "wiki/concepts/cung-dien-ky-uc.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "che-do-tap-trung"
+              "title": "cung-dien-ky-uc"
+            }
+          },
+          {
+            "id": "a6ae6dd041137a80",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "Graph view"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -133,7 +143,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "wiki/concepts/che-do-tap-trung.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -143,7 +152,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for che-do-tap-trung"
+              "title": "Backlinks"
             }
           },
           {
@@ -152,12 +161,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "wiki/concepts/che-do-tap-trung.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from che-do-tap-trung"
+              "title": "Outgoing links"
             }
           },
           {
@@ -195,13 +203,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "wiki/concepts/che-do-tap-trung.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of che-do-tap-trung"
+              "title": "Outline"
             }
           }
         ]
@@ -222,10 +229,18 @@
       "bases:Create new base": false
     }
   },
-  "active": "2cd6b1ddea3c61b2",
+  "active": "a6ae6dd041137a80",
   "lastOpenFiles": [
-    "_lumina/_state/lumi-verify-20260726T094934Z.json",
+    "wiki/concepts/tri-nho-dai-han.md",
+    "wiki/concepts/cung-dien-ky-uc.md",
     "wiki/people/barbara-oakley.md",
+    "wiki/readings/hoc-cach-hoc/04-giac-ngu-va-su-tap-trung.md",
+    "wiki/concepts/chuyen-doi.md",
+    "wiki/concepts/da-nhiem.md",
+    "wiki/concepts/luyen-tap-chu-dong.md",
+    "wiki/sources/hoc-cach-hoc.md",
+    "wiki/concepts/che-do-tap-trung.md",
+    "_lumina/_state/lumi-verify-20260726T094934Z.json",
     "wiki/concepts/tinh-kha-bien-than-kinh.md",
     "wiki/people/terrence-sejnowski.md",
     "wiki/concepts/tri-nho-lam-viec.md",
@@ -235,7 +250,6 @@
     "wiki/concepts/tri-hoan.md.tmp",
     "wiki/concepts/tri-nho-lam-viec.md.tmp",
     "wiki/concepts/lien-ket-nao-bo.md.tmp",
-    "wiki/concepts/tri-nho-dai-han.md",
     "wiki/concepts/tri-hoan.md",
     "wiki/concepts/che-do-phan-tan.md",
     "wiki/concepts/an-du.md",
@@ -250,15 +264,8 @@
     "wiki/concepts/xen-ke.md",
     "wiki/concepts/thuc-hanh-cach-quang.md",
     "wiki/concepts/chu-dong-hoi-tuong.md",
-    "wiki/concepts/ky-thuat-pomodoro.md",
-    "wiki/concepts/lien-ket-nao-bo.md",
-    "wiki/concepts/che-do-tap-trung.md",
-    "richard-felder.md",
-    "wiki/readings/hoc-cach-hoc/09-tu-phai-den-can.md",
-    "wiki/readings/hoc-cach-hoc/08-bat-ngo-ve-hoc-tap-va-lam-bai-kiem-tra.md",
     "wiki/graph/edges.jsonl.tmp",
     "_lumina/tools/__pycache__/extract_pdf.cpython-314.pyc",
-    "_lumina/tools/__pycache__",
-    "wiki/graph/edges.jsonl"
+    "_lumina/tools/__pycache__"
   ]
 }

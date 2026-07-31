@@ -16,6 +16,7 @@ key_sources:
 related_concepts:
   - concepts/lien-ket-nao-bo
   - concepts/tri-nho-dai-han
+  - concepts/cung-dien-ky-uc
 ---
 
 # Ẩn dụ
@@ -42,6 +43,7 @@ Một ẩn dụ không cần phải hoàn hảo — khi nó không còn chính x
 
 - [[concepts/lien-ket-nao-bo]] — ẩn dụ hoạt động bằng cách tái sử dụng liên kết não bộ hiện có
 - [[concepts/tri-nho-dai-han]] — ẩn dụ giúp chuyển thông tin vào trí nhớ dài hạn nhanh hơn, đặc biệt qua trí nhớ hình ảnh
+- [[concepts/cung-dien-ky-uc]] — cung điện ký ức là một dạng ẩn dụ không gian: dùng nơi quen thuộc để neo kiến thức mới
 
 ## Mentioned in
 

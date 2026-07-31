@@ -13,9 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations:
-  - Viện Salk
-  - UC San Diego
 ---
 
 # Terrence Sejnowski

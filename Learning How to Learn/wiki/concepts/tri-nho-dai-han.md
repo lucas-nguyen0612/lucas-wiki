@@ -18,6 +18,7 @@ related_concepts:
   - concepts/lien-ket-nao-bo
   - concepts/chu-dong-hoi-tuong
   - concepts/thuc-hanh-cach-quang
+  - concepts/cung-dien-ky-uc
 ---
 
 # Trí nhớ dài hạn
@@ -46,6 +47,7 @@ Có hai loại trí nhớ dài hạn chính: trí nhớ sự kiện (fact memory
 - [[concepts/lien-ket-nao-bo]] — cơ sở vật lý của trí nhớ dài hạn: mỗi ký ức là một liên kết não bộ
 - [[concepts/chu-dong-hoi-tuong]] — cách hiệu quả nhất để củng cố thông tin trong trí nhớ dài hạn
 - [[concepts/thuc-hanh-cach-quang]] — học trải đều nhiều ngày để thông tin "đóng gói" vào trí nhớ dài hạn
+- [[concepts/cung-dien-ky-uc]] — kỹ thuật tận dụng trí nhớ hình ảnh để neo thông tin vào trí nhớ dài hạn
 
 ## Mentioned in
 

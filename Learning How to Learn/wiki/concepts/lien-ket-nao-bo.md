@@ -21,6 +21,8 @@ related_concepts:
   - concepts/tri-nho-lam-viec
   - concepts/chu-dong-hoi-tuong
   - concepts/thuc-hanh-cach-quang
+  - concepts/luyen-tap-chu-dong
+  - concepts/chuyen-doi
 ---
 
 # Liên kết não bộ
@@ -51,6 +53,8 @@ Liên kết não bộ mạnh lên theo hai cách: (1) mỗi synap lớn hơn →
 - [[concepts/tri-nho-lam-viec]] — liên kết não bộ giải phóng sức chứa của trí nhớ làm việc
 - [[concepts/chu-dong-hoi-tuong]] — cách hiệu quả nhất để củng cố liên kết não bộ
 - [[concepts/thuc-hanh-cach-quang]] — thời gian + giấc ngủ giữa các lần luyện tập để liên kết bền vững
+- [[concepts/luyen-tap-chu-dong]] — luyện tập chủ động là cách chính để tạo và củng cố liên kết não bộ
+- [[concepts/chuyen-doi]] — liên kết trong lĩnh vực này có thể hỗ trợ xây dựng liên kết trong lĩnh vực khác
 
 ## Mentioned in
 

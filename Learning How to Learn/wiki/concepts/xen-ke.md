@@ -16,6 +16,8 @@ related_concepts:
   - concepts/thuc-hanh-cach-quang
   - concepts/chu-dong-hoi-tuong
   - concepts/lien-ket-nao-bo
+  - concepts/luyen-tap-chu-dong
+  - concepts/chuyen-doi
 ---
 
 # Xen kẽ
@@ -43,6 +45,8 @@ Xen kẽ khó hơn và kém thỏa mãn hơn trong ngắn hạn (bạn sẽ làm
 - [[concepts/thuc-hanh-cach-quang]] — cách quãng thời gian + xen kẽ chủ đề = combo tối ưu
 - [[concepts/chu-dong-hoi-tuong]] — xen kẽ làm tăng độ khó của hồi tưởng → hiệu quả học tập cao hơn
 - [[concepts/lien-ket-nao-bo]] — xen kẽ tạo ra liên kết linh hoạt, không rập khuôn
+- [[concepts/luyen-tap-chu-dong]] — kết hợp với luyện tập chủ động tạo thành công thức chuyên gia (luyện tập chủ động + xen kẽ)
+- [[concepts/chuyen-doi]] — xen kẽ nhiều chủ đề tạo điều kiện cho chuyển đổi giữa các lĩnh vực
 
 ## Mentioned in
 

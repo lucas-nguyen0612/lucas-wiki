@@ -1,0 +1,2092 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Khỏe mạnh để Thông minh hơn</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root { --accent:#2d8a6e; --ink:#1a2e26; --bg:#f5faf7; --soft:#5a7a6a; --divider:#1a2e26; }
+    * { box-sizing:border-box; margin:0; padding:0; }
+    html, body { width:100%; height:100%; overflow:hidden; background:var(--bg); }
+    body { font-family:'Plus Jakarta Sans', system-ui, sans-serif; color:var(--ink); }
+    h1,h2,h3 { font-family:'Outfit', system-ui, sans-serif; }
+
+    #viewport { position:fixed; inset:0 0 64px 0; overflow:hidden; }
+    .slide {
+      position:absolute; inset:0;
+      padding:clamp(40px,5.5vh,96px) clamp(48px,6.2vw,140px);
+      display:none; flex-direction:column;
+      opacity:0; transition:opacity .35s ease;
+      overflow-y: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .slide::-webkit-scrollbar {
+      display: none;
+    }
+    .slide.active { display:flex; opacity:1; }
+
+    .slide          { font-size:clamp(28px,2.6vw,44px); line-height:1.45; }
+    .slide h1       { font-size:clamp(56px,6.4vw,104px); line-height:1.04; letter-spacing:-.03em; font-weight:900; }
+    .slide h2       { font-size:clamp(38px,3.4vw,60px);  line-height:1.12; font-weight:800; }
+    .slide .lead    { font-size:clamp(30px,2.9vw,48px);  color:var(--soft); }
+    .slide .caption { font-size:clamp(22px,1.9vw,36px);  color:var(--soft); }
+    .slide ul       { list-style:none; display:flex; flex-direction:column; gap:clamp(16px,2.4vh,28px); }
+    .slide li {
+      display: block;
+      position: relative;
+      padding-left: 1.2em;
+    }
+    .slide li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.5em;
+      width: 0.42em;
+      height: 0.42em;
+      border-radius: 0.12em;
+      background: var(--accent);
+    }
+
+    .slide li:has(.step-num) {
+      padding-left: 2.2em;
+    }
+    .slide li:has(.step-num)::before {
+      display: none;
+    }
+    .slide li:has(.step-num) .step-num {
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+    }
+    .slide ol       { list-style:none; display:flex; flex-direction:column; }
+    .slide ol li    { display: block; position: relative; padding-left: 2.2em; }
+    .slide ol li .step-num { position: absolute; left: 0; top: 0.1em; }
+
+    .badge { display:inline-flex; align-items:center; background:rgba(45,138,110,.12); color:var(--accent); font-weight:700; padding:.45em .85em; border-radius:999px; font-size:clamp(20px,1.7vw,32px); }
+    .big-stat { font-size:clamp(100px,16vw,240px); font-weight:900; font-family:'Outfit',system-ui,sans-serif; line-height:1; color:var(--accent); }
+    .grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:clamp(32px,5vw,80px); }
+    .pill {
+      display:inline-flex; align-items:center; gap:.35em;
+      background:rgba(45,138,110,.08); color:var(--accent);
+      font-weight:700; padding:.35em .75em; border-radius:999px;
+      font-size:clamp(22px,1.9vw,36px);
+    }
+    .pill-warn {
+      display:inline-flex; align-items:center; gap:.35em;
+      background:rgba(200,60,60,.1); color:#c03030;
+      font-weight:700; padding:.35em .75em; border-radius:999px;
+      font-size:clamp(22px,1.9vw,36px);
+    }
+    .step-num {
+      flex:none; display:flex; align-items:center; justify-content:center;
+      width:1.3em; height:1.3em; border-radius:999px;
+      background:var(--accent); color:#fff; font-weight:700; font-size:.8em;
+    }
+
+    /* Section divider */
+    .divider-slide {
+      background:var(--divider); color:#e8f5ef;
+    }
+    .divider-slide .section-num {
+      font-family:'Outfit',system-ui,sans-serif;
+      font-size:clamp(24px,2vw,36px); font-weight:700;
+      color:var(--accent); letter-spacing:.12em; text-transform:uppercase;
+    }
+    .divider-slide h2 { color:#f5faf7; }
+    .divider-slide .lead { color:rgba(245,250,247,.65); }
+
+    #nav {
+      position:fixed; left:0; right:0; bottom:0; height:64px; z-index:50;
+      display:flex; align-items:center; justify-content:center; gap:20px;
+      background:rgba(255,255,255,.82); backdrop-filter:blur(10px);
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    #nav button { cursor:pointer; border:none; background:none; color:var(--ink); padding:8px 12px; font-size:18px; border-radius:10px; }
+    #nav button:disabled { opacity:.25; cursor:default; }
+    #dots { display:flex; gap:8px; align-items:center; max-width:60vw; overflow-x:auto; }
+    .dot { width:10px; height:10px; border-radius:999px; background:#c5d8ce; border:none; cursor:pointer; transition:all .2s; flex:none; }
+    .dot.active { width:26px; background:var(--accent); }
+    .divider-dot { background:rgba(45,138,110,.35); }
+    .divider-dot.active { background:var(--accent); }
+    #counter { font-size:18px; color:var(--soft); font-variant-numeric:tabular-nums; min-width:64px; text-align:center; }
+
+    /* Laptop & Medium Screen Optimizations */
+    @media (max-width: 1400px), (max-height: 850px) {
+      .slide {
+        font-size: clamp(16px, 1.8vw, 26px) !important;
+        padding: clamp(20px, 3.5vh, 48px) clamp(30px, 4vw, 64px) !important;
+        justify-content: flex-start !important;
+      }
+      .slide h1 { font-size: clamp(36px, 4.5vw, 64px) !important; }
+      .slide h2 { font-size: clamp(24px, 2.4vw, 38px) !important; }
+      .slide .lead { font-size: clamp(18px, 1.8vw, 28px) !important; }
+      .slide .caption { font-size: clamp(14px, 1.2vw, 20px) !important; }
+      .slide .badge { font-size: clamp(14px, 1.2vw, 20px) !important; padding: 4px 10px !important; }
+      .slide .pill, .slide .pill-warn { font-size: clamp(14px, 1.2vw, 20px) !important; padding: 4px 10px !important; }
+      .slide .big-stat { font-size: clamp(60px, 8vw, 120px) !important; }
+      .slide .step-num { font-size: 14px !important; }
+
+      .slide ul { gap: clamp(8px, 1.2vh, 16px) !important; }
+      .responsive-split { gap: clamp(12px, 1.8vw, 24px) !important; }
+      .grid-2 { gap: clamp(12px, 2vw, 28px) !important; }
+    }
+
+    /* Responsive Styling for Mobile / Small Screens */
+    @media (max-width: 768px) {
+      .slide {
+        padding: 24px 20px !important;
+        font-size: 16px !important;
+        overflow-y: auto !important;
+      }
+      .slide h1 { font-size: 32px !important; line-height: 1.2 !important; }
+      .slide h2 { font-size: 22px !important; line-height: 1.3 !important; }
+      .slide p, .slide li, .slide ul, .slide ol { font-size: 15px !important; line-height: 1.5 !important; }
+      .slide .lead { font-size: 16px !important; }
+      .slide .caption { font-size: 13px !important; }
+      .slide .badge { font-size: 13px !important; padding: 4px 10px !important; }
+      .slide .pill, .slide .pill-warn { font-size: 13px !important; padding: 4px 10px !important; }
+      .slide .big-stat { font-size: 48px !important; }
+      .slide .step-num { font-size: 13px !important; width: 1.5em !important; height: 1.5em !important; }
+
+      .grid-2 {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+      }
+
+      .responsive-split {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
+      }
+      .responsive-split > div {
+        flex: none !important;
+        width: 100% !important;
+      }
+      .responsive-image-container {
+        height: 200px !important;
+        flex: none !important;
+        border-radius: 1em !important;
+        margin-top: 12px !important;
+      }
+      .responsive-image-container-tall {
+        height: 360px !important;
+        flex: none !important;
+        border-radius: 1em !important;
+        margin-top: 12px !important;
+      }
+
+      /* Slide 1 background image adjustment */
+      .slide:first-of-type > div[aria-hidden="true"] {
+        display: none !important;
+      }
+
+      /* Adjust charts & diagrams */
+      svg {
+        max-height: 180px !important;
+        width: 100% !important;
+        margin: 10px auto !important;
+      }
+
+      /* Dots styling */
+      #dots {
+        max-width: 50vw !important;
+      }
+      #dots::-webkit-scrollbar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="viewport">
+
+    <!-- ════════════════════════════════════════════
+    PHẦN 1 — MỞ ĐẦU: ĐẶT VẤN ĐỀ
+    ═════════════════════════════════════════════ -->
+
+    <!-- SLIDE 1 — Title -->
+    <section class="slide active" style="justify-content:space-between; overflow:hidden;">
+      <!-- Discobolus — tượng lực sĩ ném đĩa Hy Lạp cổ đại, biểu tượng của cơ thể cường tráng -->
+      <div style="position:absolute; right:0; top:0; bottom:0; width:44%; z-index:0; overflow:hidden;" aria-hidden="true">
+        <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, transparent 35%, transparent 100%); z-index:2;"></div>
+        <img src="assets/odessey.jpg" alt="Tượng lực sĩ ném đĩa — biểu tượng cơ thể cường tráng Hy Lạp cổ đại" style="position:absolute; right:0; top:50%; transform:translateY(-50%); width:100%; height:auto; max-height:95%; object-fit:contain; opacity:.92;" />
+        <p class="caption" style="position:absolute;  bottom:clamp(20px,2vh,36px); z-index:3; color:var(--soft); font-style:italic;text-align:center; width:100%">THE ODYSSEY</p>
+
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; position:relative; z-index:1;">
+        <span class="badge">Sức khỏe & Trí tuệ</span>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:clamp(20px,3vh,40px); position:relative; z-index:1;">
+        <h1>Khỏe mạnh để<br>Thông minh hơn</h1>
+        <div style="max-width:24em;">
+          <p style="font-size:clamp(34px,3.2vw,52px); font-weight:700; font-style:italic; line-height:1.35; color:var(--ink);">&ldquo;Trí tuệ minh mẫn trong một cơ thể cường tráng — thân tâm hợp nhất.&rdquo;</p>
+          <p class="caption" style="margin-top:.4em;">— Thales, triết gia Hy Lạp cổ đại (624–546 TCN)</p>
+        </div>
+      </div>
+      <p class="caption" style="position:relative; z-index:1;">Lucas Nguyen · 2026</p>
+    </section>
+
+    <!-- SLIDE 2 — Những bộ óc vĩ đại -->
+    <section class="slide" style="gap:clamp(14px,2vh,28px); justify-content:center;">
+      <div style="display:flex; gap:clamp(12px,1.5vw,24px);">
+        <span class="badge">Lịch sử & Triết học</span>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <!-- Left: Discobolus — biểu tượng thân thể cường tráng Hy Lạp -->
+        <div class="responsive-image-container" style="flex:0.55; border-radius:1.6em; overflow:hidden; position:relative;">
+          <img src="assets/discobolus.jpg" alt="Tượng lực sĩ ném đĩa — biểu tượng cơ thể cường tráng Hy Lạp cổ đại" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.35) 0%, transparent 55%);"></div>
+          <div style="position:absolute; bottom:clamp(20px,3vh,40px); left:clamp(20px,3vw,40px); color:#fff;">
+            <p style="font-weight:800; font-size:clamp(22px,2vw,38px); font-style:italic; line-height:1.15;">Mens sana in<br>corpore sano</p>
+            <p style="font-size:clamp(14px,1.1vw,22px); opacity:.55; margin-top:4px;">— Juvenal, nhà thơ La Mã</p>
+          </div>
+        </div>
+        <!-- Right: 4 cards — mỗi danh nhân là một tấm card -->
+        <div style="flex:1.45; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); justify-content:center;">
+          <!-- Plato -->
+          <div style="display:flex; gap:clamp(12px,1.2vw,24px); background:rgba(45,138,110,.05); border-radius:1.1em; padding:clamp(12px,1.4vh,22px); align-items:center;">
+            <div style="flex:none; width:clamp(44px,3.5vw,64px); height:clamp(44px,3.5vw,64px); border-radius:999px; background:rgba(45,138,110,.1); display:flex; align-items:center; justify-content:center; font-size:clamp(24px,2.2vw,40px);">🏛️</div>
+            <div style="min-width:0;">
+              <p style="font-size:clamp(24px,2.2vw,42px); font-weight:800; font-style:italic; line-height:1.25;">&ldquo;Thượng đế ban tặng chúng ta 2 điều là giáo dục và hoạt động thể chất&rdquo;</p>
+              <p class="caption" style="margin-top:.15em;">— Plato · Triết gia Hy Lạp, từng là <strong>đô vật</strong></p>
+            </div>
+          </div>
+          <!-- Hippocrates -->
+          <div style="display:flex; gap:clamp(12px,1.2vw,24px); background:rgba(45,138,110,.05); border-radius:1.1em; padding:clamp(12px,1.4vh,22px); align-items:center;">
+            <div style="flex:none; width:clamp(44px,3.5vw,64px); height:clamp(44px,3.5vw,64px); border-radius:999px; background:rgba(45,138,110,.1); display:flex; align-items:center; justify-content:center; font-size:clamp(24px,2.2vw,40px);">⚕️</div>
+            <div style="min-width:0;">
+              <p style="font-size:clamp(24px,2.2vw,42px); font-weight:800; font-style:italic; line-height:1.25;">&ldquo;Đi bộ là liều thuốc tốt nhất của con người&rdquo;</p>
+              <p class="caption" style="margin-top:.15em;">— Hippocrates · Cha đẻ y học phương Tây</p>
+            </div>
+          </div>
+          <!-- Leonardo da Vinci -->
+          <div style="display:flex; gap:clamp(12px,1.2vw,24px); background:rgba(45,138,110,.05); border-radius:1.1em; padding:clamp(12px,1.4vh,22px); align-items:center;">
+            <div style="flex:none; width:clamp(44px,3.5vw,64px); height:clamp(44px,3.5vw,64px); border-radius:999px; background:rgba(45,138,110,.1); display:flex; align-items:center; justify-content:center; font-size:clamp(24px,2.2vw,40px);">🎨</div>
+            <div style="min-width:0;">
+              <p style="font-size:clamp(22px,2vw,40px); font-weight:700; line-height:1.3;">Thiên tài Phục Hưng — đặt <span style="color:var(--accent);">rèn luyện thân thể</span> là 1 trong 7 nguyên tắc thông minh</p>
+              <p class="caption" style="margin-top:.15em;">— Leonardo da Vinci · Họa sĩ, nhà phát minh, nhà giải phẫu</p>
+            </div>
+          </div>
+          <!-- Richard Feynman -->
+          <div style="display:flex; gap:clamp(12px,1.2vw,24px); background:rgba(45,138,110,.05); border-radius:1.1em; padding:clamp(12px,1.4vh,22px); align-items:center;">
+            <div style="flex:none; width:clamp(44px,3.5vw,64px); height:clamp(44px,3.5vw,64px); border-radius:999px; background:rgba(45,138,110,.1); display:flex; align-items:center; justify-content:center; font-size:clamp(24px,2.2vw,40px);">🔬</div>
+            <div style="min-width:0;">
+              <p style="font-size:clamp(22px,2vw,40px); font-weight:700; line-height:1.3;">Nobel Vật lý — <span style="color:var(--accent);">vừa là thiên tài, vừa là vũ công, tay trống và họa sĩ</span></p>
+              <p class="caption" style="margin-top:.15em;">— Richard Feynman · Nhà vật lý lý thuyết, nghệ sĩ đa tài</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — Não bộ không đứng yên -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,28px); justify-content:center;">
+      <div style="text-align:center; margin-bottom:clamp(8px,1vh,16px);">
+        <h2 style="font-size:clamp(42px,4vw,68px);">Não bộ không đứng yên</h2>
+        <p class="lead" style="font-size:clamp(22px,1.9vw,32px); max-width:28em; margin:0 auto;">Định kiến "não trưởng thành không thay đổi" <span style="color:var(--accent);">đã bị bác bỏ.</span></p>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,2.5vw,40px); align-items:stretch; flex:1;">
+        <!-- CỘT TRÁI: Khoa học (50%) -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="badge" style="font-size:clamp(18px,1.5vw,26px); align-self:flex-start;">🧬 Khoa học thần kinh</span>
+          <p style="font-size:clamp(24px,2.1vw,36px); font-weight:700;">3 cơ chế tái tạo não <span class="caption" style="font-size:clamp(18px,1.4vw,24px);">(Neuroplasticity)</span></p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,26px);">Não thay đổi cấu trúc và chức năng suốt đời, không chỉ ở trẻ em:</p>
+          <ul style="gap:clamp(8px,1vh,14px); font-size:clamp(22px,1.9vw,34px);">
+            <li><strong>✨ Neurogenesis</strong> — Sản sinh tế bào não mới ở vùng hồi hải mã</li>
+            <li><strong>⚡ Synaptic Plasticity</strong> — Tăng chất lượng &amp; tốc độ kết nối thần kinh</li>
+            <li><strong>🔄 Neuroplasticity</strong> — Não tự tái cấu trúc dựa trên trải nghiệm, học hỏi và thói quen lặp đi lặp lại</li>
+          </ul>
+        </div>
+        <!-- CỘT PHẢI: Giải pháp & Data (50%) -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="badge" style="font-size:clamp(18px,1.5vw,26px); align-self:flex-start;">🏃 Tác nhân kích hoạt</span>
+          <p style="font-size:clamp(24px,2.1vw,36px); font-weight:700;">Tác nhân kích hoạt mạnh nhất</p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,26px);">Khoa học đã xác nhận: vận động thể chất <strong>kích thích sản sinh BDNF</strong> — một loại protein giúp nuôi dưỡng tế bào thần kinh, tăng cường kết nối giữa các neuron và bảo vệ não khỏi lão hóa.</p>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:clamp(4px,.6vh,8px); background:rgba(45,138,110,.08); border-radius:1em; padding:clamp(14px,2vh,24px); margin-top:auto;">
+            <p style="font-size:clamp(26px,2.2vw,38px); font-weight:700;">📈 Công thức</p>
+            <p style="font-size:clamp(28px,2.4vw,42px); font-weight:800; color:var(--accent);">Tập Aerobic<br>3 lần/tuần</p>
+            <span style="font-size:clamp(22px,2vw,34px); font-weight:300; color:var(--soft);">⬇️</span>
+            <p style="font-size:clamp(28px,2.4vw,42px); font-weight:800; color:var(--accent);">Tăng ~2%</p>
+            <p class="caption" style="font-size:clamp(18px,1.4vw,26px);">thể tích hồi hải mã sau 1 năm</p>
+            <p class="caption" style="font-size:clamp(16px,1.2vw,22px); color:var(--soft);">Hồi hải mã lớn hơn ➡️ Trí nhớ sắc bén hơn</p>
+            <p class="caption" style="font-size:clamp(13px,1vw,18px); color:var(--soft); margin-top:clamp(4px,.5vh,8px);">Nghiên cứu trên 120 người lớn tuổi — Erikson et al., 2011</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+    PHẦN 1 — CÁC NGHIÊN CỨU KHOA HỌC TIÊU BIỂU
+    ═════════════════════════════════════════════ -->
+
+    <!-- SLIDE 4 — TS. John Ratey (Harvard) – Zero Hour -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,28px); justify-content:center;">
+      <div style="text-align:center;">
+        <span class="badge" style="font-size:clamp(18px,1.5vw,26px);">Nghiên cứu 1</span>
+        <p style="font-size:clamp(20px,1.6vw,28px); color:var(--soft); margin-top:clamp(4px,.5vh,8px);">TS. John Ratey · Đại học Harvard</p>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,2.5vw,40px); align-items:stretch; flex:1;">
+        <!-- Cột trái: chương trình -->
+        <div style="flex:1.1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px);">
+          <p style="font-size:clamp(24px,2.2vw,38px); font-weight:800;">Zero Hour LRPE</p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,24px);">Chương trình thể dục buổi sáng trước giờ học tại <strong>Naperville Central</strong> (Illinois) — học sinh chạy bộ ở nhịp tim 75–90% ngay trước tiết Toán &amp; Đọc hiểu.</p>
+          <div style="display:flex; flex-direction:column; gap:clamp(6px,.8vh,10px); background:rgba(45,138,110,.06); border-radius:1em; padding:clamp(14px,2vh,24px); margin-top:auto;">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:800; color:var(--accent);">🎯 Kết quả TIMSS 1999</p>
+            <ul style="gap:clamp(4px,.5vh,8px); font-size:clamp(22px,1.8vw,32px);">
+              <li><strong>#1 thế giới</strong> — Khoa học</li>
+              <li><strong>#6 thế giới</strong> — Toán học</li>
+              <li>Vượt qua nhiều quốc gia châu Á nổi tiếng về học thuật</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Cột giữa: cơ chế BDNF -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(16px,1.3vw,22px);">🧬 Cơ chế</span>
+          <p style="font-size:clamp(24px,2.1vw,36px); font-weight:700;">Phân bón cho não bộ</p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,24px);">Vận động nhịp tim cao kích thích giải phóng <strong>BDNF</strong> (Brain-Derived Neurotrophic Factor) — một loại protein được ví như "phân bón cho não bộ":</p>
+          <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(20px,1.6vw,30px);">
+            <li>Kích thích phát triển nơ-ron thần kinh mới</li>
+            <li>Củng cố liên kết synapse</li>
+            <li>Đưa não vào trạng thái tối ưu để tiếp thu</li>
+          </ul>
+          <p class="caption" style="font-size:clamp(14px,1.1vw,20px); margin-top:auto;">Đúc kết trong cuốn <em>Spark: The Revolutionary New Science of Exercise and the Brain</em></p>
+        </div>
+        <!-- Ảnh minh họa -->
+        <div class="responsive-image-container" style="flex:0.7; border-radius:1.2em; overflow:hidden; position:relative;">
+          <img src="assets/research-ratey.jpg" alt="Học sinh chạy bộ — Zero Hour Program" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 5 — TS. Wendy Suzuki (NYU) – Thay đổi cấu trúc não -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,28px); justify-content:center;">
+      <div style="text-align:center;">
+        <span class="badge" style="font-size:clamp(18px,1.5vw,26px);">Nghiên cứu 2</span>
+        <p style="font-size:clamp(20px,1.6vw,28px); color:var(--soft); margin-top:clamp(4px,.5vh,8px);">TS. Wendy Suzuki · Đại học New York (NYU)</p>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,2.5vw,40px); align-items:stretch; flex:1;">
+        <!-- Cột trái -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(16px,1.3vw,22px);">🔬 Thử nghiệm lâm sàng</span>
+          <p style="font-size:clamp(24px,2vw,36px); font-weight:700;">Tập Aerobic 3 buổi/tuần × nhiều tháng</p>
+          <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(22px,1.8vw,32px);">
+            <li>Chụp fMRI <strong>trước – sau</strong> để đo thay đổi cấu trúc não</li>
+          </ul>
+          <div style="display:flex; flex-direction:column; gap:clamp(6px,.8vh,10px); background:rgba(45,138,110,.06); border-radius:1em; padding:clamp(14px,2vh,24px);">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:800; color:var(--accent);">Kết quả</p>
+            <ul style="gap:clamp(4px,.5vh,8px); font-size:clamp(20px,1.6vw,30px);">
+              <li><strong>⬆️ Gia tăng thể tích Hippocampus</strong> — vùng hải mã: trí nhớ dài hạn, học tập</li>
+              <li><strong>⬆️ Củng cố Prefrontal Cortex</strong> — vỏ não tiền trán: ra quyết định, tập trung, tư duy logic</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Cột phải -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(16px,1.3vw,22px);">💡 Kết luận</span>
+          <p style="font-size:clamp(24px,2.1vw,36px); font-weight:700; color:var(--accent);">Trí thông minh linh hoạt</p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,24px);">Tập thể dục trực tiếp cải thiện <strong>Fluid Intelligence</strong> — trí thông minh linh hoạt:</p>
+          <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(22px,1.8vw,32px);">
+            <li>⚡ Xử lý thông tin nhanh hơn</li>
+            <li>🧩 Phân tích và giải quyết vấn đề mới</li>
+            <li>🛡️ Bảo vệ não khỏi suy giảm tư duy</li>
+          </ul>
+          <p class="caption" style="font-size:clamp(14px,1.1vw,20px); margin-top:auto;">Wendy Suzuki tự trải nghiệm sự minh mẫn từ tập thể dục rồi chuyển hướng cả phòng thí nghiệm NYU để nghiên cứu tác động của vận động lên não</p>
+        </div>
+        <!-- Ảnh minh họa — TED talk của Wendy Suzuki -->
+        <div style="flex:0.7; display:flex; flex-direction:column; gap:clamp(8px,1vh,14px); justify-content:center;">
+          <div class="responsive-image-container" style="border-radius:1.2em; overflow:hidden; position:relative; aspect-ratio:16/9; flex:none;">
+            <img src="assets/research-suzuki-ted.jpg" alt="Wendy Suzuki thuyết trình TED — The Brain-Changing Benefits of Exercise" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+            <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+          </div>
+          <p class="caption" style="font-size:clamp(15px,1.15vw,21px); text-align:center; line-height:1.35;">TED · “The Brain-Changing Benefits of Exercise”<br/>13 phút · 11 triệu lượt xem</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 6 — TS. Arthur Kramer (UIUC) – Đảo ngược lão hóa não -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,28px); justify-content:center;">
+      <div style="text-align:center;">
+        <span class="badge" style="font-size:clamp(18px,1.5vw,26px);">Nghiên cứu 3</span>
+        <p style="font-size:clamp(20px,1.6vw,28px); color:var(--soft); margin-top:clamp(4px,.5vh,8px);">TS. Arthur Kramer · Đại học Illinois (UIUC)</p>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,2.5vw,40px); align-items:stretch; flex:1;">
+        <!-- Cột trái: thử nghiệm -->
+        <div style="flex:1.1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px);">
+          <p style="font-size:clamp(24px,2.2vw,38px); font-weight:800;">Đảo ngược lão hóa não bộ</p>
+          <p class="caption" style="font-size:clamp(18px,1.4vw,24px);">Thử nghiệm trên nhóm <strong>60–79 tuổi</strong> lối sống ít vận động, chia 3 nhóm: đi bộ nhanh, giãn cơ/thăng bằng, và không tập — duy trì 6–12 tháng.</p>
+          <div style="display:flex; flex-direction:column; gap:clamp(6px,.8vh,10px); background:rgba(45,138,110,.06); border-radius:1em; padding:clamp(14px,2vh,24px); margin-top:auto;">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:800; color:var(--accent);">📊 fMRI cho thấy (nhóm đi bộ nhanh)</p>
+            <ul style="gap:clamp(4px,.5vh,8px); font-size:clamp(22px,1.8vw,32px);">
+              <li><strong>⬆️ Gia tăng thể tích chất xám & chất trắng</strong></li>
+              <li><strong>⬆️ Tăng cường kết nối mạng lưới thần kinh</strong></li>
+              <li><strong>🔄 Phục hồi linh hoạt thần kinh</strong> tương đương người trẻ hơn 10–15 tuổi</li>
+            </ul>
+          </div>
+        </div>
+        <!-- Cột giữa: cơ chế -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.04); border-radius:1.2em; padding:clamp(16px,2.2vh,28px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(16px,1.3vw,22px);">🧬 Cơ chế</span>
+          <p style="font-size:clamp(24px,2.1vw,36px); font-weight:700;">Tăng sinh mạch máu não</p>
+          <ul style="gap:clamp(8px,1vh,14px); font-size:clamp(22px,1.8vw,32px);">
+            <li>Vận động aerobic <strong>tăng lưu lượng máu và oxy</strong> lên não</li>
+            <li>Kích thích <strong>tăng sinh mạch máu mới</strong> (angiogenesis)</li>
+            <li>Giúp não bộ tự tái cấu trúc và sắp xếp lại mạng lưới thần kinh hiệu quả hơn</li>
+          </ul>
+        </div>
+        <!-- Ảnh minh họa -->
+        <div class="responsive-image-container" style="flex:0.7; border-radius:1.2em; overflow:hidden; position:relative;">
+          <img src="assets/research-kramer.jpg" alt="Người lớn tuổi đi bộ — nghiên cứu Arthur Kramer" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 7 — Công thức trí thông minh -->
+    <section class="slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(28px,4vh,52px);">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px);">Công thức trí thông minh</span>
+      <div style="display:flex; align-items:center; gap:clamp(12px,2vw,32px);">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="big-stat" style="font-size:clamp(80px,12vw,200px);">50%</span>
+          <span class="caption" style="font-size:clamp(26px,2.1vw,40px);">Học tập</span>
+        </div>
+        <span style="font-size:clamp(36px,3.5vw,64px);font-weight:300;color:var(--soft);">+</span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="big-stat" style="font-size:clamp(72px,10vw,180px);">30%</span>
+          <span class="caption" style="font-size:clamp(26px,2.1vw,40px);">Tập luyện</span>
+        </div>
+        <span style="font-size:clamp(36px,3.5vw,64px);font-weight:300;color:var(--soft);">+</span>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="big-stat" style="font-size:clamp(64px,8vw,160px);">20%</span>
+          <span class="caption" style="font-size:clamp(26px,2.1vw,40px);">Dinh dưỡng</span>
+        </div>
+      </div>
+      <p class="lead" style="font-size:clamp(28px,2.4vw,42px);">50% là học tập — hôm nay tập trung vào <span style="color:var(--accent);">50% còn lại:</span> cơ thể</p>
+    </section>
+
+    <!-- SLIDE 8 — ROADMAP: Hai trụ cột -->
+    <section class="slide divider-slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(32px,5vh,64px);">
+      <h1 style="font-size:clamp(44px,5vw,80px); max-width:16em;">Sức khỏe = Vật lý + Tinh thần</h1>
+      <div class="responsive-split" style="display:flex; gap:clamp(48px,8vw,120px); margin-top:clamp(20px,3vh,40px);">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.2vh,18px);">
+          <span style="font-size:clamp(56px,6vw,100px);">🏃</span>
+          <p style="font-size:clamp(30px,2.6vw,46px); font-weight:800;">Sức khỏe vật lý</p>
+          <p style="font-size:clamp(22px,1.8vw,32px); color:rgba(245,250,247,.6);">Vận động · Giấc ngủ · Dinh dưỡng · Đường ruột</p>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.2vh,18px);">
+          <span style="font-size:clamp(56px,6vw,100px);">🧠</span>
+          <p style="font-size:clamp(30px,2.6vw,46px); font-weight:800;">Sức khỏe tinh thần</p>
+          <p style="font-size:clamp(22px,1.8vw,32px); color:rgba(245,250,247,.6);">Interoception · Cảm xúc · Thói quen · Nghỉ ngơi</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+    PHẦN 2 — SỨC KHỎE VẬT LÝ
+    ═════════════════════════════════════════════ -->
+
+    <!-- SLIDE 9 — SECTION DIVIDER: Sức khỏe vật lý -->
+    <section class="slide divider-slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(24px,3.2vh,44px);">
+      <!-- Main title with underline accent -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,.8vh,16px);">
+        <h1 style="font-size:clamp(52px,6.8vw,104px); letter-spacing:-.02em;">Sức khỏe vật lý</h1>
+        <div style="width:clamp(60px,8vw,140px); height:4px; border-radius:2px; background:var(--accent);"></div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="lead" style="font-size:clamp(24px,1.8vw,34px); color:rgba(245,250,247,.55); max-width:28em;">
+        Chiếm <strong style="color:var(--accent);">50%</strong> công thức trí thông minh
+      </p>
+
+      <!-- 4 trụ cột — grid cards -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,1.2vw,28px); width:100%; max-width:clamp(520px,60vw,960px); margin-top:clamp(4px,.6vh,12px);">
+        <!-- Vận động -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px); transition:background .2s;">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🏃</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Vận động</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Cardio · Sức mạnh</span>
+        </div>
+        <!-- Giấc ngủ -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px); transition:background .2s;">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">😴</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Giấc ngủ</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">REM · Nhịp sinh học</span>
+        </div>
+        <!-- Dinh dưỡng -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px); transition:background .2s;">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🥗</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Dinh dưỡng</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Glucose · Vi chất</span>
+        </div>
+        <!-- Đường ruột -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(45,138,110,.08); border:1px solid rgba(45,138,110,.2); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px); transition:background .2s;">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🛡️</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Tự chữa lành</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Đường ruột · Bớt thuốc</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ── 2.1 VẬN ĐỘNG ── -->
+
+    <!-- SLIDE 10 — 5 cấp độ vận động giúp thông minh hơn -->
+    <section class="slide" style="gap:clamp(22px,3vh,40px); justify-content:center;">
+      <h2>5 cấp độ vận động giúp thông minh hơn</h2>
+      <p class="caption" style="font-size:clamp(22px,1.8vw,34px); margin-top:-.5em;">Dựa trên nền tảng từ <em>Spark</em> — John Ratey, Harvard Medical School</p>
+      <ul style="gap:clamp(12px,1.8vh,20px);">
+        <li><strong>1. Tăng oxy lên não</strong> — tim bơm máu hiệu quả → tỉnh táo, tập trung cao</li>
+        <li><strong>2. Tăng dopamine & serotonin</strong> — động lực, hạnh phúc → học tập hiệu quả hơn</li>
+        <li><strong>3. Neurogenesis</strong> — sản sinh tế bào não mới ở vùng hồi hải mã</li>
+        <li><strong>4. Tăng chất lượng synapse</strong> — truyền dẫn tín hiệu nhanh và hiệu quả hơn</li>
+        <li><strong>5. Tăng phản xạ suy nghĩ</strong> — xử lý thông tin nhanh, linh hoạt hơn</li>
+      </ul>
+      <p class="caption">Cấp 1-2: ngắn hạn, cảm nhận ngay sau khi chạy · Cấp 3-5: dài hạn, thay đổi cấu trúc não</p>
+    </section>
+
+    <!-- SLIDE 11 — Cardio 20/80 -->
+    <section class="slide" style="gap:clamp(20px,3vh,36px); justify-content:center;">
+      <h2>Cardio 20/80: Trái tim khỏe — Não minh mẫn</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <!-- Left: text + stat cards -->
+        <div style="flex:1.1; display:flex; flex-direction:column; gap:clamp(12px,1.6vh,20px);">
+          <span class="pill" style="align-self:flex-start;">🏃 Bài tập cốt lõi</span>
+          <ul style="gap:clamp(6px,.8vh,12px); font-size:clamp(24px,2vw,38px);">
+            <li><strong>Chạy bộ / đi bộ nhanh</strong> ngoài trời — oxy nhiều hơn máy chạy trong nhà</li>
+            <li><strong>Đạp xe</strong> — kéo dài khớp chân, ít chấn thương</li>
+            <li><strong>Bơi lội</strong> — toàn diện nhất; bơi biển hấp thụ vi khuẩn tự nhiên</li>
+          </ul>
+          <div class="responsive-split" style="display:flex; gap:clamp(16px,2vw,32px); margin-top:auto;">
+            <div style="display:flex;flex-direction:column;align-items:center; gap:clamp(4px,.5vh,8px); background:rgba(45,138,110,.06); border-radius:1em; padding:clamp(14px,2vh,28px); flex:1;">
+              <span style="font-size:clamp(42px,4.5vw,72px); font-weight:900; font-family:'Outfit',system-ui,sans-serif; color:var(--accent);">VO₂ max</span>
+              <span style="font-size:clamp(18px,1.4vw,28px); color:var(--soft); text-align:center;">Chỉ số tuổi thọ số 1</span>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:center; gap:clamp(4px,.5vh,8px); background:rgba(45,138,110,.06); border-radius:1em; padding:clamp(14px,2vh,28px); flex:1;">
+              <span style="font-size:clamp(42px,4.5vw,72px); font-weight:900; font-family:'Outfit',system-ui,sans-serif; color:var(--accent);">Nhịp tim<br>lúc nghỉ</span>
+              <span style="font-size:clamp(18px,1.4vw,28px); color:var(--soft); text-align:center;">Tim khỏe → oxy lên não</span>
+            </div>
+          </div>
+        </div>
+        <!-- Right: runner image -->
+        <div class="responsive-image-container" style="flex:0.9; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/runner.jpg" alt="Chạy bộ ngoài trời" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+      <p class="caption">Peter Attia: VO₂ max và nhịp tim lúc nghỉ dự đoán tuổi thọ tốt hơn bất kỳ chỉ số nào khác</p>
+    </section>
+
+    <!-- SLIDE 12 — Sức mạnh 20/80 -->
+    <section class="slide" style="gap:clamp(20px,3vh,36px); justify-content:center;">
+      <h2>Sức mạnh 20/80: Cơ bắp — Lá chắn sức khỏe</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <!-- Left: strength image -->
+        <div class="responsive-image-container" style="flex:0.85; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/strength.jpg" alt="Tập tạ" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.2) 0%, transparent 40%);"></div>
+        </div>
+        <!-- Right: text -->
+        <div style="flex:1.15; display:flex; flex-direction:column; gap:clamp(12px,1.6vh,20px);">
+          <div class="grid-2" style="gap:clamp(16px,2.5vw,32px);">
+            <div style="display:flex;flex-direction:column;gap:clamp(8px,1vh,14px);">
+              <span class="pill" style="align-self:flex-start; font-size:clamp(20px,1.6vw,30px);">🏋️ Tại gym</span>
+              <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(22px,1.9vw,34px);">
+                <li><strong>Kettlebell</strong> — "vua mọi bài tập"</li>
+                <li><strong>Deadlift</strong> — thanh đòn ngang hoặc lục giác</li>
+                <li><strong>Squat với tạ</strong> — cơ đùi kích thích hormone tăng trưởng mạnh nhất</li>
+              </ul>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:clamp(8px,1vh,14px);">
+              <span class="pill" style="align-self:flex-start; font-size:clamp(20px,1.6vw,30px);">🏠 Tại nhà</span>
+              <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(22px,1.9vw,34px);">
+                <li><strong>Hít đất / Plank</strong> — tăng dần biến thể</li>
+                <li><strong>Squat</strong> — cơ đùi hấp thụ glucose cực tốt</li>
+                <li><strong>Hít xà đơn</strong> — tăng sức mạnh + chiều cao</li>
+              </ul>
+            </div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(4px,.5vh,8px); margin-top:auto;">
+            <p style="font-size:clamp(24px,2.1vw,36px); font-weight:800; color:var(--accent);">&ldquo;Sức mạnh là mẹ của mọi kỹ năng thể chất&rdquo; — Pavel Tsatsouline</p>
+            <p class="caption">Peter Attia: người ít cơ bắp có nguy cơ tử vong cao <strong>gấp 3 lần</strong> · Cơ bắp kiểm soát đường huyết, giảm chấn thương</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 13 — Bằng chứng Naperville -->
+    <section class="slide" style="justify-content:center; gap:clamp(12px,1.6vh,28px);">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">Bằng chứng thực tế</span>
+      <p style="font-size:clamp(20px,1.6vw,28px); color:var(--soft); text-align:center; align-self:center; margin-top:clamp(-4px,-.4vh,-2px);">Naperville Central High School · Illinois, Hoa Kỳ — 1999</p>
+
+      <!-- Hai cột so sánh -->
+      <div class="grid-2" style="flex:1; gap:clamp(16px,2.5vw,40px); margin-top:clamp(4px,.6vh,8px);">
+        <!-- Cột trái: Mỹ trung bình -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center; background:rgba(200,60,60,.04); border-radius:1.6em; padding:clamp(20px,3vh,40px); gap:clamp(10px,1.2vh,20px);">
+          <span style="font-size:clamp(14px,1.1vw,20px); color:var(--soft); font-weight:600; letter-spacing:.06em; text-transform:uppercase;">Trung bình nước Mỹ</span>
+          <span style="font-size:clamp(72px,10vw,160px); font-weight:900; font-family:'Outfit',system-ui,sans-serif; line-height:1; color:#c03030; opacity:.85;">30%</span>
+          <span style="font-size:clamp(22px,1.8vw,34px); color:var(--soft);">học sinh béo phì</span>
+          <!-- Thanh ngang thể hiện tỉ lệ -->
+          <svg viewBox="0 0 280 36" style="width:clamp(160px,16vw,280px); height:clamp(20px,2.4vh,36px); margin-top:clamp(4px,.4vh,6px); flex:none;">
+            <rect x="0" y="0" width="280" height="36" rx="18" fill="rgba(200,60,60,.08)" />
+            <rect x="0" y="0" width="280" height="36" rx="18" fill="#c03030" opacity=".55" />
+            <text x="140" y="24" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="18" fill="#fff">30%</text>
+          </svg>
+          <p class="caption" style="font-size:clamp(16px,1.2vw,24px); text-align:center;">Đỉnh điểm khủng hoảng béo phì<br>thiếu niên — cả nước Mỹ</p>
+        </div>
+
+        <!-- Cột phải: Naperville -->
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center; background:rgba(45,138,110,.06); border-radius:1.6em; padding:clamp(20px,3vh,40px); gap:clamp(10px,1.2vh,20px); border:2px solid rgba(45,138,110,.15);">
+          <span style="font-size:clamp(14px,1.1vw,20px); color:var(--accent); font-weight:600; letter-spacing:.06em; text-transform:uppercase;">Naperville — Zero Hour PE</span>
+          <span style="font-size:clamp(72px,10vw,160px); font-weight:900; font-family:'Outfit',system-ui,sans-serif; line-height:1; color:var(--accent);">3%</span>
+          <span style="font-size:clamp(22px,1.8vw,34px); color:var(--soft);">học sinh béo phì</span>
+          <!-- Thanh ngang thể hiện tỉ lệ -->
+          <svg viewBox="0 0 280 36" style="width:clamp(160px,16vw,280px); height:clamp(20px,2.4vh,36px); margin-top:clamp(4px,.4vh,6px); flex:none;">
+            <rect x="0" y="0" width="280" height="36" rx="18" fill="rgba(45,138,110,.08)" />
+            <rect x="0" y="0" width="28" height="36" rx="18" fill="var(--accent)" />
+            <rect x="28" y="0" width="252" height="36" rx="18" fill="rgba(45,138,110,.06)" />
+            <text x="140" y="24" text-anchor="middle" font-family="Outfit,system-ui,sans-serif" font-weight="800" font-size="18" fill="var(--accent)">3%</text>
+          </svg>
+          <p class="caption" style="font-size:clamp(16px,1.2vw,24px); text-align:center;">Giảm <strong>10 lần</strong> so với trung bình<br>nhờ tập cardio trước giờ học</p>
+        </div>
+      </div>
+
+      <!-- Kết quả TIMSS — thanh highlight -->
+      <div style="display:flex;align-items:center;justify-content:center; gap:clamp(20px,3vw,48px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(12px,1.6vh,24px) clamp(20px,3vw,48px); flex-wrap:wrap;">
+        <span style="font-size:clamp(22px,2vw,36px); font-weight:900; color:var(--accent);">🏆 TIMSS 1999</span>
+        <div style="display:flex; gap:clamp(16px,2.5vw,40px);">
+          <div style="display:flex;align-items:center;gap:clamp(6px,.6vw,12px);">
+            <span style="font-size:clamp(28px,2.8vw,48px); font-weight:900; color:var(--accent);">#1</span>
+            <span style="font-size:clamp(18px,1.5vw,28px); color:var(--soft);">Khoa học</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:clamp(6px,.6vw,12px);">
+            <span style="font-size:clamp(28px,2.8vw,48px); font-weight:900; color:var(--accent);">#6</span>
+            <span style="font-size:clamp(18px,1.5vw,28px); color:var(--soft);">Toán học</span>
+          </div>
+        </div>
+        <span style="font-size:clamp(16px,1.2vw,24px); color:var(--soft);">Vượt Nhật Bản, Hàn Quốc, Singapore</span>
+      </div>
+    </section>
+
+    <!-- ── 2.2 GIẤC NGỦ ── -->
+
+    <!-- SLIDE 14 — Giấc ngủ: nghịch lý lớn nhất của tiến hóa? -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <span class="badge" style="align-self:center;">Giấc ngủ</span>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <!-- Cột trái: lập luận -->
+        <div style="flex:1.15; display:flex; flex-direction:column; justify-content:center; gap:clamp(14px,1.8vh,22px);">
+          <h1 style="font-size:clamp(38px,4.2vw,72px); line-height:1.14; max-width:13em;">Giấc ngủ: nghịch lý lớn nhất của tiến hóa?</h1>
+
+          <div style="display:flex; flex-direction:column; gap:clamp(10px,1.3vh,16px); margin-top:clamp(4px,.6vh,8px);">
+            <p style="font-size:clamp(22px,1.9vw,32px);"><span style="display:block; margin-bottom:.15em; font-size:.6em; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--soft);">1/3 cuộc đời</span>Bất động. Mù. Điếc. Không ăn. Không phòng vệ.</p>
+            <p style="font-size:clamp(22px,1.9vw,32px);"><span style="display:block; margin-bottom:.15em; font-size:.6em; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--accent);">Nếu không thiết yếu</span>Đây là <strong style="color:var(--accent);">sai lầm chết người nhất</strong> trong lịch sử tiến hóa.</p>
+            <p style="font-size:clamp(22px,1.9vw,32px);"><span style="display:block; margin-bottom:.15em; font-size:.6em; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--soft);">Nhưng</span>Mọi loài có não đều ngủ. Tiến hóa chưa bao giờ loại bỏ nó.</p>
+          </div>
+
+          <p style="font-size:clamp(30px,3vw,52px); font-weight:800; color:var(--accent); line-height:1.18; margin-top:clamp(6px,1vh,12px);">Vậy trong 8 tiếng đó, cơ thể chúng ta đang làm gì?</p>
+        </div>
+
+        <!-- Cột phải: ảnh sách Why We Sleep -->
+        <div class="responsive-image-container" style="flex:0.8; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/why-we-sleep.jpg" alt="Sách Why We Sleep của Matthew Walker đặt trên gối" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.2) 0%, transparent 45%);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 15 — 4 chức năng của giấc ngủ -->
+    <section class="slide" style="gap:clamp(28px,4vh,48px); justify-content:center;">
+      <h2>Cơ thể nghỉ, nhưng não thì không</h2>
+      <div class="grid-2" style="gap:clamp(20px,3vw,44px);">
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.6vh,32px);">
+          <span class="pill" style="align-self:flex-start;">🧠 Củng cố trí nhớ</span>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Chuyển thông tin học trong ngày từ bộ nhớ tạm sang bộ nhớ dài hạn — không ngủ đủ, học xong quên hết.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.6vh,32px);">
+          <span class="pill" style="align-self:flex-start;">🧹 Dọn rác não</span>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Hệ glymphatic thanh thải chất thải chuyển hóa trong lúc ngủ sâu — gồm cả amyloid beta, chất liên quan Alzheimer.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.6vh,32px);">
+          <span class="pill" style="align-self:flex-start;">❤️ Điều tiết cảm xúc</span>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Giấc ngủ REM hạ nhiệt phản ứng của hạch hạnh nhân — tách cảm xúc mạnh ra khỏi ký ức, giúp bạn ổn định hơn.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.6vh,32px);">
+          <span class="pill" style="align-self:flex-start;">🛡️ Phục hồi cơ thể</span>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Ngủ sâu kích hoạt miễn dịch, hormone tăng trưởng, sửa chữa mô — cơ thể tự vá chính nó mỗi đêm.</p>
+        </div>
+      </div>
+      <div style="display:flex; align-items:center; justify-content:center; gap:clamp(10px,1.4vw,16px); background:rgba(180,140,60,.08); border:1.5px dashed rgba(180,140,60,.4); border-radius:999px; padding:clamp(10px,1.4vh,16px) clamp(20px,2.6vw,32px);">
+        <span style="font-size:clamp(24px,2vw,32px); flex:none;">☯️</span>
+        <p style="font-size:clamp(18px,1.5vw,26px); color:#8a6d2f; text-align:center;"><strong>Theo Đông y:</strong> 23h–3h sáng là khung giờ 🟢 Mật và 🟤 Gan hoạt động mạnh nhất để thải độc; 🫘 Thận cũng được cho là hoạt động tích cực trong khung giờ này.</p>
+      </div>
+      <p class="caption" style="text-align:center;">Bạn không ngủ để nghỉ. Bạn ngủ để não làm việc mà nó không làm được khi bạn thức.</p>
+    </section>
+
+    <!-- SLIDE 16 — Cái giá của thiếu ngủ -->
+    <section class="slide" style="gap:clamp(22px,3vh,40px); justify-content:center;">
+      <span class="pill-warn" style="align-self:center;">⚠️ Cái giá của việc ngủ thiếu</span>
+      <div style="display:flex; align-items:center; justify-content:center; gap:clamp(24px,4vw,64px); flex-wrap:wrap;">
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="big-stat" style="color:#c03030;">-40%</span>
+          <span class="caption" style="text-align:center; max-width:10em;">khả năng ghi nhớ thông tin mới sau một đêm thiếu ngủ</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;">
+          <span class="big-stat" style="color:#c03030;">×4</span>
+          <span class="caption" style="text-align:center; max-width:10em;">nguy cơ trầm cảm ở người ngủ thiếu triền miên</span>
+        </div>
+      </div>
+      <p class="lead" style="text-align:center;">Hãy phải quan tâm đến giấc ngủ của chính mình.</p>
+      <p class="lead" style="text-align:center;">Vậy làm thế nào <strong style="color:var(--accent);">ngủ thế nào cho tốt?</strong></p>
+    </section>
+
+    <!-- SLIDE 17 — Một đêm ngủ được tổ chức như thế nào -->
+    <section class="slide" style="gap:clamp(20px,3vh,40px); justify-content:center;">
+      <h2>Một đêm ngủ được tổ chức như thế nào</h2>
+      <div class="grid-2" style="align-items:center;">
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <ul style="gap:clamp(12px,1.6vh,22px); font-size:clamp(25px,2.1vw,38px);">
+            <li>Chu kỳ <strong>90 phút</strong> × 4–6 chu kỳ mỗi đêm, 5 giai đoạn mỗi chu kỳ</li>
+            <li><strong>Giai đoạn 1-2</strong> — NREM nông (~50%): giai đoạn 2 giàu thoi ngủ, phục hồi khả năng học & củng cố trí nhớ vận động & chặn tiếng ồn bảo vệ giấc ngủ</li>
+            <li><strong>Giai đoạn 3-4</strong> — NREM sâu: phục hồi thể chất, miễn dịch, thanh thải độc tố</li>
+            <li><strong>Giai đoạn 5</strong> — REM: phục hồi nhận thức, tổng hợp thông tin, âm thầm chữa lành nỗi đau trong ký ức mỗi đêm</li>
+            <li>Thức dậy <strong>cuối chu kỳ</strong> (bội số 90′) → tránh mệt mỏi giữa chu kỳ</li>
+          </ul>
+        </div>
+        <!-- Sleep cycle hypnogram SVG -->
+        <svg viewBox="0 0 400 260" style="width:100%; height:auto; max-height:clamp(180px,26vh,280px);">
+          <!-- Background -->
+          <rect x="0" y="0" width="400" height="260" rx="16" fill="rgba(26,46,38,.03)" />
+          <!-- Y axis labels -->
+          <text x="20" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--soft)">Thức</text>
+          <text x="20" y="98" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--soft)">REM</text>
+          <text x="20" y="148" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--soft)">N1-2</text>
+          <text x="20" y="210" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--soft)">N3-4</text>
+          <!-- Horizontal guide lines -->
+          <line x1="58" y1="50" x2="390" y2="50" stroke="rgba(90,122,106,.15)" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="58" y1="95" x2="390" y2="95" stroke="rgba(45,138,110,.2)" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="58" y1="145" x2="390" y2="145" stroke="rgba(90,122,106,.15)" stroke-width="1" stroke-dasharray="4,4"/>
+          <line x1="58" y1="215" x2="390" y2="215" stroke="rgba(45,138,110,.3)" stroke-width="1" stroke-dasharray="4,4"/>
+          <!-- X axis - time labels -->
+          <text x="58" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">23h</text>
+          <text x="140" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">0h30</text>
+          <text x="223" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">2h</text>
+          <text x="306" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">3h30</text>
+          <text x="388" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">5h</text>
+          <!-- Cycle 1: mostly deep sleep -->
+          <path d="M58,130 C62,160 82,210 100,218 C110,222 118,215 120,200 L124,148 C126,135 128,128 136,110 C142,98 152,100 158,118 C162,130 164,148 166,170 L170,210 C172,216 174,222 184,220 C194,218 196,205 198,180 L202,108 C204,96 206,88 212,82 C218,76 226,78 228,90 C230,100 232,118 234,140 L238,200 C240,210 244,222 254,220 C260,218 264,210 266,195 L270,130 C272,118 274,110 280,106 C286,102 294,106 296,120 C298,130 300,148 302,168 L306,212 C308,218 312,224 322,222 C328,220 332,212 334,195 L338,125 C340,112 342,102 348,96" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" opacity=".9"/>
+          <!-- Deep sleep fill area -->
+          <path d="M58,130 C62,160 82,210 100,218 C110,222 118,215 120,200 L124,148 C126,135 128,128 136,110 C142,98 152,100 158,118 C162,130 164,148 166,170 L170,210 C172,216 174,222 184,220 C194,218 196,205 198,180 L202,108 C204,96 206,88 212,82 C218,76 226,78 228,90 C230,100 232,118 234,140 L238,200 C240,210 244,222 254,220 C260,218 264,210 266,195 L270,130 C272,118 274,110 280,106 C286,102 294,106 296,120 C298,130 300,148 302,168 L306,212 C308,218 312,224 322,222 C328,220 332,212 334,195 L338,125 C340,112 342,102 348,96 L348,216 L58,216 Z" fill="rgba(45,138,110,.12)"/>
+          <!-- REM segments (highlighted) -->
+          <rect x="112" y="85" width="20" height="16" rx="8" fill="#2d8a6e" opacity=".85"/>
+          <rect x="180" y="88" width="22" height="16" rx="8" fill="#2d8a6e" opacity=".85"/>
+          <rect x="248" y="90" width="26" height="16" rx="8" fill="#2d8a6e" opacity=".85"/>
+          <rect x="314" y="92" width="30" height="16" rx="8" fill="#2d8a6e" opacity=".9"/>
+          <!-- REM label -->
+          <text x="375" y="97" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="var(--accent)">REM ↑</text>
+          <!-- Cycle markers -->
+          <line x1="89" y1="230" x2="89" y2="238" stroke="var(--soft)" stroke-width="1" opacity=".4"/>
+          <line x1="172" y1="230" x2="172" y2="238" stroke="var(--soft)" stroke-width="1" opacity=".4"/>
+          <line x1="255" y1="230" x2="255" y2="238" stroke="var(--soft)" stroke-width="1" opacity=".4"/>
+          <line x1="338" y1="230" x2="338" y2="238" stroke="var(--soft)" stroke-width="1" opacity=".4"/>
+        </svg>
+      </div>
+      <p class="caption"><strong>Đầu đêm não đục thô ký ức, cuối đêm mới là lúc tinh chỉnh từng chi tiết.</strong> Cắt 2 tiếng cuối là bỏ dở tác phẩm ngay trước công đoạn quan trọng nhất.</p>
+    </section>
+
+    <!-- SLIDE 18 — REM -->
+    <section class="slide" style="gap:clamp(18px,2.5vh,34px); justify-content:center;">
+      <span class="pill" style="font-size:clamp(26px,2.2vw,40px); align-self:center;">REM · Rapid Eye Movement</span>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,48px); align-items:stretch; flex:1;">
+        <!-- Left: text -->
+        <div style="flex:1.15; display:flex; flex-direction:column; align-items:center; text-align:center; gap:clamp(12px,1.6vh,20px);">
+          <h1 style="font-size:clamp(40px,4.5vw,76px); max-width:14em;">Não hoạt động như khi thức.<br>Cơ thể tê liệt hoàn toàn.</h1>
+          <div class="responsive-split" style="display:flex; gap:clamp(20px,3vw,48px); text-align:left; margin-top:clamp(8px,1vh,16px);">
+            <ul style="gap:clamp(8px,1vh,14px); font-size:clamp(24px,2vw,36px);">
+              <li>Tổng hợp thông tin trong ngày</li>
+              <li>Giải quyết vấn đề sáng tạo</li>
+              <li>Phục hồi sự chú ý (attention)</li>
+            </ul>
+            <ul style="gap:clamp(8px,1vh,14px); color:var(--soft); font-size:clamp(24px,2vw,36px);">
+              <li><strong>Bị ức chế bởi:</strong></li>
+              <li>🍺 Bia rượu — cắt đứt REM</li>
+              <li>☕ Caffeine — bán thải ~6 tiếng</li>
+              <li>😰 Stress — giữ não ở sóng beta</li>
+            </ul>
+          </div>
+          <p class="caption">REM chiếm ~20-25% giấc ngủ · Mộng du xảy ra ở NREM sâu, không phải REM — vì trong REM cơ thể đã bị khóa</p>
+        </div>
+        <!-- Right: sleep image -->
+        <div class="responsive-image-container" style="flex:0.85; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/sleep.jpg" alt="Người đang ngủ" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.18) 0%, transparent 40%);"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 19 — Nhịp sinh học -->
+    <section class="slide" style="gap:clamp(28px,4vh,48px); justify-content:center;">
+      <h2>Nhịp sinh học: Đồng hồ bên trong</h2>
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">🌙 Melatonin</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li>Hormone "báo hiệu giờ ngủ" — do tuyến tùng tiết ra khi trời tối</li>
+            <li>Ánh sáng xanh từ màn hình ức chế melatonin → trì hoãn buồn ngủ</li>
+            <li>Ánh sáng hoàng hôn (đỏ/cam, cường độ thấp) <strong>kích thích</strong> melatonin — giúp cơ thể nhận tín hiệu "trời sắp tối" đúng lúc</li>
+            <li><strong>Melatonin không phải thuốc ngủ</strong> — nó là tín hiệu thời gian, không phải tác nhân gây ngủ</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">😴 Adenosine</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li>Hormone "áp lực buồn ngủ" — càng thức lâu, càng tích tụ nhiều, càng buồn ngủ</li>
+            <li>Caffeine chiếm thụ thể adenosine → <strong>che giấu mệt mỏi</strong></li>
+            <li>Thời gian bán thải caffeine: <strong>~6 tiếng</strong> — Nên uống trước 14h chiều</li>
+            <li>Adenosine vẫn tích tụ → "caffeine crash" khi hết tác dụng</li>
+          </ul>
+        </div>
+      </div>
+      <p class="caption">Nhịp sinh học kiểm soát bởi 2 yếu tố: ánh sáng (melatonin) + thân nhiệt (dao động ~2°C/ngày)</p>
+    </section>
+
+    <!-- SLIDE 20 — Làm thế nào để có một giấc ngủ hiệu quả -->
+    <section class="slide" style="gap:clamp(28px,4vh,48px); justify-content:center;">
+      <h2>Làm thế nào để có một giấc ngủ hiệu quả?</h2>
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">☀️ Ban ngày</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li>Ra nắng buổi sáng <strong>≥30 phút</strong> — chỉnh nhịp sinh học đúng giờ</li>
+            <li>Vận động đều đặn trước giờ ngủ <strong>2–3 tiếng</strong></li>
+            <li>Giữ giờ ngủ & giờ dậy <strong>cố định mỗi ngày</strong> — kể cả cuối tuần</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">🌙 Buổi tối</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li>Ngừng caffeine sau 14h, hạn chế rượu bia — cả hai đều cắt giấc ngủ sâu</li>
+            <li>Phòng ngủ <strong>tối, mát (18–25°C)</strong></li>
+            <li> Không dùng điện thoại và máy tính trước <strong>1h khi đi ngủ</strong>, ánh sáng xanh ức chế melatonin hơn 50%</li>
+            <li>Thức &gt;20 phút vẫn chưa ngủ được? <strong>Dậy làm gì đó thư giãn</strong>, đừng nằm cố</li>
+          </ul>
+        </div>
+      </div>
+      <p class="caption">Không có một "viên đạn bạc" — chỉ có thói quen nhất quán mỗi ngày mới tạo ra giấc ngủ hiệu quả</p>
+    </section>
+
+    <!-- SLIDE 21 — Tại sao ngủ trưa quan trọng -->
+    <section class="slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(20px,2.5vh,36px);">
+      <span class="pill" style="align-self:center;">😴 20 phút mỗi ngày</span>
+      <h1 style="font-size:clamp(44px,5.5vw,88px); max-width:15em; line-height:1.08;">Ngủ trưa: <span style="color:var(--accent);">khoản đầu tư lãi nhất</span> trong ngày</h1>
+      <p class="lead" style="max-width:34em;">Khoảng 12h–14h nhịp sinh học có một đợt giảm tỉnh táo tự nhiên — chợp mắt đúng lúc đó trả lại cho bạn cả buổi chiều</p>
+      <div style="display:flex; align-items:flex-start; justify-content:center; gap:clamp(20px,3.5vw,56px); flex-wrap:wrap; margin-top:clamp(8px,1vh,16px);">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.15em;">
+          <span class="pill" style="font-size:clamp(18px,1.5vw,28px);">Công việc</span>
+          <span class="big-stat" style="font-size:clamp(56px,7.5vw,132px);">+34%</span>
+          <span class="caption" style="text-align:center; max-width:11em;">hiệu suất sau giấc ngủ trưa 26 phút — NASA</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.15em;">
+          <span class="pill" style="font-size:clamp(18px,1.5vw,28px);">Trí tuệ</span>
+          <span class="big-stat" style="font-size:clamp(56px,7.5vw,132px);">+54%</span>
+          <span class="caption" style="text-align:center; max-width:11em;">độ tỉnh táo; giấc ngủ trưa còn giúp củng cố trí nhớ vừa học</span>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:.15em;">
+          <span class="pill" style="font-size:clamp(18px,1.5vw,28px);">Sức khỏe</span>
+          <span class="big-stat" style="font-size:clamp(56px,7.5vw,132px);">−37%</span>
+          <span class="caption" style="text-align:center; max-width:11em;">nguy cơ tử vong do bệnh tim ở người ngủ trưa đều — nghiên cứu Hy Lạp, 23.000 người</span>
+        </div>
+      </div>
+      <div style="margin-top:clamp(6px,1vh,16px);">
+        <p style="font-size:clamp(26px,2.4vw,44px); font-weight:800; font-style:italic;">&ldquo;Ngủ trưa giúp tôi có hai buổi sáng mỗi ngày&rdquo;</p>
+        <p class="caption" style="margin-top:.25em;">— Winston Churchill</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 22 — Ngủ trưa sao cho hiệu quả -->
+    <section class="slide" style="gap:clamp(28px,4vh,48px); justify-content:center;">
+      <h2>Ngủ trưa sao cho hiệu quả?</h2>
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">⚡ Power Nap</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li><strong>15–30 phút</strong> — ngủ nông, dễ thức dậy, reset attention</li>
+            <li>Một số nghiên cứu ghi nhận <strong>~20–30 phút</strong> là khoảng tối ưu</li>
+            <li>Tránh &gt;45 phút — vào ngủ sâu, thức dậy mệt hơn (sleep inertia)</li>
+            <li>Nên ngủ sau 12:00 và trước 14:00 để không ảnh hưởng nhịp sinh học chính</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">☕ Coffee Nap</span>
+          <ul style="gap:clamp(10px,1.4vh,16px);">
+            <li>Uống cà phê → ngủ ngay 20 phút → tỉnh dậy gấp đôi tỉnh táo</li>
+            <li>Caffeine mất <strong>~20 phút</strong> để ngấm vào máu</li>
+            <li>Ngủ đúng 20 phút — vừa kịp lúc caffeine bắt đầu có tác dụng</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:clamp(14px,2vh,28px);">
+        <p style="font-size:clamp(32px,3vw,54px); font-weight:800; text-align:center;">Nghỉ trưa <span style="color:var(--accent);">một chút</span>, sống thọ trăm năm</p>
+      </div>
+    </section>
+
+    <!-- SLIDE 23 — Ba trụ cột: Vận động · Nghỉ ngơi · Ăn uống -->
+    <section class="slide" style="gap:clamp(24px,3.5vh,48px); justify-content:center;">
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,1vh,16px); align-items:center;">
+        <span class="pill" style="font-size:clamp(24px,2.2vw,40px);">🔄 Chu trình hoàn hảo</span>
+        <h2 style="font-size:clamp(42px,4.2vw,72px); text-align:center;">Sau tập luyện và nghỉ ngơi đúng<br>là <span style="color:var(--accent);">ăn uống đúng</span></h2>
+      </div>
+      <p class="lead" style="max-width:36em; text-align:center; font-size:clamp(26px,2.3vw,42px);">Ba trụ cột hoạt động cùng nhau. Một bên yếu, cả hệ thống suy yếu.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,3vw,48px); margin-top:clamp(12px,1.8vh,28px);">
+        <!-- Vận động -->
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,24px);">
+          <div style="border-radius:1.2em; overflow:hidden; min-height:clamp(140px,22vh,220px); background:rgba(26,46,38,.06);">
+            <img src="assets/runner.jpg" alt="Chạy bộ ngoài trời" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(22px,1.9vw,34px);">🏃 Vận động</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); line-height:1.4;">Tạo nền tảng. BDNF tăng, não sẵn sàng tiếp thu. 30% công thức.</p>
+          </div>
+        </div>
+
+        <!-- Nghỉ ngơi -->
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,24px);">
+          <div style="border-radius:1.2em; overflow:hidden; min-height:clamp(140px,22vh,220px); background:rgba(26,46,38,.06);">
+            <img src="assets/sleep.jpg" alt="Giấc ngủ sâu" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(22px,1.9vw,34px);">😴 Nghỉ ngơi</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); line-height:1.4;">Não củng cố, dọn rác. Giấc ngủ = làm việc chủ động.</p>
+          </div>
+        </div>
+
+        <!-- Ăn uống -->
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,24px);">
+          <div style="border-radius:1.2em; overflow:hidden; min-height:clamp(140px,22vh,220px); background:rgba(26,46,38,.06);">
+            <img src="assets/mealprep.jpg" alt="Chuẩn bị bữa ăn lành mạnh" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,1vh,12px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(22px,1.9vw,34px);">🍽️ Ăn uống</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); line-height:1.4;">Nguyên liệu đầu vào. Não = 20% năng lượng cơ thể. 20% công thức.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="caption" style="text-align:center; margin-top:clamp(8px,1.2vh,20px);">Không có "magic bullet". Chỉ có chu trình nhất quán, mỗi ngày.</p>
+    </section>
+
+    <!-- ── 2.3 DINH DƯỠNG ── -->
+    <!-- Mạch trình bày bám theo nguồn: PHÁ (khoa học giả, calo) → ĐƯỜNG → CƠ CHẾ (glucose)
+         → DỰNG (ăn gì) → LÀM (thói quen) → MỞ RỘNG (đường ruột, bớt thuốc) -->
+
+    <!-- ═══ KHỐI A — PHÁ: đừng để bị lừa ═══ -->
+
+    <!-- SLIDE 24 — Khoa học giả (mở màn phần dinh dưỡng) -->
+    <section class="slide" style="gap:clamp(18px,2.4vh,32px); justify-content:center;">
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,1vh,16px);">
+        <span class="pill-warn" style="align-self:flex-start;">Trước khi nói ăn gì — hãy biết đừng tin gì</span>
+        <h2>Khoa học giả: Đừng để bị lừa</h2>
+      </div>
+      <p class="lead" style="max-width:32em; font-size:clamp(24px,2.1vw,38px);">Tuyên bố nghe rất khoa học nhưng không có bằng chứng thực nghiệm. Trong ngành thực phẩm, đó không phải nhầm lẫn — đó là mô hình kinh doanh.</p>
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,20px);">
+          <span class="pill-warn" style="align-self:flex-start;">Ví dụ điển hình</span>
+          <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2vw,36px);">
+            <li><strong>Chế độ ăn kiềm</strong> — Robert O. Young viết sách bestseller; 2014 thừa nhận trước tòa là lừa đảo, bồi thường <strong>105 triệu đô</strong></li>
+            <li><strong>Nước kiềm</strong> — &ldquo;kiềm hóa cơ thể&rdquo; không có bằng chứng khoa học</li>
+            <li><strong>&ldquo;Hương vị tự nhiên&rdquo;</strong> — đánh tráo khái niệm trên nhãn</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,20px);">
+          <span class="pill" style="align-self:flex-start;">Cách tự bảo vệ</span>
+          <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2vw,36px);">
+            <li>Hỏi ba câu: <strong>ai tài trợ nghiên cứu? cỡ mẫu bao nhiêu? đã bình duyệt chưa?</strong></li>
+            <li>Đọc <em>Bad Science</em> (Ben Goldacre) và <em>How to Lie with Statistics</em> (Darrell Huff)</li>
+            <li>Quy tắc vàng: nghe <strong>quá tốt để là thật</strong> — thường là không thật</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 25 — Đếm calo là khoa học lỗi thời -->
+    <section class="slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(24px,3.2vh,44px);">
+      <span class="pill-warn" style="font-size:clamp(24px,2vw,38px);">Đếm calo là khoa học từ những năm 1800</span>
+      <h1 style="font-size:clamp(48px,5.5vw,88px); max-width:16em;">Nguồn calo quan trọng hơn lượng calo</h1>
+      <div class="grid-2" style="text-align:left; margin-top:clamp(8px,1.2vh,20px);">
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,3vh,36px);">
+          <p style="font-size:clamp(26px,2.2vw,38px); font-weight:700;">Cùng 1000 calo nhưng&hellip;</p>
+          <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(24px,2vw,36px);">
+            <li>90% tinh bột → <strong style="color:#c03030;">+0,1 kg</strong></li>
+            <li>90% chất béo → <strong style="color:var(--accent);">−0,4 kg</strong></li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,16px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,3vh,36px);">
+          <p style="font-size:clamp(26px,2.2vw,38px); font-weight:700;">Cùng 1 củ cà rốt</p>
+          <ul style="gap:clamp(6px,.8vh,10px); font-size:clamp(24px,2vw,36px);">
+            <li>Ăn sống → hấp thụ <strong>6 calo</strong></li>
+            <li>Nấu chín → hấp thụ <strong>31 calo</strong></li>
+          </ul>
+        </div>
+      </div>
+      <p class="caption" style="max-width:26em; font-weight:700; color:var(--accent);">Vậy nếu không phải calo — thì cái gì? Câu trả lời bắt đầu từ đường.</p>
+    </section>
+
+    <!-- ═══ KHỐI B — KẺ THÙ THẬT: ĐƯỜNG ═══ -->
+
+    <!-- SLIDE 26 — Nghiện đường -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,30px); justify-content:center;">
+      <h2>Đường: thứ bạn uống mỗi ngày mà không đếm</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:center; flex:1;">
+        <div style="flex:1.05;">
+          <svg viewBox="0 0 420 232" style="width:100%; height:auto; max-height:clamp(190px,30vh,320px);">
+            <rect x="0" y="0" width="420" height="232" rx="14" fill="rgba(26,46,38,.04)"/>
+            <text x="18" y="26" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--ink)">1 lon nước ngọt 330 ml</text>
+            <text x="402" y="26" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="#c03030" text-anchor="end">7–8 muỗng</text>
+            <rect x="18" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="44" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="70" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="96" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="122" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="148" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="174" y="36" width="22" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="200" y="36" width="11" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <text x="18" y="100" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--ink)">1 ly nước cam ép</text>
+            <text x="402" y="100" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="#c03030" text-anchor="end">14–15 muỗng</text>
+            <rect x="18.0" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="43.6" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="69.2" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="94.80000000000001" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="120.4" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="146.0" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="171.60000000000002" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="197.20000000000002" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="222.8" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="248.4" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="274.0" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="299.6" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="325.20000000000005" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="350.8" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <rect x="376.40000000000003" y="110" width="21" height="22" rx="4" fill="#c03030" opacity=".85"/>
+            <text x="18" y="174" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--accent)">Khuyến nghị tối đa mỗi ngày</text>
+            <text x="402" y="174" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--accent)" text-anchor="end">6 muỗng</text>
+            <rect x="18" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <rect x="44" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <rect x="70" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <rect x="96" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <rect x="122" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <rect x="148" y="184" width="22" height="22" rx="4" fill="#2d8a6e" opacity=".85"/>
+            <line x1="174" y1="180" x2="174" y2="212" stroke="var(--accent)" stroke-width="2" stroke-dasharray="5,4" opacity=".5"/>
+          </svg>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; gap:clamp(12px,1.6vh,22px);">
+          <ul style="gap:clamp(10px,1.3vh,18px); font-size:clamp(24px,2vw,36px);">
+            <li>Đường kích hoạt dopamine <strong>cùng con đường thần kinh với chất gây nghiện</strong></li>
+            <li>Nghiện đường làm <strong>teo vùng hồi hải mã</strong> — nơi phụ trách học tập và trí nhớ</li>
+            <li>Chỉ <strong>12%</strong> người Mỹ đang ở trạng thái chuyển hóa cân bằng</li>
+          </ul>
+          <p class="caption" style="border-left:4px solid var(--accent); padding-left:.7em; font-style:italic;">&ldquo;Chưa bao giờ trong lịch sử con người tiêu thụ lượng đường lớn đến vậy.&rdquo; — Daniel Lieberman, <em>Exercised</em></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 27 — Đường ẩn: đọc nhãn -->
+    <section class="slide" style="gap:clamp(14px,2vh,26px); justify-content:center;">
+      <h2>Đường ẩn: đọc nhãn như một người hoài nghi</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,3vw,44px); align-items:center; flex:1;">
+        <div style="flex:.85;">
+          <svg viewBox="0 0 360 320" style="width:100%; height:auto; max-height:clamp(210px,34vh,340px);">
+            <rect x="4" y="4" width="352" height="312" rx="12" fill="#fff" stroke="rgba(26,46,38,.25)" stroke-width="2"/>
+            <text x="20" y="34" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="17" font-weight="900" fill="var(--ink)">THÔNG TIN DINH DƯỠNG</text>
+            <line x1="20" y1="44" x2="340" y2="44" stroke="var(--ink)" stroke-width="3"/>
+            <rect x="16" y="52" width="328" height="42" rx="6" fill="rgba(200,60,60,.09)"/>
+            <text x="24" y="70" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="700" fill="#c03030">Khẩu phần: 100 ml</text>
+            <text x="24" y="88" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="700" fill="#c03030">Số khẩu phần mỗi chai: 5</text>
+            <text x="336" y="80" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="#c03030" text-anchor="end">×5</text>
+            <line x1="20" y1="104" x2="340" y2="104" stroke="rgba(26,46,38,.2)" stroke-width="1.5"/>
+            <text x="24" y="126" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--ink)">Năng lượng</text>
+            <text x="336" y="126" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--ink)" text-anchor="end">42 kcal</text>
+            <text x="24" y="150" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--ink)">Carbohydrate</text>
+            <text x="336" y="150" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" fill="var(--ink)" text-anchor="end">10,6 g</text>
+            <rect x="16" y="158" width="328" height="28" rx="6" fill="rgba(200,60,60,.13)"/>
+            <text x="34" y="177" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="800" fill="#c03030">trong đó Đường</text>
+            <text x="336" y="177" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="800" fill="#c03030" text-anchor="end">10,6 g</text>
+            <line x1="20" y1="196" x2="340" y2="196" stroke="rgba(26,46,38,.2)" stroke-width="1.5"/>
+            <text x="24" y="220" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="800" fill="var(--ink)">THÀNH PHẦN</text>
+            <text x="24" y="242" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="var(--soft)">Nước, <tspan font-weight="900" fill="#c03030">đường mía</tspan>, <tspan font-weight="900" fill="#c03030">si-rô fructose</tspan>,</text>
+            <text x="24" y="262" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="var(--soft)">hương liệu tự nhiên, <tspan font-weight="900" fill="#c03030">dextrose</tspan>,</text>
+            <text x="24" y="282" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="var(--soft)">chất điều chỉnh độ chua, <tspan font-weight="900" fill="#c03030">mạch nha</tspan></text>
+            <text x="24" y="304" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" font-style="italic" fill="var(--accent)">Thành phần xếp theo thứ tự giảm dần →  4/6 đầu tiên là đường</text>
+          </svg>
+        </div>
+        <div style="flex:1.15; display:flex; flex-direction:column; gap:clamp(10px,1.4vh,18px);">
+          <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(23px,1.95vw,35px);">
+            <li><strong>Bẫy khẩu phần</strong> — nhãn ghi cho 100 ml nhưng chai 500 ml. Nhân 5 lần rồi hãy đọc.</li>
+            <li><strong>Thứ tự thành phần</strong> — xếp giảm dần theo khối lượng. Đường đứng đầu thì bỏ xuống.</li>
+            <li><strong>Đuôi &minus;ose là đường</strong> — dextrose, sucrose, fructose, maltose.</li>
+            <li><strong>Tên ngụy trang</strong> — syrup, si-rô bắp, mạch nha, đường nâu, đường mía, mật hoa.</li>
+          </ul>
+          <div style="display:flex; gap:clamp(10px,1.2vw,18px); align-items:stretch;">
+            <div class="responsive-image-container" style="flex:.75; border-radius:1em; overflow:hidden; min-height:clamp(90px,14vh,150px);">
+              <img src="assets/sugar.jpg" alt="Đường và đồ ngọt" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+            </div>
+            <p class="pill-warn" style="flex:1.25; display:block; border-radius:1em; padding:.6em .8em; font-size:clamp(19px,1.5vw,28px); line-height:1.35;"><strong>&ldquo;0 calo&rdquo; không phải lối thoát:</strong> aspartame, sucralose làm đổi hệ vi sinh đường ruột → vẫn gây đột biến đường huyết → thèm ngọt hơn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 28 — 5 mẹo cắt đường -->
+    <section class="slide" style="gap:clamp(22px,3.2vh,40px); justify-content:center;">
+      <h2>5 mẹo cắt đường — thực tế và hiệu quả</h2>
+      <ol style="gap:clamp(14px,1.8vh,24px); font-size:clamp(28px,2.5vw,44px);">
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">1</span> <strong>Uống nhiều nước</strong> — cơ thể hay nhầm khát thành đói. Bình nước lớn trên bàn.</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">2</span> <strong>Tập thể dục</strong> — endorphin từ vận động thay chỗ dopamine từ đồ ngọt.</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">3</span> <strong>Ăn nhiều chất xơ</strong> — làm dịu ham muốn đường trong ngày.</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">4</span> <strong>Nhiều đạm và chất béo tốt</strong> — năng lượng bền, không tụt dốc giữa buổi.</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">5</span> <strong>Thực phẩm giàu Omega-3</strong> — dầu cá, hạt chia, quả óc chó.</li>
+      </ol>
+      <p class="caption">Dài hạn: huấn luyện cơ thể lấy năng lượng từ mỡ thay vì từ đường · chọn 1 ngày/tuần &ldquo;unhealthy day&rdquo; để đi đường dài</p>
+    </section>
+
+
+    <!-- ═══ KHỐI C — CƠ CHẾ THẬT: GLUCOSE & INSULIN ═══ -->
+
+    <!-- SLIDE 29 — Glucose <!-- SLIDE 28 — Glucose & Insulin Insulin (cơ chế) -->
+    <section class="slide" style="gap:clamp(20px,3vh,38px); justify-content:center;">
+      <h2>Glucose & Insulin: Chìa khóa chuyển hóa</h2>
+      <div class="grid-2" style="align-items:center;">
+        <!-- Glucose spike diagram -->
+        <svg viewBox="0 0 360 280" style="width:100%; height:auto; max-height:clamp(200px,28vh,300px);">
+          <!-- Background -->
+          <rect x="0" y="0" width="360" height="280" rx="14" fill="rgba(26,46,38,.04)" />
+          <!-- Y axis -->
+          <text x="18" y="36" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="#c03030" font-weight="600">Đường huyết</text>
+          <!-- X axis baseline -->
+          <line x1="32" y1="230" x2="348" y2="230" stroke="rgba(90,122,106,.25)" stroke-width="1.5"/>
+          <text x="350" y="246" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="var(--soft)" text-anchor="end">thời gian</text>
+          <!-- Normal range band -->
+          <rect x="32" y="85" width="316" height="145" rx="6" fill="rgba(45,138,110,.08)" />
+          <text x="190" y="80" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--accent)" text-anchor="middle">Vùng ổn định lý tưởng</text>
+          <!-- Healthy stable curve -->
+          <path d="M32,168 C72,166 112,170 152,164 C192,158 232,165 272,160 C292,158 312,162 348,158" fill="none" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round"/>
+          <text x="112" y="148" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="var(--accent)">Ổn định ✓</text>
+          <!-- Unhealthy spike curve -->
+          <path d="M32,168 C40,165 50,170 58,190 C64,210 66,225 68,234 C70,242 74,246 78,234 C82,220 84,200 88,168 C92,140 94,118 100,108 C104,100 110,100 114,116 C118,130 120,152 124,190 C128,220 130,238 134,240 C138,242 144,240 148,225 C152,210 154,190 158,200 C162,210 164,222 168,224 C172,226 176,222 178,208 C180,194 182,178 186,172 C190,166 196,168 200,180 C204,190 204,200 208,208 C212,216 218,222 222,218 C226,214 228,204 232,188 C236,176 240,168 244,170 C248,174 250,185 254,195 C258,205 260,210 264,208 C268,206 270,198 272,180 C274,168 278,162 282,165 C286,168 288,175 290,185 C294,200 296,210 300,215 C304,220 310,222 316,210 C322,200 326,188 330,178 C334,170 340,166 348,165" fill="none" stroke="#c03030" stroke-width="3" stroke-linecap="round"/>
+          <text x="312" y="134" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="#c03030">Đỉnh spike ✗</text>
+          <!-- Meal markers -->
+          <line x1="68" y1="230" x2="68" y2="240" stroke="#c03030" stroke-width="1.5" opacity=".6"/>
+          <text x="68" y="256" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="#c03030" text-anchor="middle" opacity=".8">ăn</text>
+          <line x1="164" y1="230" x2="164" y2="240" stroke="#c03030" stroke-width="1.5" opacity=".6"/>
+          <text x="164" y="256" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="#c03030" text-anchor="middle" opacity=".8">ăn</text>
+          <line x1="272" y1="230" x2="272" y2="240" stroke="#c03030" stroke-width="1.5" opacity=".6"/>
+          <text x="272" y="256" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="#c03030" text-anchor="middle" opacity=".8">ăn</text>
+        </svg>
+        <!-- Right column text -->
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,22px);">
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,10px);">
+            <span class="pill-warn" style="align-self:flex-start; font-size:clamp(18px,1.5vw,28px);">⚠️ Đỉnh đường huyết gây hại</span>
+            <ul style="gap:clamp(5px,.7vh,10px); font-size:clamp(23px,1.9vw,34px);">
+              <li>Insulin tiết trễ → glucose tăng cao rồi tụt nhanh</li>
+              <li>Tụt đường huyết → mệt mỏi, thèm ngọt</li>
+              <li>Lặp lại → kháng insulin → tiểu đường type 2</li>
+              <li>Glucose dư bám protein → lão hóa tế bào</li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,10px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(18px,1.5vw,28px);">🎯 Mục tiêu</span>
+            <ul style="gap:clamp(5px,.7vh,10px); font-size:clamp(23px,1.9vw,34px);">
+              <li>Ổn định đường huyết — không đỉnh, không tụt</li>
+              <li>Insulin nhạy — không kháng insulin</li>
+              <li>Không tích mỡ nội tạng · giảm viêm</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 30 — 6 mẹo kiểm soát glucose -->
+    <section class="slide" style="gap:clamp(18px,2.5vh,32px); justify-content:center;">
+      <h2 style="font-size:clamp(36px,3.2vw,56px);">6 mẹo kiểm soát glucose</h2>
+      <p style="font-size:clamp(24px,2vw,36px); color:var(--accent); font-weight:700;">Áp dụng đủ 6 điều có thể giảm tới <span style="font-size:clamp(30px,2.6vw,46px);">75%</span> đỉnh đường huyết</p>
+      <ol style="gap:clamp(8px,1.1vh,14px); font-size:clamp(24px,2.1vw,38px);">
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">1</span> <strong>Ăn chậm, nhai kỹ, chánh niệm</strong> — ít nhất 30 phút/bữa. Có người giảm gần 10kg chỉ bằng nhai 20 lần mỗi miếng</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">2</span> <strong>Nhiều đạm + chất xơ</strong> — no lâu, ít tiết insulin. 30g đạm trong 30 phút đầu buổi sáng</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">3</span> <strong>Bữa sáng ít ngọt</strong> — bụng rỗng rất nhạy insulin. Tránh bánh ngọt, ngũ cốc, yến mạch pha</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">4</span> <strong>Tinh bột GI thấp</strong> — gạo lứt, đậu thay cơm trắng; năng lượng phân bổ dài, không kích insulin đột ngột</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">5</span> <strong>Ăn đúng thứ tự: rau → đạm + béo → tinh bột</strong> — chất xơ tạo lớp màng trong ruột, giảm hấp thụ glucose</li>
+        <li style="display:flex;gap:.55em;align-items:flex-start;"><span class="step-num">6</span> <strong>Sau ăn đi bộ 100 bước</strong> — cơ đùi là "máy hút glucose" tự nhiên. Không ra ngoài được thì squat chậm</li>
+      </ol>
+    </section>
+
+    <!-- ═══ KHỐI D — DỰNG: ăn gì ═══ -->
+
+    <!-- SLIDE 31 — 3 quy tắc chọn thực phẩm -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,30px); justify-content:center;">
+      <h2>Dinh dưỡng 20/80: ba quy tắc trước mọi chi tiết</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <div class="responsive-image-container" style="flex:.8; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/market-fresh.jpg" alt="Sạp rau củ quả tươi ở chợ" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.35) 0%, transparent 45%);"></div>
+        </div>
+        <div style="flex:1.2; display:flex; flex-direction:column; justify-content:center; gap:clamp(16px,2.4vh,32px);">
+          <div style="display:flex; gap:.6em; align-items:flex-start;">
+            <span class="step-num" style="font-size:clamp(22px,1.9vw,34px); margin-top:.15em;">1</span>
+            <div><p style="font-size:clamp(26px,2.3vw,40px); font-weight:800;">Càng tươi càng ưu tiên</p><p class="caption">Càng chế biến công nghiệp càng bớt đi. Không cần đếm gì cả — chỉ cần nhìn thức ăn có còn hình dạng gốc của nó không.</p></div>
+          </div>
+          <div style="display:flex; gap:.6em; align-items:flex-start;">
+            <span class="step-num" style="font-size:clamp(22px,1.9vw,34px); margin-top:.15em;">2</span>
+            <div><p style="font-size:clamp(26px,2.3vw,40px); font-weight:800;">Ăn lạt — bớt ngọt, bớt mặn</p><p class="caption">Tránh gia vị công nghiệp (mayonnaise, tương), thay bằng tiêu và bột ớt. Vị giác sẽ tự chỉnh lại sau 2–3 tuần.</p></div>
+          </div>
+          <div style="display:flex; gap:.6em; align-items:flex-start;">
+            <span class="step-num" style="font-size:clamp(22px,1.9vw,34px); margin-top:.15em;">3</span>
+            <div><p style="font-size:clamp(26px,2.3vw,40px); font-weight:800;">Uống đủ nước — trên dưới 3 lít/ngày</p><p class="caption">Não là <strong>75% nước</strong>. Công thức thực dụng: 2 ml/kg cân nặng sau mỗi 20 phút làm việc tập trung.</p></div>
+          </div>
+        </div>
+      </div>
+      <p class="caption">Ăn ở nhà = chủ động thiết kế bữa ăn · bột ngọt (MSG) trong đồ ăn ngoài làm giảm chức năng não</p>
+    </section>
+
+    <!-- SLIDE 32 — Siêu thực phẩm cho não -->
+    <section class="slide" style="gap:clamp(14px,2vh,28px); justify-content:center;">
+      <h2>Siêu thực phẩm cho não</h2>
+      <p class="caption" style="font-size:clamp(22px,1.9vw,34px);">Dinh dưỡng chiếm 20% trong công thức trí thông minh — hãy tiêu 20% đó cho đúng chỗ</p>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,48px); align-items:stretch; flex:1;">
+        <div class="responsive-image-container" style="flex:.7; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/broccoli.jpg" alt="Súp lơ xanh" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+        </div>
+        <div style="flex:1.3; display:flex; flex-direction:column; gap:clamp(10px,1.4vh,18px);">
+          <ul style="gap:clamp(9px,1.2vh,16px); font-size:clamp(23px,1.95vw,35px);">
+            <li><strong>Rau họ cải</strong> — súp lơ xanh, cải xoăn, cải Brussels. Hoạt chất riêng: <strong>glucosinolate → sulforaphane</strong>. Hấp hoặc luộc nhẹ, đừng nấu quá kỹ.</li>
+            <li><strong>Omega-3 (DHA)</strong> — mỡ cá, dầu ô liu, quả bơ, hạt chia. DHA cao đi cùng nhận thức tốt hơn.</li>
+            <li><strong>Quả mọng</strong> — việt quất, dâu tằm: nhóm chống oxy hóa mạnh nhất trong bữa ăn thường ngày.</li>
+            <li><strong>Sữa đậu nành tươi</strong> — giàu lecithin và B9. Lo ngại estrogen trong đậu nành là hoang đường.</li>
+          </ul>
+          <p class="pill-warn" style="display:block; border-radius:1em; padding:.6em .8em; font-size:clamp(19px,1.55vw,28px); line-height:1.4;"><strong>Đính chính:</strong> rau chân vịt (spinach) <strong>không</strong> thuộc họ Cải mà thuộc họ Dền — không có glucosinolate. Vẫn là rau tốt, nhưng vì lý do khác.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 33 — Trái cây <!-- SLIDE 32 — Trái cây & Đạm Đạm -->
+    <section class="slide" style="gap:clamp(14px,2vh,28px); justify-content:center;">
+      <h2>Hai chỗ dễ nhầm nhất: trái cây và đạm</h2>
+      <div class="grid-2" style="flex:1; align-items:stretch;">
+        <div style="display:flex; flex-direction:column; gap:clamp(10px,1.4vh,18px);">
+          <span class="pill-warn" style="align-self:flex-start;">Trái cây — tốt hơn nước ngọt, nhưng vẫn là đường</span>
+          <ul style="gap:clamp(6px,.9vh,12px); font-size:clamp(22px,1.85vw,33px);">
+            <li>1 ly nước cam ép = <strong>14–15 muỗng đường</strong></li>
+            <li>Ăn nguyên trái, đừng ép — chất xơ mất đi thì chỉ còn đường</li>
+            <li>Fructose → glycerol phosphate → <strong>triglyceride ở gan</strong> → tích mỡ</li>
+            <li>Rau nhiều vi chất hơn trái cây, lại rẻ hơn</li>
+            <li>Muốn tráng miệng: sữa chua ít đường</li>
+          </ul>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:clamp(10px,1.4vh,18px);">
+          <span class="pill" style="align-self:flex-start;">Đạm — đủ và đa dạng</span>
+          <div style="flex:1; display:flex; align-items:center; justify-content:center;">
+            <svg viewBox="0 0 260 260" style="width:100%; height:360px;">
+            <circle cx="130" cy="130" r="118" fill="#fff" stroke="rgba(26,46,38,.15)" stroke-width="3"/>
+            <path d="M130,130 L130,18 A112,112 0 0,1 227,186 Z" fill="rgba(200,60,60,.16)"/>
+            <path d="M130,130 L227,186 A112,112 0 0,1 33,186 Z" fill="rgba(45,138,110,.18)"/>
+            <path d="M130,130 L33,186 A112,112 0 0,1 130,18 Z" fill="rgba(215,160,60,.20)"/>
+            <line x1="130" y1="130" x2="130" y2="18" stroke="#fff" stroke-width="3"/>
+            <line x1="130" y1="130" x2="227" y2="186" stroke="#fff" stroke-width="3"/>
+            <line x1="130" y1="130" x2="33" y2="186" stroke="#fff" stroke-width="3"/>
+            <text x="168" y="76" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="#a83030" text-anchor="middle">1/3</text>
+            <text x="168" y="94" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="#a83030" text-anchor="middle">Đạm</text>
+            <text x="130" y="204" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="var(--accent)" text-anchor="middle">1/3</text>
+            <text x="130" y="222" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="var(--accent)" text-anchor="middle">Hạt đậu · Rau</text>
+            <text x="90" y="76" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="800" fill="#9a7020" text-anchor="middle">1/3</text>
+            <text x="90" y="94" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" font-weight="700" fill="#9a7020" text-anchor="middle">Tinh bột</text>
+          </svg>
+          </div>
+          <ul style="gap:clamp(6px,.9vh,12px); font-size:clamp(22px,1.85vw,33px);">
+            <li><strong>1–1,5 g/kg cân nặng</strong> mỗi ngày — người 70 kg cần 70–100 g đạm</li>
+            <li>Tránh chất béo bão hòa và chất béo chuyển hóa — dày đặc trong fast food và đồ chế biến sẵn</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KHỐI E — LÀM: biến thành thói quen ═══ -->
+
+    <!-- SLIDE 34 — Timing bữa ăn -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,30px); justify-content:center;">
+      <h2>Không chỉ ăn gì — mà còn ăn khi nào</h2>
+      <svg viewBox="0 0 900 130" style="width:100%; height:auto; max-height:clamp(96px,15vh,150px);">
+        <rect x="185" y="63" width="515" height="18" rx="9" fill="rgba(45,138,110,.14)"/>
+        <line x1="40" y1="72" x2="865" y2="72" stroke="rgba(90,122,106,.3)" stroke-width="3" stroke-linecap="round"/>
+        <text x="442" y="128" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="700" fill="var(--accent)" text-anchor="middle">cửa sổ ăn ~12 tiếng · nhịn ăn ~12 tiếng còn lại</text>
+
+        <circle cx="60" cy="72" r="9" fill="#5a7a6a"/>
+        <text x="60" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">6:00</text>
+        <text x="60" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Thức dậy</text>
+        <circle cx="185" cy="72" r="9" fill="#2d8a6e"/>
+        <text x="185" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">6:30</text>
+        <text x="185" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Ăn sáng · 30 g đạm</text>
+        <circle cx="310" cy="72" r="9" fill="#2d8a6e"/>
+        <text x="310" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">7:00</text>
+        <text x="310" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Cà phê (sau ~1 tiếng)</text>
+        <circle cx="500" cy="72" r="9" fill="#2d8a6e"/>
+        <text x="500" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">12:00</text>
+        <text x="500" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Bữa trưa · nhai kỹ 30'</text>
+        <circle cx="700" cy="72" r="9" fill="#2d8a6e"/>
+        <text x="700" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">19:00</text>
+        <text x="700" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Ăn tối (trước 7–8 h)</text>
+        <circle cx="845" cy="72" r="9" fill="#5a7a6a"/>
+        <text x="845" y="52" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="19" font-weight="900" fill="var(--ink)" text-anchor="middle">23:00</text>
+        <text x="845" y="104" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="15" font-weight="600" fill="var(--soft)" text-anchor="middle">Đi ngủ</text>
+      </svg>
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <span class="pill" style="align-self:flex-start;">Buổi sáng quyết định cả ngày</span>
+          <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2vw,36px);">
+            <li><strong>30 g đạm trong 30 phút</strong> đầu sau khi thức dậy — quy tắc giảm cân hiệu quả nhất trong nhóm 20/80</li>
+            <li>Cà phê lùi lại <strong>~1 tiếng</strong> sau khi dậy — sau khi đã chạy bộ, tắm, ăn sáng</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <span class="pill-warn" style="align-self:flex-start;">Bụng rỗng rất nhạy insulin</span>
+          <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2vw,36px);">
+            <li>Tránh bánh ngọt, ngũ cốc, yến mạch pha sẵn, trái cây ngọt vào buổi sáng</li>
+            <li>Ăn tối <strong>trước 7–8 giờ</strong> nếu bạn ngủ lúc 11 giờ — để dạ dày xong việc trước khi não bắt đầu dọn dẹp</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 35 — Nấu ăn · Ăn ngoài · Ăn vặt -->
+    <section class="slide" style="gap:clamp(14px,2vh,26px); justify-content:center;">
+      <h2>Biết rồi vẫn không làm được? Ba nút thắt thực tế</h2>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.4vw,40px); flex:1;">
+        <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,16px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(16px,2.2vh,30px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(19px,1.55vw,29px);">Không có thời gian nấu</span>
+          <ul style="gap:clamp(6px,.9vh,13px); font-size:clamp(21px,1.75vw,32px);">
+            <li>Chọn món dễ nấu nhanh: xà lách gà, súp rau củ, khoai lang chấm muối mè</li>
+            <li>Ở chung thì thay phiên nấu</li>
+            <li>Cuối tuần đi siêu thị, nấu món mặn một lần cho cả tuần</li>
+            <li>Hộp thủy tinh đựng đồ mang đi làm</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,16px); background:rgba(200,60,60,.05); border-radius:1.2em; padding:clamp(16px,2.2vh,30px);">
+          <span class="pill-warn" style="align-self:flex-start; font-size:clamp(19px,1.55vw,29px);">Buộc phải ăn ngoài</span>
+          <ul style="gap:clamp(6px,.9vh,13px); font-size:clamp(21px,1.75vw,32px);">
+            <li>Gọi thêm một đĩa rau hoặc bát canh — gần như quán nào cũng có</li>
+            <li>Cơm nhiều vào bữa tối, ít vào sáng và trưa</li>
+            <li>Ưu tiên món luộc và xào hơn chiên và nướng</li>
+            <li>Sinh tố tốt hơn nước ép</li>
+          </ul>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,16px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(16px,2.2vh,30px);">
+          <span class="pill" style="align-self:flex-start; font-size:clamp(19px,1.55vw,29px);">Hay thèm ăn vặt</span>
+          <ul style="gap:clamp(6px,.9vh,13px); font-size:clamp(21px,1.75vw,32px);">
+            <li>Sáng và trưa nhiều đạm + chất xơ thì chiều tự bớt thèm</li>
+            <li>Đặt snack rau củ ở tầng dễ thấy nhất trong tủ lạnh</li>
+            <li>Bình nước lớn trên bàn — uống nhiều thì đỡ đói</li>
+            <li>Chọn <strong>1 ngày/tuần</strong> &ldquo;unhealthy day&rdquo; để đi đường dài</li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex; gap:clamp(14px,1.8vw,28px); height:clamp(84px,13vh,160px);">
+        <div class="responsive-image-container" style="flex:1; border-radius:1.1em; overflow:hidden; position:relative;">
+          <img src="assets/mealprep.jpg" alt="Bữa ăn tự nấu" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; display:flex; align-items:flex-end; padding:clamp(8px,1.2vh,16px); background:linear-gradient(to top, rgba(26,46,38,.7), transparent 60%);">
+            <span style="color:#f5faf7; font-weight:800; font-size:clamp(18px,1.5vw,28px);">Ăn ở nhà — bạn kiểm soát</span>
+          </div>
+        </div>
+        <div class="responsive-image-container" style="flex:1; border-radius:1.1em; overflow:hidden; position:relative;">
+          <img src="assets/burger.jpg" alt="Đồ ăn nhanh" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; display:flex; align-items:flex-end; padding:clamp(8px,1.2vh,16px); background:linear-gradient(to top, rgba(26,46,38,.7), transparent 60%);">
+            <span style="color:#f5faf7; font-weight:800; font-size:clamp(18px,1.5vw,28px);">Ăn ngoài — người khác kiểm soát</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ KHỐI F — MỞ RỘNG: tự chữa lành ═══ -->
+
+
+    <!-- SLIDE 36 — Hệ vi sinh đường ruột -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,28px); justify-content:center;">
+      <h2>Hệ vi sinh đường ruột: "Bộ não thứ hai"</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(20px,3vw,48px); align-items:stretch; flex:1;">
+        <!-- Left: gut-brain axis SVG -->
+        <div style="flex:0.55; display:flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 220 340" style="width:100%; height:auto; max-height:clamp(220px,34vh,360px);">
+            <!-- Brain (top) -->
+            <ellipse cx="110" cy="42" rx="42" ry="34" fill="rgba(45,138,110,.15)" stroke="var(--accent)" stroke-width="2.5"/>
+            <path d="M82,30 Q88,20 96,24 Q102,18 110,22 Q118,18 124,24 Q132,20 138,30" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"/>
+            <path d="M84,36 Q90,29 98,33 Q104,28 110,31 Q116,28 122,33 Q130,29 136,36" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round"/>
+            <text x="110" y="56" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)" text-anchor="middle">NÃO</text>
+            <!-- Gut (bottom) -->
+            <ellipse cx="110" cy="290" rx="48" ry="40" fill="rgba(45,138,110,.12)" stroke="var(--accent)" stroke-width="2.5"/>
+            <circle cx="88" cy="282" r="5" fill="var(--accent)" opacity=".35"/>
+            <circle cx="110" cy="296" r="4" fill="var(--accent)" opacity=".25"/>
+            <circle cx="128" cy="278" r="3.5" fill="var(--accent)" opacity=".3"/>
+            <circle cx="96" cy="302" r="3" fill="var(--accent)" opacity=".2"/>
+            <circle cx="120" cy="306" r="4.5" fill="var(--accent)" opacity=".3"/>
+            <text x="110" y="336" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="16" font-weight="800" fill="var(--ink)" text-anchor="middle">RUỘT</text>
+            <!-- Vagus nerve (left arrow up) -->
+            <line x1="58" y1="250" x2="58" y2="115" stroke="var(--accent)" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="58,110 50,128 66,128" fill="var(--accent)"/>
+            <text x="38" y="185" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="var(--accent)" font-weight="700" text-anchor="middle" transform="rotate(-90,38,185)">Dây thần kinh phế vị</text>
+            <!-- Neurotransmitters (right arrow down) -->
+            <line x1="162" y1="120" x2="162" y2="245" stroke="#c03030" stroke-width="2.5" stroke-linecap="round" opacity=".7"/>
+            <polygon points="162,250 154,232 170,232" fill="#c03030" opacity=".7"/>
+            <text x="182" y="185" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="#c03030" font-weight="600" opacity=".7" transform="rotate(90,182,185)">Serotonin · Dopamine</text>
+            <!-- Immune signals (center arrow up) -->
+            <line x1="110" y1="245" x2="110" y2="120" stroke="var(--soft)" stroke-width="2" stroke-linecap="round" stroke-dasharray="6,4" opacity=".5"/>
+            <polygon points="110,115 104,130 116,130" fill="var(--soft)" opacity=".5"/>
+            <text x="128" y="180" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="10" fill="var(--soft)" opacity=".6">Tín hiệu miễn dịch</text>
+            <!-- 70% label -->
+            <text x="110" y="262" font-family="Outfit,system-ui,sans-serif" font-size="22" font-weight="900" fill="var(--accent)" text-anchor="middle">70%</text>
+            <text x="110" y="278" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="11" fill="var(--accent)" text-anchor="middle" font-weight="600">hệ miễn dịch</text>
+          </svg>
+        </div>
+        <!-- Center: fermented image -->
+        <div class="responsive-image-container" style="flex:0.65; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/fermented.jpg" alt="Thực phẩm lên men" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.25) 0%, transparent 50%);"></div>
+        </div>
+        <!-- Right: text -->
+        <div style="flex:1.1; display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <div style="display:flex;flex-direction:column;gap:clamp(4px,.6vh,8px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(18px,1.5vw,28px);">🦠 Trục Não-Ruột</span>
+            <ul style="gap:clamp(4px,.5vh,8px); font-size:clamp(21px,1.7vw,30px);">
+              <li>Hàng nghìn tỷ vi sinh vật trong đường tiêu hóa</li>
+              <li><strong>70% hệ miễn dịch</strong> ở đường ruột (Harvard 2020)</li>
+              <li>Sản xuất serotonin, dopamine — ảnh hưởng tâm trạng</li>
+              <li>Dysbiosis → béo phì, tiểu đường, trầm cảm</li>
+            </ul>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:clamp(4px,.6vh,8px);">
+            <span class="pill" style="align-self:flex-start; font-size:clamp(18px,1.5vw,28px);">🥬 Nuôi dưỡng</span>
+            <ul style="gap:clamp(4px,.5vh,8px); font-size:clamp(21px,1.7vw,30px);">
+              <li>1-2 khẩu phần thực phẩm lên men/ngày</li>
+              <li>Đa dạng thực vật toàn phần</li>
+              <li>Tránh chất tạo ngọt nhân tạo</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p class="caption">Tim Spector (King's College London) · Andrew Huberman (Stanford) khuyến nghị thực phẩm lên men hàng ngày</p>
+    </section>
+
+
+    <!-- SLIDE 37 — Subtract before you add -->
+    <section class="slide" style="gap:clamp(16px,2.2vh,30px); justify-content:center;">
+      <h2>Bớt đi trước khi thêm vào</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:stretch; flex:1;">
+        <div style="flex:1.25; display:flex; flex-direction:column; gap:clamp(12px,1.7vh,24px); justify-content:center;">
+          <p style="font-size:clamp(26px,2.3vw,40px); font-style:italic; border-left:5px solid var(--accent); padding-left:.7em; line-height:1.35;">&ldquo;When it comes to medicine and nutrition &mdash; subtract before you add.&rdquo;</p>
+          <ul style="gap:clamp(9px,1.2vh,17px); font-size:clamp(23px,1.95vw,35px);">
+            <li><strong>Phòng bệnh rẻ hơn chữa bệnh</strong> — &ldquo;Hãy để thức ăn làm liều thuốc của bạn&rdquo; (Hippocrates)</li>
+            <li><strong>Bệnh nhẹ</strong> — thử vận động và nghỉ ngơi trước khi với tới hộp thuốc</li>
+            <li><strong>Thực phẩm chức năng</strong> — thứ gì không phải thức ăn mà có chức năng thì đều là thuốc. Chỉ bổ sung đúng thứ mình đang thiếu.</li>
+            <li><strong>Thuốc bôi ngoài da</strong> — những gì bôi lên da cũng đi vào máu. Thứ gì không ăn thì cũng hạn chế bôi.</li>
+          </ul>
+          <p class="pill-warn" style="display:block; border-radius:1em; padding:.6em .85em; font-size:clamp(19px,1.55vw,28px); line-height:1.4;"><strong>Lưu ý:</strong> đây là quan điểm cá nhân trong nguồn. Đừng tự ý bỏ hay cắt ngắn thuốc kê đơn — kháng sinh dùng dở dang có thể gây kháng thuốc. Hỏi bác sĩ.</p>
+        </div>
+        <div class="responsive-image-container" style="flex:.75; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/pills.jpg" alt="Vỉ thuốc" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.3) 0%, transparent 45%);"></div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ════════════════════════════════════════════
+    PHẦN 3 — SỨC KHỎE TINH THẦN
+    ═════════════════════════════════════════════ -->
+
+    <!-- SLIDE 38 — SECTION DIVIDER: Sức khỏe tinh thần -->
+    <section class="slide divider-slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(20px,2.5vh,36px);">
+      <!-- Main title with underline -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,.8vh,16px);">
+        <h1 style="font-size:clamp(52px,6.8vw,104px); letter-spacing:-.02em;">Sức khỏe tinh thần</h1>
+        <div style="width:clamp(60px,8vw,140px); height:4px; border-radius:2px; background:var(--accent);"></div>
+      </div>
+
+      <!-- 4 trụ cột — grid cards -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(12px,1.2vw,28px); width:100%; max-width:clamp(520px,60vw,960px);">
+        <!-- Hơi thở -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px);">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🍃</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Hơi thở</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Cần gạt nhanh nhất</span>
+        </div>
+        <!-- Ngôn ngữ -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px);">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🏷️</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Ngôn ngữ</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Gọi tên & diễn giải</span>
+        </div>
+        <!-- Kết nối -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.06); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px);">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🤝</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Kết nối</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Yếu tố #1</span>
+        </div>
+        <!-- Nghỉ ngơi -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,14px); background:rgba(45,138,110,.08); border:1px solid rgba(45,138,110,.2); border-radius:1.2em; padding:clamp(14px,2vh,28px) clamp(10px,1.2vw,20px);">
+          <span style="font-size:clamp(32px,2.8vw,52px); line-height:1;">🌙</span>
+          <span style="font-size:clamp(18px,1.3vw,28px); font-weight:700; color:#f5faf7;">Nghỉ ngơi</span>
+          <span style="font-size:clamp(13px,.9vw,18px); color:rgba(245,250,247,.4);">Chủ động có chủ đích</span>
+        </div>
+      </div>
+
+      <!-- Tagline -->
+      <p class="lead" style="font-size:clamp(22px,1.8vw,34px); color:rgba(245,250,247,.55); max-width:32em; line-height:1.4;">
+        Không tách rời khỏi sức khỏe thể chất — <strong style="color:var(--accent);">vận động là phương thức điều trị tâm thần tốt nhất</strong>
+      </p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ TẠI SAO — Cảm xúc là cổng vào của tư duy
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 39 — Cảm xúc là cổng vào của tư duy -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ TẠI SAO</span>
+      <h1 style="font-size:clamp(40px,4.5vw,76px); max-width:16em; text-align:center;">Cảm xúc là cổng vào của tư duy</h1>
+      <div class="grid-2" style="align-items:stretch;">
+        <!-- Cột trái: khi bình thường -->
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,22px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.8vh,36px);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:clamp(28px,2.5vw,44px);">🧠✅</span>
+            <span style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">Bình thường</span>
+          </div>
+          <p style="font-size:clamp(22px,1.9vw,34px);"><strong>Vỏ não trước trán</strong> (PFC) — trung tâm chỉ huy: lập kế hoạch, ra quyết định, kiểm soát xung động, tư duy trừu tượng.</p>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Khi PFC hoạt động trơn tru → bạn suy nghĩ sâu, phản hồi thông minh, không phản ứng bốc đồng.</p>
+        </div>
+
+        <!-- Cột phải: amygdala hijack -->
+        <div style="display:flex;flex-direction:column;gap:clamp(12px,1.6vh,22px); background:rgba(200,60,60,.06); border-radius:1.2em; padding:clamp(20px,2.8vh,36px);">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:clamp(28px,2.5vw,44px);">🧠🚨</span>
+            <span style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:#c03030;">Căng thẳng</span>
+          </div>
+          <p style="font-size:clamp(22px,1.9vw,34px);"><strong>Hạch hạnh nhân</strong> (amygdala) — phát hiện mối đe dọa trong 50ms. Khi kích hoạt → "chiếm quyền" PFC (<strong>amygdala hijack</strong>).</p>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Hệ quả: không tư duy sâu, chỉ phản ứng sinh tồn — đánh hay chạy.</p>
+        </div>
+      </div>
+      <p class="lead" style="text-align:center;">Không bình tĩnh thì không tư duy được. Đó là lý do cảm xúc cần phải được kiểm soát để não làm việc hiệu quả hơn.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ TẠI SAO — Không phải mọi stress đều xấu
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 40 — Yerkes-Dodson: Không phải mọi stress đều xấu -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <h2 style="font-size:clamp(36px,3.8vw,64px);">Không phải mọi stress đều xấu</h2>
+      <div class="responsive-split" style="display:flex; gap:clamp(28px,4vw,60px); align-items:center;">
+        <!-- Cột trái: đồ thị chữ U ngược -->
+        <div style="flex:1; display:flex;flex-direction:column;align-items:center;gap:clamp(14px,2vh,24px);">
+          <!-- Yerkes-Dodson curve SVG -->
+          <svg viewBox="0 0 360 300" style="width:100%; max-width:420px; height:auto;">
+            <!-- Background -->
+            <rect x="0" y="0" width="360" height="300" rx="16" fill="rgba(26,46,38,.02)" />
+            <!-- Axes -->
+            <line x1="40" y1="260" x2="340" y2="260" stroke="var(--soft)" stroke-width="2"/>
+            <line x1="40" y1="260" x2="40" y2="40" stroke="var(--soft)" stroke-width="2"/>
+            <!-- Axis labels -->
+            <text x="190" y="290" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="var(--soft)" text-anchor="middle">Mức độ kích thích (stress)</text>
+            <text x="25" y="150" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="13" fill="var(--soft)" text-anchor="middle" transform="rotate(-90, 25, 150)">Hiệu suất</text>
+            <!-- Inverted U curve -->
+            <path d="M50,250 Q80,240 100,180 Q140,60 190,60 Q240,60 280,180 Q300,240 330,250" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round"/>
+            <!-- Optimal zone highlight -->
+            <circle cx="190" cy="60" r="10" fill="var(--accent)" opacity="0.9"/>
+            <text x="190" y="38" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="14" font-weight="700" fill="var(--accent)" text-anchor="middle">TỐI ƯU</text>
+            <!-- Low stress zone -->
+            <text x="90" y="210" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="var(--soft)" text-anchor="middle">Quá thấp</text>
+            <!-- High stress zone -->
+            <text x="290" y="210" font-family="Plus Jakarta Sans,system-ui,sans-serif" font-size="12" fill="#c03030" text-anchor="middle">Quá cao</text>
+          </svg>
+          <p class="caption" style="text-align:center; max-width:20em;">Đường cong chữ U ngược (Yerkes–Dodson, 1908)</p>
+        </div>
+
+        <!-- Cột phải: giải thích 3 vùng -->
+        <div style="flex:1; display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,12px); background:rgba(45,138,110,.04); border-radius:1em; padding:clamp(14px,2vh,24px);">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; color:var(--accent);">🟢 Stress cấp tính vừa phải</p>
+            <p style="font-size:clamp(20px,1.7vw,30px);">Tăng tập trung, tăng BDNF, học tốt hơn. Đây là mức stress "vừa đủ" — như deadline, thi đấu, vận động mạnh.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,12px); background:rgba(200,60,60,.04); border-radius:1em; padding:clamp(14px,2vh,24px);">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; color:#c03030;">🔴 Stress mãn tính cao</p>
+            <p style="font-size:clamp(20px,1.7vw,30px);">Teo não, giảm BDNF, suy giảm miễn dịch. Đây là kẻ thù — lo âu kéo dài, áp lực không có lối thoát.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,12px); background:rgba(90,122,106,.04); border-radius:1em; padding:clamp(14px,2vh,24px);">
+            <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; color:var(--soft);">⚪ Stress quá thấp</p>
+            <p style="font-size:clamp(20px,1.7vw,30px);">Nhàm chán, thiếu động lực. Não cũng cần "thử thách" để phát triển.</p>
+          </div>
+        </div>
+      </div>
+      <p class="caption" style="text-align:center;">Vấn đề không phải stress — mà là <strong>loại và mức độ</strong>. Mục tiêu: giữ ở vùng tối ưu, tránh vùng mãn tính cao.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ CÁI GIÁ — Cảm xúc tiêu cực kéo dài
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 41 — Cái giá của cảm xúc tiêu cực kéo dài -->
+    <section class="slide" style="gap:clamp(24px,3.5vh,48px); justify-content:center;">
+      <span class="pill-warn" style="font-size:clamp(26px,2.2vw,40px); align-self:center;">⚠️ ▸ CÁI GIÁ</span>
+      <h2 style="font-size:clamp(38px,4.2vw,68px); text-align:center;">Cái giá của cảm xúc tiêu cực <br>kéo dài</h2>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(20px,3vw,40px);">
+        <!-- 3 tác hại chính -->
+        <div class="grid-2" style="gap:clamp(24px,3.5vw,52px);">
+          <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(200,60,60,.05); border-radius:1.2em; padding:clamp(18px,2.6vh,32px);">
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:#c03030;">🧠 Teo não</p>
+            <ul style="gap:clamp(8px,1.1vh,14px); font-size:clamp(22px,1.9vw,34px);">
+              <li>Cortisol mãn → <strong>teo vùng hồi hải mã</strong> (trung tâm trí nhớ)</li>
+              <li>Hạch hạnh nhân phì đại → nhạy cảm với mối đe dọa</li>
+              <li>Neuron mới sinh ra ít hơn (BDNF giảm)</li>
+            </ul>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(200,60,60,.05); border-radius:1.2em; padding:clamp(18px,2.6vh,32px);">
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:#c03030;">😴 Vòng xoáy stress ↔ mất ngủ</p>
+            <ul style="gap:clamp(8px,1.1vh,14px); font-size:clamp(22px,1.9vw,34px);">
+              <li>Thiếu ngủ 1 đêm → amygdala phản ứng <strong>~60%</strong> quá mức</li>
+              <li>Stress → khó ngủ → stress cao hơn → khó ngủ hơn...</li>
+              <li>Giấc ngủ REM mất → không tách cảm xúc ra khỏi ký ức</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cô đơn = điếu thuốc -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(12px,1.6vh,22px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.8vh,36px);">
+          <p style="font-size:clamp(26px,2.3vw,42px); font-weight:800; color:var(--accent);">🤝 Cô đơn ≈ 15 điếu thuốc/ngày</p>
+          <p style="font-size:clamp(22px,1.9vw,34px); text-align:center; max-width:28em;">Nghiên cứu Brigham Young University (2015): cô đơn làm tăng nguy cơ tử vong sớm tương đương với hút 15 điếu thuốc mỗi ngày — gấp 2 lần béo phì, cao hơn cả uống rượu.</p>
+        </div>
+      </div>
+
+      <p class="lead" style="text-align:center;">&ldquo;Tâm hồn bớt tham sân si thì tư duy sâu và rộng hơn&rdquo;</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ 3 NÚT ĐIỀU CHỈNH — Vận động (cầu nối)
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 42 — Vận động = liều thuốc tâm thần (cầu nối từ Phần 2) -->
+    <section class="slide" style="gap:clamp(24px,3.5vh,48px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ 3 NÚT ĐIỀU CHỈNH — 0. Vận động</span>
+      <h2 style="font-size:clamp(38px,4.2vw,68px);">Vận động = Liều thuốc tâm thần tốt nhất</h2>
+      <div style="display:flex;flex-direction:column;gap:clamp(18px,2.5vh,36px);">
+        <div class="responsive-split" style="display:flex; gap:clamp(20px,3vw,48px);">
+          <div style="flex:1; display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(22px,3.2vh,40px);">
+            <p style="font-size:clamp(26px,2.3vw,42px); font-weight:700;">🧪 Hóa học não bộ</p>
+            <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2.1vw,38px);">
+              <li><strong>Endorphin</strong> — giảm đau tự nhiên, hưng phấn nhẹ ("runner's high")</li>
+              <li><strong>Serotonin</strong> — ổn định tâm trạng, giảm trầm cảm</li>
+              <li><strong>Dopamine</strong> — động lực, tập trung, cảm giác thành tựu</li>
+              <li><strong>BDNF</strong> — "dưỡng chất cho não": tăng sinh neuron & kết nối synapse</li>
+            </ul>
+          </div>
+          <div style="flex:1; display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(22px,3.2vh,40px);">
+            <p style="font-size:clamp(26px,2.3vw,42px); font-weight:700;">🏃 Hai hình thức</p>
+            <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(24px,2.1vw,38px);">
+              <li><strong>Thể thao một mình</strong> = "thiền trong hoạt động" — chạy bộ, bơi, đạp xe</li>
+              <li><strong>Thể thao đồng đội</strong> = niềm vui xã hội — bóng đá, cầu lông, pickleball</li>
+            </ul>
+          </div>
+        </div>
+        <p style="font-size:clamp(32px,3vw,52px); font-weight:800; color:var(--accent); text-align:center;">&ldquo;Nụ cười bằng 10 thang thuốc bổ&rdquo;</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ 3 NÚT ĐIỀU CHỈNH — 1. Hơi thở (Interoception)
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 43 — Nút 1: Cơ thể / Interoception -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ 3 NÚT ĐIỀU CHỈNH — 1. Hơi thở</span>
+      <h1 style="font-size:clamp(40px,4.5vw,76px); max-width:16em; text-align:center;">Nút 1 — Hơi thở</h1>
+      <p class="lead" style="text-align:center; max-width:24em;">Cần gạt nhanh nhất: dùng cơ thể điều chỉnh tâm trí</p>
+
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,48px); align-items:stretch; flex:1;">
+        <!-- Left: 3 kỹ thuật -->
+        <div style="flex:1.15; display:flex; flex-direction:column; justify-content:center; gap:clamp(16px,2.2vh,30px);">
+          <div style="display:flex; gap:clamp(16px,2.2vw,28px); align-items:center;">
+            <div style="flex:none; display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,12px); background:rgba(45,138,110,.08); border-radius:1.2em; padding:clamp(12px,1.6vh,22px) clamp(16px,2vw,28px);">
+              <span style="font-size:clamp(36px,3.2vw,56px);">🍃</span>
+              <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; text-align:center;">Thở ra chậm</p>
+            </div>
+            <p style="font-size:clamp(24px,2.1vw,38px);"><strong>↓ nhịp tim → bình tĩnh</strong>. Thở ra dài hơn hít vào kích hoạt dây thần kinh phế vị (vagus nerve), gửi tín hiệu "an toàn" đến não.</p>
+          </div>
+
+          <div style="display:flex; gap:clamp(16px,2.2vw,28px); align-items:center;">
+            <div style="flex:none; display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,12px); background:rgba(45,138,110,.08); border-radius:1.2em; padding:clamp(12px,1.6vh,22px) clamp(16px,2vw,28px);">
+              <span style="font-size:clamp(36px,3.2vw,56px);">🔥</span>
+              <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; text-align:center;">Hít sâu + thở nhanh</p>
+            </div>
+            <p style="font-size:clamp(24px,2.1vw,38px);"><strong>↑ nhịp tim → tập trung cao</strong>. Kỹ thuật của vận động viên trước thi đấu.</p>
+          </div>
+
+          <div style="display:flex; gap:clamp(16px,2.2vw,28px); align-items:center;">
+            <div style="flex:none; display:flex;flex-direction:column;align-items:center;gap:clamp(6px,.8vh,12px); background:rgba(45,138,110,.08); border-radius:1.2em; padding:clamp(12px,1.6vh,22px) clamp(16px,2vw,28px);">
+              <span style="font-size:clamp(36px,3.2vw,56px);">👁️</span>
+              <p style="font-size:clamp(22px,1.9vw,34px); font-weight:700; text-align:center;">Mở rộng tầm nhìn</p>
+            </div>
+            <p style="font-size:clamp(24px,2.1vw,38px);"><strong>Thư giãn mắt → giảm căng thẳng</strong>. Nhìn ra xa xung quanh phòng thay vì nhìn chằm chằm màn hình.</p>
+          </div>
+        </div>
+
+        <!-- Right: meditation image -->
+        <div class="responsive-image-container" style="flex:0.8; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/meditation.jpg" alt="Thiền" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+
+      <p class="caption" style="text-align:center;"><strong>Demo:</strong> Bảo khán giả thở ra thật chậm 3 lần, cảm nhận nhịp tim chậm lại. Đây là by-product của thiền, yoga, chạy bộ.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ 3 NÚT ĐIỀU CHỈNH — 2. Ngôn ngữ
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 44 — Nút 2: Ngôn ngữ -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ 3 NÚT ĐIỀU CHỈNH — 2. Ngôn ngữ</span>
+      <h1 style="font-size:clamp(40px,4.5vw,76px); max-width:16em; text-align:center;">Nút 2 — Ngôn ngữ</h1>
+      <p class="lead" style="text-align:center; max-width:24em;">Gọi tên cảm xúc để chế ngự nó</p>
+
+      <div class="grid-2" style="align-items:stretch;">
+        <!-- Cột trái: Name it to tame it -->
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(22px,3.2vh,40px);">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="font-size:clamp(32px,2.8vw,52px);">🏷️</span>
+            <p style="font-size:clamp(26px,2.3vw,42px); font-weight:800; color:var(--accent);">"Name it to tame it"</p>
+          </div>
+          <ul style="gap:clamp(10px,1.4vh,18px); font-size:clamp(24px,2.1vw,38px);">
+            <li>Gọi tên cảm xúc ("tôi đang lo âu" thay vì "tôi không ổn") làm <strong>giảm hoạt động amygdala</strong></li>
+            <li>Nghiên cứu fMRI: đặt tên → PFC và vùng ngôn ngữ hoạt động mạnh hơn → kiểm soát cảm xúc tốt hơn</li>
+            <li>Viết nhật ký, trò chuyện với bạn bè đều là cách gọi tên</li>
+          </ul>
+        </div>
+
+        <!-- Cột phải: Reappraisal vs Suppression -->
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(22px,3.2vh,40px);">
+          <p style="font-size:clamp(26px,2.3vw,42px); font-weight:800; color:var(--accent);">🔄 Tái diễn giải (Reappraisal)</p>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Nhìn lại sự việc dưới góc độ khác: "bài học" thay vì "thất bại", "cơ hội" thay vì "đe dọa".</p>
+
+          <div style="height:1px; background:rgba(45,138,110,.2); margin:clamp(8px,1vh,14px) 0;"></div>
+
+          <p style="font-size:clamp(26px,2.3vw,42px); font-weight:800; color:#c03030;">🚫 Đè nén (Suppression)</p>
+          <p style="font-size:clamp(22px,1.9vw,34px);">Cố không biểu hiện cảm xúc → tốn tài nguyên nhận thức, không giảm cảm xúc, làm tăng huyết áp.</p>
+        </div>
+      </div>
+
+      <p class="caption" style="text-align:center;">Ngôn ngữ là công cụ của vỏ não trước trán — dùng nó để kiểm soát amygdala.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ 3 NÚT ĐIỀU CHỈNH — 3. Kết nối
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 45 — Nút 3: Kết nối -->
+    <section class="slide" style="gap:clamp(20px,2.8vh,36px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ 3 NÚT ĐIỀU CHỈNH — 3. Kết nối</span>
+      <h1 style="font-size:clamp(40px,4.5vw,76px); max-width:16em; text-align:center;">Nút 3 — Kết nối</h1>
+      <p class="lead" style="text-align:center; max-width:24em;">Yếu tố dự báo số 1 cho sức khỏe và hạnh phúc</p>
+
+      <div class="responsive-split" style="display:flex; gap:clamp(28px,4vw,60px); align-items:center;">
+        <!-- Cột trái: Harvard Study -->
+        <div style="flex:1; display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.8vh,36px);">
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">📊 Harvard Study of Adult Development</p>
+            <p style="font-size:clamp(22px,1.9vw,34px);">Nghiên cứu dài nhất lịch sử tâm lý học — <strong>85 năm</strong>, theo dõi cùng một nhóm từ năm 1938 đến nay.</p>
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800;">Kết luận #1:</p>
+            <p style="font-size:clamp(24px,2.1vw,38px);">Chất lượng mối quan hệ dự báo sức khỏe tuổi 80 <strong>tốt hơn</strong> cholesterol, huyết áp, hay gen di truyền.</p>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px); background:rgba(45,138,110,.06); border-radius:1.2em; padding:clamp(20px,2.8vh,36px);">
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">🤝 Giúp đỡ người khác</p>
+            <ul style="gap:clamp(8px,1.1vh,16px); font-size:clamp(22px,1.9vw,34px);">
+              <li>"Chữa lành người khác là chữa lành chính mình"</li>
+              <li>Thực hành lòng biết ơn — viết 3 điều biết ơn mỗi ngày</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Cột phải: connection image -->
+        <div class="responsive-image-container" style="flex:0.8; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/connection.jpg" alt="Kết nối giữa người với người" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(135deg, rgba(26,46,38,.15) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+
+      <p class="caption" style="text-align:center;">Chúng ta được thiết kế để kết nối — cô độc làm tổn thương não như stress mãn tính.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ HÀNH ĐỘNG — 7 bài tập tinh thần
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 46 — 7 bài tập tinh thần (tổ chức lại theo 3 nút) -->
+    <section class="slide" style="gap:clamp(18px,2.5vh,34px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ HÀNH ĐỘNG</span>
+      <h2 style="font-size:clamp(38px,4.2vw,68px);">7 bài tập tinh thần — chi phí thấp, hiệu quả cao</h2>
+
+      <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+        <!-- Nhóm 1: Cơ thể (nút 1) -->
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <div style="display:flex; align-items:center; gap:clamp(10px,1.4vw,18px);">
+            <span style="font-size:clamp(28px,2.5vw,44px);">🍃</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">Nhóm 1 — Cơ thể (khớp nút Hơi thở)</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:clamp(8px,1vh,14px); padding-left:clamp(42px,5vw,72px);">
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">☀️ Tắm nắng — 15 phút mỗi sáng</span>
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🌿 Tắm thiên nhiên — shinrin-yoku</span>
+          </div>
+        </div>
+
+        <!-- Nhóm 2: Kết nối (nút 3) -->
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <div style="display:flex; align-items:center; gap:clamp(10px,1.4vw,18px);">
+            <span style="font-size:clamp(28px,2.5vw,44px);">🤝</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">Nhóm 2 — Kết nối (khớp nút Kết nối)</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:clamp(8px,1vh,14px); padding-left:clamp(42px,5vw,72px);">
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🤝 Giúp đỡ người khác</span>
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🙏 Lòng biết ơn — viết 3 điều mỗi ngày</span>
+          </div>
+        </div>
+
+        <!-- Nhóm 3: Tâm trí -->
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.4vh,18px);">
+          <div style="display:flex; align-items:center; gap:clamp(10px,1.4vw,18px);">
+            <span style="font-size:clamp(28px,2.5vw,44px);">🧘</span>
+            <p style="font-size:clamp(24px,2.1vw,38px); font-weight:800; color:var(--accent);">Nhóm 3 — Tâm trí</p>
+          </div>
+          <div style="display:flex; flex-wrap:wrap; gap:clamp(8px,1vh,14px); padding-left:clamp(42px,5vw,72px);">
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🧹 Dọn dẹp — phòng sạch, tâm trí sạch</span>
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🧘 Thiền & cầu nguyện</span>
+            <span class="pill" style="font-size:clamp(20px,1.7vw,30px);">🔭 Tưởng tượng tầm nhìn / hoài niệm</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex; align-items:center; justify-content:center; gap:clamp(12px,1.6vh,22px); background:rgba(45,138,110,.08); border:1.5px dashed rgba(45,138,110,.3); border-radius:1.2em; padding:clamp(16px,2.2vh,30px) clamp(20px,2.6vw,36px);">
+        <span style="font-size:clamp(32px,2.8vw,52px);">🎉</span>
+        <p style="font-size:clamp(26px,2.3vw,42px); font-weight:800; color:var(--accent); text-align:center;">Quan trọng nhất: <strong>Lên lịch vui chơi như lên lịch họp</strong></p>
+      </div>
+
+      <p class="caption" style="text-align:center;">Không cần làm hết — chọn 1–2 bài tập, thực hành đều đặn.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ HÀNH ĐỘNG — Thói quen bảo vệ
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 47 — Thói quen bảo vệ -->
+    <section class="slide" style="gap:clamp(24px,3.5vh,48px); justify-content:center;">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px); align-self:center;">▸ HÀNH ĐỘNG</span>
+      <h2 style="font-size:clamp(38px,4.2vw,68px);">Thói quen bảo vệ</h2>
+
+      <div class="grid-2">
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill-warn" style="align-self:flex-start;">🚫 Tránh</span>
+          <ul style="gap:clamp(10px,1.4vh,18px); font-size:clamp(24px,2.1vw,38px);">
+            <li><strong>Không điện thoại trong phòng ngủ</strong> (hoặc chế độ máy bay)</li>
+            <li><strong>Không lướt mạng xã hội khi nằm</strong> — gây "liệt não", ngủ trễ, mất tự tin</li>
+            <li><strong>Không làm việc qua 2 tiếng đồng hồ</strong> liên tục — đứng dậy giãn cơ</li>
+          </ul>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:clamp(14px,2vh,24px);">
+          <span class="pill" style="align-self:flex-start;">✅ Thực hành</span>
+          <ul style="gap:clamp(10px,1.4vh,18px); font-size:clamp(24px,2.1vw,38px);">
+            <li>Đứng dậy mỗi <strong>30–45 phút</strong> làm việc</li>
+            <li>Ưu tiên <strong>analog</strong> hơn digital: sách giấy, chạy ngoài trời, gặp mặt trực tiếp</li>
+            <li>Duy trì thói quen đã có ở Phần 2 (vận động, giấc ngủ, dinh dưỡng)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,48px); align-items:center; margin-top:clamp(8px,1vh,16px);">
+        <div style="flex:1; border-radius:1.2em; overflow:hidden; position:relative;">
+          <img src="assets/phone-social.jpg" alt="Điện thoại và mạng xã hội" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.3) 0%, transparent 50%);"></div>
+        </div>
+        <div style="flex:1; border-radius:1.2em; overflow:hidden; position:relative;">
+          <img src="assets/journal.jpg" alt="Viết nhật ký giấy" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.2) 0%, transparent 50%);"></div>
+        </div>
+      </div>
+
+      <p class="caption" style="text-align:center;">Thiết kế môi trường thay vì dựa vào ý chí.</p>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════════════════════
+    ▸ HÀNH ĐỘNG — Nghỉ ngơi chủ động
+    ══════════════════════════════════════════════════════════════════════ -->
+    <!-- SLIDE 48 — Nghỉ ngơi không phải là lười biếng -->
+    <section class="slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(20px,2.5vh,36px);">
+      <span class="badge" style="font-size:clamp(24px,2vw,36px);">▸ HÀNH ĐỘNG — Nguyên tắc quan trọng nhất</span>
+      <h1 style="font-size:clamp(44px,5.5vw,88px); max-width:14em; line-height:1.08;">Nghỉ ngơi <span style="color:var(--accent);">không phải</span> là lười biếng</h1>
+
+      <!-- Two-column contrast -->
+      <div class="grid-2" style="width:100%; max-width:clamp(640px,56vw,900px); text-align:left; margin-top:clamp(8px,1vh,16px);">
+        <!-- Cột trái: thụ động -->
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.2vh,18px); background:rgba(200,60,60,.04); border:1px solid rgba(200,60,60,.08); border-radius:1.2em; padding:clamp(18px,2.5vh,32px) clamp(18px,2.2vw,32px);">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:28px;height:28px;border-radius:999px;background:#c03030;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex:none;">✗</span>
+            <span style="font-size:clamp(22px,1.8vw,34px);font-weight:800;color:#c03030;">Nghỉ ngơi thụ động</span>
+          </div>
+          <ul style="gap:clamp(6px,.8vh,12px); font-size:clamp(22px,1.8vw,34px);">
+            <li>📱 Lướt mạng xã hội vô thức</li>
+            <li>📺 Xem TV, video liên tục</li>
+            <li>🛋️ Nằm ườn, không làm gì có chủ đích</li>
+          </ul>
+          <p class="caption" style="margin-top:auto;">Tiêu tốn thời gian, không phục hồi năng lượng</p>
+        </div>
+
+        <!-- Cột phải: chủ động -->
+        <div style="display:flex;flex-direction:column;gap:clamp(10px,1.2vh,18px); background:rgba(45,138,110,.06); border:1px solid rgba(45,138,110,.15); border-radius:1.2em; padding:clamp(18px,2.5vh,32px) clamp(18px,2.2vw,32px);">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <span style="width:28px;height:28px;border-radius:999px;background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:16px;flex:none;">✓</span>
+            <span style="font-size:clamp(22px,1.8vw,34px);font-weight:800;color:var(--accent);">Nghỉ ngơi chủ động</span>
+          </div>
+          <ul style="gap:clamp(6px,.8vh,12px); font-size:clamp(22px,1.8vw,34px);">
+            <li>🚶 Đi dạo ngoài trời, hít thở</li>
+            <li>📖 Đọc sách giấy, viết nhật ký</li>
+            <li>🎸 Chơi nhạc cụ, vẽ, làm đồ thủ công</li>
+            <li>🤝 Gặp gỡ bạn bè, trò chuyện trực tiếp</li>
+          </ul>
+          <p class="caption" style="margin-top:auto;">Phục hồi tinh thần, tái tạo năng lượng</p>
+        </div>
+      </div>
+
+      <!-- DMN explanation -->
+      <div style="display:flex;flex-direction:column;gap:clamp(8px,1.1vh,14px); background:rgba(45,138,110,.04); border-radius:1em; padding:clamp(14px,2vh,24px); margin-top:clamp(8px,1vh,16px); max-width:32em;">
+        <p style="font-size:clamp(22px,1.9vw,34px);"><strong>Mạng lưới chế độ mặc định (DMN)</strong> — não lúc "rảnh" mới nối ý tưởng rời rạc → sáng tạo. Nhưng nghỉ thụ động dễ rơi vào nhai lại suy nghĩ (rumination) → phải <strong>chủ động</strong>.</p>
+      </div>
+
+      <!-- Quote footer -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(4px,.4vh,8px); margin-top:clamp(4px,.4vh,8px);">
+        <p style="font-size:clamp(26px,2.2vw,42px); font-weight:700; font-style:italic; color:var(--accent); max-width:24em; line-height:1.3;">
+          &ldquo;Lịch đi chơi và nghỉ ngơi phải ưu tiên hơn lịch làm việc&rdquo;
+        </p>
+        <p class="caption">— Gary Keller, <em>The One Thing</em></p>
+      </div>
+
+      <!-- Image of active rest -->
+      <div style="width:100%; max-width:clamp(600px,50vw,800px); border-radius:1.4em; overflow:hidden; position:relative; margin-top:clamp(8px,1vh,16px);">
+        <img src="assets/play.jpg" alt="Hoạt động ngoại khóa — chơi thể thao, đi dạo" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+        <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.2) 0%, transparent 50%);"></div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════════
+    PHẦN KẾT: PHÒNG VỆ & HÀNH ĐỘNG
+    ═════════════════════════════════════════════ -->
+
+    <!-- SLIDE 49 — Bắt đầu từ đâu? -->
+    <section class="slide" style="gap:clamp(28px,4vh,48px); justify-content:center;">
+      <h2>Bắt đầu từ đâu?</h2>
+      <div style="display:flex;flex-direction:column;gap:clamp(18px,2.5vh,32px); font-size:clamp(26px,2.3vw,42px);">
+        <div style="display:flex;align-items:center;gap:clamp(16px,2vw,32px);">
+          <span class="pill" style="font-size:clamp(26px,2.2vw,40px);">Ngày mai</span>
+          <span>Dậy sớm 30 phút, chạy bộ ngoài trời — ánh nắng sáng sớm là yếu tố quan trọng nhất cho nhịp sinh học</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:clamp(16px,2vw,32px);">
+          <span class="pill" style="font-size:clamp(26px,2.2vw,40px);">Tuần này</span>
+          <span>1–2 khẩu phần thực phẩm lên men mỗi ngày + bữa sáng 30g đạm + tối thiểu 150 phút vận động cường độ vừa (khuyến nghị HHS)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:clamp(16px,2vw,32px);">
+          <span class="pill" style="font-size:clamp(26px,2.2vw,40px);">Tháng này</span>
+          <span>Bỏ điện thoại khỏi phòng ngủ, ngủ trước 23h, thức dậy theo chu kỳ 90 phút</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:clamp(16px,2vw,32px);">
+          <span class="pill" style="font-size:clamp(26px,2.2vw,40px);">Năm nay</span>
+          <span>Kiểm tra nhịp tim lúc nghỉ & VO₂ max — hai chỉ số dự đoán tuổi thọ mạnh nhất</span>
+        </div>
+      </div>
+      <p class="caption" style="margin-top:clamp(16px,2vh,28px); font-style:italic; font-size:clamp(25px,2.2vw,40px);">Không cần làm hết — chọn 1 thứ và bắt đầu. Phòng bệnh luôn tốt hơn và rẻ hơn chữa bệnh.</p>
+    </section>
+
+    <!-- SLIDE 50 — Cảm ơn / Q&A -->
+    <section class="slide" style="align-items:center; justify-content:center; text-align:center; gap:clamp(28px,4vh,52px);">
+      <h1 style="font-size:clamp(48px,6vw,96px);">Cảm ơn</h1>
+      <p style="font-size:clamp(32px,3.2vw,56px); font-weight:700; max-width:18em; line-height:1.3;">Một cơ thể khỏe mạnh là nền móng tốt nhất cho một bộ não thông minh</p>
+      <div style="display:flex;flex-direction:column;gap:clamp(6px,.8vh,12px); margin-top:clamp(16px,2vh,32px);">
+        <p class="caption" style="font-size:clamp(24px,2vw,36px);">Q&A</p>
+        <p class="caption" style="font-size:clamp(20px,1.7vw,30px);">Nguồn tham khảo: wiki/healthy — lumina-wiki</p>
+      </div>
+    </section>
+
+  </div>
+
+  <nav id="nav">
+    <button id="prev" aria-label="Slide trước">&larr; Trước</button>
+    <div id="dots"></div>
+    <span id="counter"></span>
+    <button id="next" aria-label="Slide sau">Sau &rarr;</button>
+  </nav>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dotsBox = document.getElementById('dots');
+    const counter = document.getElementById('counter');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+    let current = slides.findIndex(s => s.classList.contains('active'));
+    if (current < 0) current = 0;
+
+    // Đọc hash từ URL khi load trang
+    const hashIndex = parseInt(window.location.hash.replace('#slide-', ''), 10);
+    if (!isNaN(hashIndex) && hashIndex >= 1 && hashIndex <= slides.length) {
+      current = hashIndex - 1;
+    }
+
+    slides.forEach((_, i) => {
+      const d = document.createElement('button');
+      d.className = 'dot';
+      if (slides[i].classList.contains('divider-slide')) d.classList.add('divider-dot');
+      d.setAttribute('aria-label', 'Slide ' + (i + 1));
+      d.addEventListener('click', () => go(i));
+      dotsBox.appendChild(d);
+    });
+    const dots = Array.from(dotsBox.children);
+
+    function render() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === current));
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+      counter.textContent = (current + 1) + ' / ' + slides.length;
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === slides.length - 1;
+    }
+    function go(i) {
+      current = Math.max(0, Math.min(slides.length - 1, i));
+      window.location.hash = 'slide-' + (current + 1);
+      render();
+    }
+
+    // Đồng bộ khi dùng nút Back/Forward của trình duyệt
+    window.addEventListener('hashchange', () => {
+      const idx = parseInt(window.location.hash.replace('#slide-', ''), 10);
+      if (!isNaN(idx) && idx >= 1 && idx <= slides.length && idx - 1 !== current) {
+        current = idx - 1;
+        render();
+      }
+    });
+
+    prevBtn.addEventListener('click', () => go(current - 1));
+    nextBtn.addEventListener('click', () => go(current + 1));
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(current + 1); }
+      else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(current - 1); }
+      else if (e.key === 'Home') go(0);
+      else if (e.key === 'End') go(slides.length - 1);
+    });
+
+    // Ghi hash ban đầu
+    if (window.location.hash !== 'slide-' + (current + 1)) {
+      window.location.hash = 'slide-' + (current + 1);
+    }
+    render();
+  </script>
+</body>
+</html>

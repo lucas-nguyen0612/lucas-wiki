@@ -24,6 +24,10 @@ _This catalog is updated by /lumi-ingest and /lumi-init._
 - [[concepts/tai-nhan-thuc]] — Lượng trí lực trong trí nhớ làm việc; quá nhiều → quá tải
 - [[concepts/tu-duy-loi-mon]] — Mắc kẹt trong cách nghĩ quen thuộc, không nhìn ra giải pháp mới (Einstellung effect)
 - [[concepts/an-du]] — Công cụ học tập mạnh nhất: tận dụng liên kết cũ để hiểu khái niệm mới
+- [[concepts/luyen-tap-chu-dong]] — Tự làm thay vì xem lời giải, tập trung vào phần khó; thành phần đầu tiên của công thức chuyên gia
+- [[concepts/cung-dien-ky-uc]] — Kỹ thuật ghi nhớ 2.500 năm tuổi: đặt thông tin vào vị trí quen thuộc trong không gian tưởng tượng
+- [[concepts/da-nhiem]] — Huyền thoại về khả năng làm nhiều việc cùng lúc; thực chất là chuyển đổi nhiệm vụ liên tục gây lãng phí năng lượng
+- [[concepts/chuyen-doi]] — Liên kết não bộ trong lĩnh vực này giúp xây dựng liên kết trong lĩnh vực khác; cơ sở của học rộng
 
 ## People
 

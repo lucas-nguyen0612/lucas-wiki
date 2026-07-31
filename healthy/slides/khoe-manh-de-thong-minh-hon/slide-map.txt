@@ -1,0 +1,50 @@
+BẢN ĐỒ SLIDE (50 slide tổng)
+
+| # | Slide | Phần |
+|---|---|---|
+| 1 | Title — Khỏe mạnh để Thông minh hơn | Mở đầu |
+| 2 | Những bộ óc vĩ đại đều đề cao thân thể | Mở đầu |
+| 3 | Não bộ không đứng yên | Mở đầu |
+| 4 | **Nghiên cứu 1** — John Ratey (Harvard) · Zero Hour | Khoa học |
+| 5 | **Nghiên cứu 2** — Wendy Suzuki (NYU) · Cấu trúc não | Khoa học |
+| 6 | **Nghiên cứu 3** — Arthur Kramer (UIUC) · Đảo ngược lão hóa | Khoa học |
+| 7 | Công thức trí thông minh 50/30/20 | Mở đầu |
+| 8 | Roadmap — Sức khỏe = Vật lý + Tinh thần | Chuyển tiếp |
+| 9 | *Divider* — SỨC KHỎE VẬT LÝ | Divider |
+| 10 | Vận động: hai trụ cột Cardio & Sức mạnh | 2.1 Vận động |
+| 11 | 5 cấp độ vận động giúp thông minh hơn | 2.1 Vận động |
+| 12 | Cardio 20/80 | 2.1 Vận động |
+| 13 | Sức mạnh 20/80 | 2.1 Vận động |
+| 14 | Bằng chứng Naperville (30% vs 3%) | 2.1 Vận động |
+| 15 | Tại sao chúng ta lại ngủ? (nghịch lý tiến hóa) | 2.2 Giấc ngủ |
+| 16 | Ngủ không phải tắt máy — 4 chức năng của giấc ngủ | 2.2 Giấc ngủ |
+| 17 | Cái giá của việc ngủ thiếu (-40% trí nhớ, ×4 trầm cảm) | 2.2 Giấc ngủ |
+| 18 | Một đêm ngủ được tổ chức như thế nào (hypnogram) | 2.2 Giấc ngủ |
+| 19 | REM — Não hoạt động, cơ thể tê liệt | 2.2 Giấc ngủ |
+| 20 | Nhịp sinh học: Đồng hồ bên trong | 2.2 Giấc ngủ |
+| 21 | Làm thế nào để có một giấc ngủ hiệu quả? | 2.2 Giấc ngủ |
+| 22 | Power Nap & Coffee Nap | 2.2 Giấc ngủ |
+| 23 | 3 quy tắc chọn thực phẩm | 2.3 Dinh dưỡng |
+| 24 | Siêu thực phẩm cho não | 2.3 Dinh dưỡng |
+| 25 | Trái cây & Đạm | 2.3 Dinh dưỡng |
+| 26 | Timing bữa ăn | 2.3 Dinh dưỡng |
+| 27 | Glucose & Insulin | 2.3 Dinh dưỡng |
+| 28 | 6 mẹo kiểm soát glucose | 2.3 Dinh dưỡng |
+| 29 | Đếm calo là khoa học lỗi thời | 2.3 Dinh dưỡng |
+| 30 | Nấu ăn · Ăn ngoài · Ăn vặt | 2.3 Dinh dưỡng |
+| 31 | Hệ vi sinh đường ruột | 2.4 Đường ruột |
+| 32 | Bớt đi trước khi thêm vào | 2.3 Dinh dưỡng |
+| 33 | *Divider* — SỨC KHỎE TINH THẦN | Divider |
+| 34 | Cảm xúc là cổng vào của tư duy (TẠI SAO) | 3. Tinh thần |
+| 35 | Không phải mọi stress đều xấu (Yerkes–Dodson) | 3. Tinh thần |
+| 36 | Cái giá của cảm xúc tiêu cực kéo dài (CÁI GIÁ) | 3. Tinh thần |
+| 37 | Vận động = Liều thuốc tâm thần (cầu nối) | 3. Tinh thần |
+| 38 | Nút 1 — Hơi thở (Interoception) | 3. Tinh thần |
+| 39 | Nút 2 — Ngôn ngữ | 3. Tinh thần |
+| 40 | Nút 3 — Kết nối | 3. Tinh thần |
+| 41 | 7 bài tập tinh thần (HÀNH ĐỘNG) | 3. Tinh thần |
+| 42 | Thói quen bảo vệ (HÀNH ĐỘNG) | 3. Tinh thần |
+| 43 | Nghỉ ngơi không phải là lười biếng (HÀNH ĐỘNG) | 3. Tinh thần |
+| 44 | Khoa học giả: Đừng để bị lừa | Kết |
+| 45 | Bắt đầu từ đâu? | Kết |
+| 46 | Cảm ơn / Q&A | Kết |

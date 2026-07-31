@@ -34,6 +34,7 @@ Tập luyện 20/80 là nguyên lý áp dụng quy tắc Pareto vào rèn luyệ
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — Công thức 30% tập luyện trong trí thông minh; 5 cấp độ vận động giúp não thông minh hơn; bài tập cardio 20/80 và gym 20/80
+- [[exercised]] — Nền tảng tiến hóa cho tập luyện: sức mạnh vừa đủ (không tối đa) là lợi thế sinh tồn, đi bộ/chạy bền là hoạt động con người tiến hóa để làm, và quan hệ liều lượng-đáp ứng lý giải vì sao 20% nỗ lực đúng chỗ mang lại phần lớn lợi ích
 
 ## Related Concepts
 

@@ -17,6 +17,7 @@ related_concepts:
   - concepts/tri-nho-lam-viec
   - concepts/lien-ket-nao-bo
   - concepts/che-do-tap-trung
+  - concepts/da-nhiem
 ---
 
 # Tải nhận thức
@@ -44,6 +45,7 @@ Mục tiêu của học tập hiệu quả: giảm tải ngoại lai (tắt đi�
 - [[concepts/tri-nho-lam-viec]] — giới hạn của trí nhớ làm việc là nguyên nhân của tải nhận thức
 - [[concepts/lien-ket-nao-bo]] — liên kết vững chắc giảm tải nhận thức (1 xúc tu kéo cả cụm)
 - [[concepts/che-do-tap-trung]] — sao lãng trong chế độ tập trung = tăng tải ngoại lai
+- [[concepts/da-nhiem]] — đa nhiệm là nguồn chính của tải ngoại lai, làm quá tải trí nhớ làm việc
 
 ## Mentioned in
 

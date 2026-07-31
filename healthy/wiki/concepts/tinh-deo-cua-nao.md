@@ -4,13 +4,16 @@ type: concept
 title: Tính dẻo của não (Neuroplasticity)
 slug: tinh-deo-cua-nao
 created: 2026-07-26
-updated: 2026-07-26
+updated: 2026-07-30
 date_added: 2026-07-26
-confidence: low
+confidence: medium
 key_sources:
   - thong-minh-suc-khoe-20-80
+  - ngu-it-uoc-nhieu-khoa-hoc-moi
+  - why-we-sleep
 related_concepts:
   - van-dong-va-nhan-thuc
+  - rau-ho-cai
 tags:
   - não-bộ
   - vận-động
@@ -29,10 +32,13 @@ Tính dẻo của não (neuroplasticity) là khả năng của não thay đổi 
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — 5 cấp độ vận động giúp thông minh hơn, bao gồm neurogenesis và synaptic plasticity
+- [[ngu-it-uoc-nhieu-khoa-hoc-moi]] — Vận động buổi sáng kích thích neuroplasticity và sản sinh tế bào thần kinh mới ở vùng hải mã
+- [[why-we-sleep]] — sinh khớp thần kinh do REM và tỉa synap do NREM sâu điều phối qua vòng đời
 
 ## Related Concepts
 
 - [[van-dong-va-nhan-thuc]] — Mối liên hệ giữa vận động thể chất và chức năng nhận thức
+- [[rau-ho-cai]] — Sulforaphane và tác dụng bảo vệ thần kinh (bằng chứng chủ yếu trên động vật; ở người chỉ cải thiện tốc độ xử lý thông tin)
 
 ## Mentioned in
 

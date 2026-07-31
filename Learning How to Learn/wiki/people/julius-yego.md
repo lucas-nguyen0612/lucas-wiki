@@ -3,7 +3,7 @@ type: person
 title: Julius Yego
 slug: julius-yego
 date_added: 2026-07-26
-affiliation: []
+affiliation: ""
 tags:
   - vận-động-viên
   - tự-học
@@ -13,7 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations: []
 ---
 
 # Julius Yego
@@ -34,5 +33,6 @@ Yego giành huy chương vàng tại Giải vô địch Thế giới 2015 và hu
 
 - [[concepts/chu-dong-hoi-tuong]]
 - [[concepts/lien-ket-nao-bo]]
+- [[concepts/luyen-tap-chu-dong]]
 
 ## Notes

@@ -1,10 +1,10 @@
 ---
 id: concepts/suc-khoe-vat-ly
 type: concept
-title: "Sức khỏe vật lý"
+title: Sức khỏe vật lý
 slug: suc-khoe-vat-ly
 created: 2026-07-26
-updated: 2026-07-26
+updated: 2026-07-30
 date_added: 2026-07-26
 confidence: low
 key_sources:
@@ -16,6 +16,7 @@ related_concepts:
   - he-vi-sinh-duong-ruot
   - nghien-duong
   - suc-khoe-tinh-than
+  - rau-ho-cai
 tags:
   - sức-khỏe
   - vận-động
@@ -39,6 +40,7 @@ Sức khỏe vật lý là trạng thái cơ thể vận hành tối ưu ở m�
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — Phòng bệnh tốt hơn chữa bệnh; Hippocrates; chỉ số VO2 max và nhịp tim
+- [[exercised]] — Vận động là yếu tố phòng ngừa cho hội chứng chuyển hóa, tiểu đường type 2, bệnh tim mạch, một số ung thư, Alzheimer, trầm cảm/lo âu; béo phì và bất hoạt được lý giải như "bệnh lệch pha tiến hóa" (mismatch disease)
 
 ## Related Concepts
 
@@ -48,6 +50,7 @@ Sức khỏe vật lý là trạng thái cơ thể vận hành tối ưu ở m�
 - [[he-vi-sinh-duong-ruot]] — Trụ cột miễn dịch: hệ vi sinh đường ruột
 - [[nghien-duong]] — Mối đe dọa chính với sức khỏe chuyển hóa và não bộ
 - [[suc-khoe-tinh-than]] — Sức khỏe tinh thần — mặt còn lại, gắn chặt với sức khỏe vật lý qua vận động và interoception
+- [[rau-ho-cai]] — Nhóm rau giảm huyết áp tâm thu 2,5 mmHg trong thử nghiệm có đối chứng; liên hệ với giảm nguy cơ tim mạch và tử vong
 
 ## Mentioned in
 

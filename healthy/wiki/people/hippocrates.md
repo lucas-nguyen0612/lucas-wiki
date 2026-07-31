@@ -1,7 +1,7 @@
 ---
 id: people/hippocrates
 type: person
-title: "Hippocrates"
+title: Hippocrates
 slug: hippocrates
 created: 2026-07-26
 updated: 2026-07-26
@@ -10,6 +10,7 @@ affiliations:
   - Hy Lạp cổ đại
 key_sources:
   - thong-minh-suc-khoe-20-80
+  - exercised
 tags:
   - y-học
   - dinh-dưỡng
@@ -24,6 +25,7 @@ Hippocrates (khoảng 460–370 TCN) là thầy thuốc Hy Lạp cổ đại, đ
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — Trích dẫn hai câu nói nền tảng về đi bộ và thức ăn như liều thuốc
+- [[exercised]] — Được trích dẫn cho quan điểm "ăn uống thôi chưa đủ, phải kèm vận động" và nhấn mạnh vận động quan trọng khi về già (Chương "Endurance and Aging")
 
 ## Key Concepts
 

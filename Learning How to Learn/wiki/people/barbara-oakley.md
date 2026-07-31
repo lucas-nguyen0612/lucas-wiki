@@ -13,8 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations:
-  - Đại học Oakland
 ---
 
 # Barbara Oakley
@@ -38,5 +36,6 @@ Bà đồng sáng lập khóa học "Learning How to Learn" trên Coursera cùng
 - [[concepts/lien-ket-nao-bo]]
 - [[concepts/ky-thuat-pomodoro]]
 - [[concepts/tri-hoan]]
+- [[concepts/luyen-tap-chu-dong]]
 
 ## Notes

@@ -17,6 +17,7 @@ related_concepts:
   - concepts/che-do-phan-tan
   - concepts/lien-ket-nao-bo
   - concepts/tri-nho-lam-viec
+  - concepts/da-nhiem
 ---
 
 # Chế độ tập trung
@@ -41,6 +42,7 @@ Chế độ tập trung (focused mode) là trạng thái não bộ khi bạn ch�
 - [[concepts/che-do-phan-tan]] — chế độ bổ trợ, cần xen kẽ với tập trung để học hiệu quả
 - [[concepts/lien-ket-nao-bo]] — chế độ tập trung là điều kiện để hình thành liên kết não bộ mới
 - [[concepts/tri-nho-lam-viec]] — trí nhớ làm việc hoạt động chủ yếu trong chế độ tập trung
+- [[concepts/da-nhiem]] — đa nhiệm phá vỡ chế độ tập trung, buộc não liên tục chuyển đổi nhiệm vụ
 
 ## Mentioned in
 

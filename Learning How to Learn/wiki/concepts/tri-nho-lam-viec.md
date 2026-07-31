@@ -18,6 +18,7 @@ related_concepts:
   - concepts/lien-ket-nao-bo
   - concepts/tai-nhan-thuc
   - concepts/che-do-tap-trung
+  - concepts/da-nhiem
 ---
 
 # Trí nhớ làm việc
@@ -45,6 +46,7 @@ Trí nhớ làm việc kém không phải lúc nào cũng là bất lợi — ng
 - [[concepts/lien-ket-nao-bo]] — liên kết vững chắc giúp kéo cả cụm thông tin chỉ bằng 1 xúc tu
 - [[concepts/tai-nhan-thuc]] — quá tải trí nhớ làm việc dẫn đến quá tải nhận thức
 - [[concepts/che-do-tap-trung]] — trí nhớ làm việc hoạt động chủ yếu trong chế độ tập trung
+- [[concepts/da-nhiem]] — đa nhiệm là huyền thoại vì trí nhớ làm việc chỉ có 4 xúc tu
 
 ## Mentioned in
 

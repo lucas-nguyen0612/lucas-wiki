@@ -29,4 +29,6 @@ Plato (khoảng 428–348 TCN) là triết gia Hy Lạp cổ đại, học trò 
 - [[tap-luyen-20-80]]
 - [[suc-khoe-vat-ly]]
 
+<sup>Tượng Discobolus (Lực sĩ ném đĩa) — Myron, 450 TCN</sup>
+
 ## Notes

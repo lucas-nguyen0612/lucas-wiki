@@ -17,6 +17,7 @@ related_concepts:
   - concepts/lien-ket-nao-bo
   - concepts/thuc-hanh-cach-quang
   - concepts/xen-ke
+  - concepts/luyen-tap-chu-dong
 ---
 
 # Chủ động hồi tưởng
@@ -45,6 +46,7 @@ Benjamin Franklin là một ví dụ lịch sử: ông tự học viết bằng 
 - [[concepts/lien-ket-nao-bo]] — chủ động hồi tưởng là cách hiệu quả nhất để củng cố liên kết não bộ
 - [[concepts/thuc-hanh-cach-quang]] — kết hợp chủ động hồi tưởng với lặp lại cách quãng là công thức tối ưu
 - [[concepts/xen-ke]] — chủ động hồi tưởng hiệu quả hơn khi xen kẽ các chủ đề khác nhau
+- [[concepts/luyen-tap-chu-dong]] — chủ động hồi tưởng là một hình thức cụ thể của luyện tập chủ động áp dụng cho trí nhớ
 
 ## Mentioned in
 

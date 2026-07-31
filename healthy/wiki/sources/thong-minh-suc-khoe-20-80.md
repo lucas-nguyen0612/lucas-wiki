@@ -4,7 +4,7 @@ type: source
 title: Thông minh SỨC KHOẺ 20/80
 slug: thong-minh-suc-khoe-20-80
 created: 2026-07-26
-updated: 2026-07-26
+updated: 2026-07-30
 year: 2024
 date_added: 2026-07-26
 authors:
@@ -67,11 +67,12 @@ Video trình bày triết lý "20/80" (nguyên lý Pareto) áp dụng vào sức
 - [[interoception]] — Dùng cơ thể kiểm soát tâm trí
 - [[suc-khoe-tinh-than]] — Quân bình cảm xúc, 7 bài tập tinh thần, tác hại của lo âu và nóng giận
 - [[khoa-hoc-gia]] — Pseudoscience trong ngành công nghiệp thực phẩm và sức khỏe
+- [[rau-ho-cai]] — Nguồn nêu rau họ cải là siêu thực phẩm số 1 cho não; trang khái niệm đối chiếu lại cơ chế và bằng chứng
 
 ## People
 
 - [[tim-vu]] — Tác giả kênh, người trình bày triết lý 20/80 cho sức khỏe
-- [[plato]] — Triết gia Hy Lạp, "giáo dục và hoạt động thể chất là hai món quà của thượng đế"
+- [[plato]] — Triết gia Hy Lạp, "Thượng đế ban tặng chúng ta 2 điều là giáo dục và hoạt động thể chất"
 - [[leonardo-da-vinci]] — Thiên tài Phục Hưng, 1 trong 7 nguyên tắc thông minh là rèn luyện thân thể
 - [[richard-feynman]] — Nhà vật lý Nobel, hình mẫu về người vừa thông minh vừa khỏe mạnh
 - [[john-ratey]] — Tác giả Spark, nền tảng khoa học về vận động và não bộ
@@ -96,3 +97,4 @@ Video trình bày triết lý "20/80" (nguyên lý Pareto) áp dụng vào sức
 - Phụ đề tự động (auto-generated), ngôn ngữ: tiếng Việt
 - File PDF chứa transcript đã qua xử lý và định dạng markdown
 - Transcript gốc: `raw/download/youtube/K60mIuzg5qM.txt`
+- **Đối chiếu ngoài ngày 2026-07-30 — một chi tiết trong nguồn không đúng**: nguồn xếp rau chân vịt (spinach) vào rau họ cải. Rau chân vịt thuộc họ Dền (*Amaranthaceae*), không thuộc họ Cải (*Brassicaceae*), và không chứa glucosinolate. Nguồn cũng mô tả giá trị của rau họ cải là "vitamin B, chất xơ, chống oxy hóa", trong khi hoạt chất đặc trưng thật sự là glucosinolate → sulforaphane. Chi tiết và bằng chứng ở [[rau-ho-cai]]. Độ tin cậy của nguồn vẫn giữ ở mức thấp.

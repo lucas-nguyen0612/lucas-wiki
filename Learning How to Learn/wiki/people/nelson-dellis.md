@@ -3,7 +3,7 @@ type: person
 title: Nelson Dellis
 slug: nelson-dellis
 date_added: 2026-07-26
-affiliation: []
+affiliation: ""
 tags:
   - trí-nhớ
   - vận-động-viên-trí-nhớ
@@ -13,7 +13,6 @@ created: 2026-07-26
 updated: 2026-07-26
 key_sources:
   - sources/hoc-cach-hoc
-affiliations: []
 ---
 
 # Nelson Dellis
@@ -35,5 +34,6 @@ Dellis không sinh ra với trí nhớ phi thường — ông đã rèn luyện 
 - [[concepts/chu-dong-hoi-tuong]]
 - [[concepts/tri-nho-dai-han]]
 - [[concepts/an-du]]
+- [[concepts/cung-dien-ky-uc]]
 
 ## Notes

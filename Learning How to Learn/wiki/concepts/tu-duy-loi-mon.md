@@ -17,6 +17,7 @@ related_concepts:
   - concepts/che-do-phan-tan
   - concepts/xen-ke
   - concepts/lien-ket-nao-bo
+  - concepts/chuyen-doi
 ---
 
 # Tư duy lối mòn
@@ -43,6 +44,7 @@ Giải pháp: học một lĩnh vực hoàn toàn khác (mở rộng đam mê), 
 - [[concepts/che-do-phan-tan]] — chuyển sang chế độ phân tán giúp phá vỡ tư duy lối mòn
 - [[concepts/xen-ke]] — xen kẽ các chủ đề/kỹ thuật giúp tránh tư duy lối mòn
 - [[concepts/lien-ket-nao-bo]] — mặt trái của liên kết quá vững chắc: càng giỏi càng dễ mắc tư duy lối mòn
+- [[concepts/chuyen-doi]] — chuyển đổi tiêu cực là khi liên kết cũ cản trở học cái mới, dẫn đến tư duy lối mòn
 
 ## Mentioned in
 

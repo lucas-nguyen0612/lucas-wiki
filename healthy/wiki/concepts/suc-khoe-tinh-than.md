@@ -1,7 +1,7 @@
 ---
 id: concepts/suc-khoe-tinh-than
 type: concept
-title: "Sức khỏe tinh thần"
+title: Sức khỏe tinh thần
 slug: suc-khoe-tinh-than
 created: 2026-07-26
 updated: 2026-07-26
@@ -9,6 +9,7 @@ date_added: 2026-07-26
 confidence: low
 key_sources:
   - thong-minh-suc-khoe-20-80
+  - why-we-sleep
 related_concepts:
   - interoception
   - tap-luyen-20-80
@@ -35,6 +36,7 @@ Sức khỏe tinh thần là trạng thái quân bình về cảm xúc, nhận t
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — Interoception, vận động như điều trị tâm thần, 7 bài tập tinh thần, tác hại của lo âu và nóng giận
+- [[why-we-sleep]] — cơ chế amygdala–vỏ não trước trán; không rối loạn tâm thần lớn nào mà giấc ngủ vẫn bình thường
 
 ## Related Concepts
 

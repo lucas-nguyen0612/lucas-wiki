@@ -1,7 +1,7 @@
 ---
 id: concepts/he-vi-sinh-duong-ruot
 type: concept
-title: "Hệ vi sinh đường ruột (Gut microbiota)"
+title: Hệ vi sinh đường ruột (Gut microbiota)
 slug: he-vi-sinh-duong-ruot
 created: 2026-07-26
 updated: 2026-07-26
@@ -9,6 +9,7 @@ date_added: 2026-07-26
 confidence: low
 key_sources:
   - thong-minh-suc-khoe-20-80
+  - why-we-sleep
 related_concepts:
   - glucose-va-insulin
 tags:
@@ -39,6 +40,7 @@ Nghiên cứu Harvard 2020: hơn 70% hệ miễn dịch nằm trong đường ru
 ## Key Sources
 
 - [[thong-minh-suc-khoe-20-80]] — 70% hệ miễn dịch ở đường ruột; thực phẩm lên men giúp nuôi dưỡng hệ vi sinh
+- [[why-we-sleep]] — thiếu ngủ làm tăng cortisol, nuôi vi khuẩn xấu và cản trở hấp thu dinh dưỡng
 
 ## Related Concepts
 
