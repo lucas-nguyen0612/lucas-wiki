@@ -1,14 +1,14 @@
 {
   "main": {
-    "id": "e6b48713e22569a3",
+    "id": "2fcc586faf6dc0e8",
     "type": "split",
     "children": [
       {
-        "id": "67fc6b47012fd690",
+        "id": "fb5101fe7a4eee46",
         "type": "tabs",
         "children": [
           {
-            "id": "3046cac127ebe91c",
+            "id": "dcf3c1ce1f9c2d17",
             "type": "leaf",
             "state": {
               "type": "graph",
@@ -23,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9601471cb8699505",
+    "id": "a04f657961596cdc",
     "type": "split",
     "children": [
       {
-        "id": "5b8f85d10ba8bbe4",
+        "id": "e572bcc8d2f067ab",
         "type": "tabs",
         "children": [
           {
-            "id": "e7496b97fb577b7a",
+            "id": "a6894d63cf6abcee",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +46,7 @@
             }
           },
           {
-            "id": "ae048ed286fd2883",
+            "id": "45f1a498b23e575e",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -63,11 +63,14 @@
             }
           },
           {
-            "id": "de4965f9660b7a33",
+            "id": "b0e94825a78174b5",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
@@ -76,18 +79,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 300
   },
   "right": {
-    "id": "58dac07eba0bf921",
+    "id": "e2b9a4562e52a82d",
     "type": "split",
     "children": [
       {
-        "id": "277dcbea02c3cf28",
+        "id": "454189326b0a82a2",
         "type": "tabs",
         "children": [
           {
-            "id": "a80d9c392305d24a",
+            "id": "480a686a3e26df33",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -105,7 +108,7 @@
             }
           },
           {
-            "id": "0849124720c244fb",
+            "id": "0d04d32d698812d0",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -118,7 +121,7 @@
             }
           },
           {
-            "id": "1233811c89e44811",
+            "id": "a45d921434d8a80f",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,7 +136,7 @@
             }
           },
           {
-            "id": "7c3dd282d3dae591",
+            "id": "6a3260f512430ec9",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -147,7 +150,7 @@
             }
           },
           {
-            "id": "afb156af084302dd",
+            "id": "d546fb011aa17ae0",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -178,54 +181,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "3046cac127ebe91c",
+  "active": "dcf3c1ce1f9c2d17",
   "lastOpenFiles": [
     "Untitled.canvas",
-    "slides/khoe-manh-de-thong-minh-hon/assets/khong_thay_the_bs.png",
-    "slides/khoe-manh-de-thong-minh-hon/assets/thank-luu-hieu.png",
-    "slides/khoe-manh-de-thong-minh-hon/assets/disclaimer-research.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/slide-map.txt.tmp.82526.a61f478ef894",
-    "wiki/sources/how-to-lie-with-statistics.md.tmp",
-    "wiki/concepts/trung-binh-thong-ke.md.tmp",
-    "wiki/concepts/thien-lech-mau.md.tmp",
-    "wiki/concepts/trung-binh-thong-ke.md",
-    "wiki/concepts/y-nghia-thong-ke.md",
-    "wiki/concepts/thao-tung-thong-ke.md",
-    "wiki/concepts/tuong-quan-va-nhan-qua.md",
-    "wiki/concepts/thien-lech-mau.md",
-    "wiki/people/darrell-huff.md",
-    "wiki/readings/how-to-lie-with-statistics/10-how-to-talk-back-to-a-statistic.md",
-    "wiki/readings/how-to-lie-with-statistics/09-how-to-statisticulate.md",
-    "wiki/readings/how-to-lie-with-statistics/08-post-hoc-rides-again.md",
-    "wiki/readings/how-to-lie-with-statistics/07-semi-attached-figure.md",
-    "wiki/readings/how-to-lie-with-statistics/06-one-dimensional-picture.md",
-    "wiki/readings/how-to-lie-with-statistics/05-gee-whiz-graph.md",
-    "wiki/readings/how-to-lie-with-statistics/04-much-ado-about-practically-nothing.md",
-    "wiki/readings/how-to-lie-with-statistics/03-little-figures-not-there.md",
-    "wiki/readings/how-to-lie-with-statistics/02-well-chosen-average.md",
-    "wiki/readings/how-to-lie-with-statistics/01-sample-with-built-in-bias.md",
-    "wiki/readings/how-to-lie-with-statistics/00-introduction.md",
-    "wiki/readings/how-to-lie-with-statistics",
-    "wiki/sources/how-to-lie-with-statistics.md",
-    "_lumina/_state/ingest-HowToLieWithStatistics.pdf.json",
-    "raw/tmp/HowToLieWithStatistics-ocr.pdf",
-    "raw/sources/HowToLieWithStatistics.pdf",
-    "slides/khoe-manh-de-thong-minh-hon/slide-map.txt",
-    "slides/khoe-manh-de-thong-minh-hon/assets/play.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/stress.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/phone-social.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/journal.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/connection.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/pills.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/burger.jpg",
-    "Untitled 1.canvas",
-    "wiki/concepts/quan-he-lieu-luong-dap-ung.md",
-    "wiki/concepts/ban-nang-tiet-kiem-nang-luong.md",
-    "wiki/sources/exercised.md",
-    "_lumina/_state/lumi-verify-20260730T064053Z.json",
-    "wiki/people/ralph-paffenbarger.md",
-    "wiki/concepts/san-bat-bang-truy-duoi.md",
-    "wiki/concepts/gia-thuyet-ong-ba-nang-dong.md",
-    "wiki/concepts/mismatch-tien-hoa.md"
+    "wiki/readings/system-design/07-case-studies-netflix-and-uber.md"
   ]
 }

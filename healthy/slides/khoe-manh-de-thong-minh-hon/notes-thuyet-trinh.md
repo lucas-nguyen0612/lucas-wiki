@@ -2,67 +2,93 @@
 
 > **Mục tiêu:** Trang bị kiến thức nền cho từng slide để thuyết trình tự tin, không cần đọc chữ trên slide.
 >
-> **Đồng bộ với deck:** 50 slides (`index.html`, bản cập nhật 31/07/2026 — mở rộng phần Sức khỏe tinh thần từ 6 lên 17 slide theo trục Tại sao → Cái giá → 3 nút điều chỉnh → Hành động).
+> **Đồng bộ với deck:** 52 slides (`index.html`, bản cập nhật 31/07/2026 — mở rộng phần Sức khỏe tinh thần từ 6 lên 17 slide theo trục Tại sao → Cái giá → 3 nút điều chỉnh → Hành động; thêm **slide 1 — Thông báo**: chia sẻ từ tìm hiểu cá nhân, không thay thế lời khuyên bác sĩ; **slide 2 — Cảm ơn anh Lưu Hiếu**: Lumi-wiki & skill /slidewright).
 > Điều hướng nhanh trong lúc chạy thử: `index.html#slide-N`.
 
 ## Bản đồ slide
 
 | # | Slide | Phần |
 |---|---|---|
-| 1 | Title — Khỏe mạnh để Thông minh hơn | Mở đầu |
-| 2 | Những bộ óc vĩ đại đều đề cao thân thể | Mở đầu |
-| 3 | Não bộ không đứng yên | Mở đầu |
-| 4 | **Nghiên cứu 1** — John Ratey (Harvard) · Zero Hour | Khoa học |
-| 5 | **Nghiên cứu 2** — Wendy Suzuki (NYU) · Cấu trúc não | Khoa học |
-| 6 | **Nghiên cứu 3** — Arthur Kramer (UIUC) · Đảo ngược lão hóa | Khoa học |
-| 7 | Công thức trí thông minh 50/30/20 | Mở đầu |
-| 8 | Roadmap — Sức khỏe = Vật lý + Tinh thần | Chuyển tiếp |
-| 9 | *Divider* — SỨC KHỎE VẬT LÝ | Divider |
-| 10 | Vận động: hai trụ cột Cardio & Sức mạnh | 2.1 Vận động |
-| 11 | 5 cấp độ vận động giúp thông minh hơn | 2.1 Vận động |
-| 12 | Cardio 20/80 | 2.1 Vận động |
-| 13 | Sức mạnh 20/80 | 2.1 Vận động |
-| 14 | Bằng chứng Naperville (30% vs 3%) | 2.1 Vận động |
-| 15 | Tại sao chúng ta lại ngủ? (nghịch lý tiến hóa) | 2.2 Giấc ngủ |
-| 16 | Ngủ không phải tắt máy — 4 chức năng của giấc ngủ | 2.2 Giấc ngủ |
-| 17 | Cái giá của việc ngủ thiếu (-40% trí nhớ, ×4 trầm cảm) | 2.2 Giấc ngủ |
-| 18 | Một đêm ngủ được tổ chức như thế nào (hypnogram) | 2.2 Giấc ngủ |
-| 19 | REM — Não hoạt động, cơ thể tê liệt | 2.2 Giấc ngủ |
-| 20 | Nhịp sinh học: Đồng hồ bên trong | 2.2 Giấc ngủ |
-| 21 | Làm thế nào để có một giấc ngủ hiệu quả? | 2.2 Giấc ngủ |
-| 22 | Power Nap & Coffee Nap | 2.2 Giấc ngủ |
-| 23 | Ba trụ cột: Vận động · Nghỉ ngơi · Ăn uống | Chuyển tiếp |
-| 24 | 3 quy tắc chọn thực phẩm | 2.3 Dinh dưỡng |
-| 24 | Siêu thực phẩm cho não | 2.3 Dinh dưỡng |
-| 25 | Trái cây & Đạm | 2.3 Dinh dưỡng |
-| 26 | Timing bữa ăn | 2.3 Dinh dưỡng |
-| 27 | Glucose & Insulin | 2.3 Dinh dưỡng |
-| 28 | 6 mẹo kiểm soát glucose | 2.3 Dinh dưỡng |
-| 29 | Đếm calo là khoa học lỗi thời | 2.3 Dinh dưỡng |
-| 30 | Nấu ăn · Ăn ngoài · Ăn vặt | 2.3 Dinh dưỡng |
-| 31 | Hệ vi sinh đường ruột | 2.4 Đường ruột |
-| 32 | Bớt đi trước khi thêm vào | 2.3 Dinh dưỡng |
-| 33 | *Divider* — SỨC KHỎE TINH THẦN | Divider |
-| 34 | Cảm xúc là cổng vào của tư duy (TẠI SAO) | 3. Tinh thần |
-| 35 | Không phải mọi stress đều xấu (Yerkes–Dodson) | 3. Tinh thần |
-| 36 | Cái giá của cảm xúc tiêu cực kéo dài (CÁI GIÁ) | 3. Tinh thần |
-| 37 | Vận động = Liều thuốc tâm thần (cầu nối) | 3. Tinh thần |
-| 38 | Nút 1 — Hơi thở (Interoception) | 3. Tinh thần |
-| 39 | Nút 2 — Ngôn ngữ | 3. Tinh thần |
-| 40 | Nút 3 — Kết nối | 3. Tinh thần |
-| 41 | 7 bài tập tinh thần (HÀNH ĐỘNG) | 3. Tinh thần |
-| 42 | Thói quen bảo vệ (HÀNH ĐỘNG) | 3. Tinh thần |
-| 43 | Nghỉ ngơi không phải là lười biếng (HÀNH ĐỘNG) | 3. Tinh thần |
-| 44 | Bắt đầu từ đâu? | Kết |
-| 45 | Cảm ơn / Q&A | Kết |
+| 1 | Thông báo — Chia sẻ từ tìm hiểu cá nhân (không thay thế lời khuyên bác sĩ) | Mở đầu |
+| 2 | Cảm ơn anh Lưu Hiếu — Lumi-wiki & skill /slidewright | Mở đầu |
+| 3 | Title — Khỏe mạnh để Thông minh hơn | Mở đầu |
+| 4 | Những bộ óc vĩ đại đều đề cao thân thể | Mở đầu |
+| 5 | Não bộ không đứng yên | Mở đầu |
+| 6 | **Nghiên cứu 1** — TS. John Ratey (Harvard) · Zero Hour | Khoa học |
+| 7 | **Nghiên cứu 2** — TS. Wendy Suzuki (NYU) · Thay đổi cấu trúc não | Khoa học |
+| 8 | **Nghiên cứu 3** — TS. Arthur Kramer (UIUC) · Đảo ngược lão hóa não | Khoa học |
+| 9 | Công thức trí thông minh 50/30/20 | Mở đầu |
+| 10 | Roadmap — Sức khỏe = Vật lý + Tinh thần | Chuyển tiếp |
+| 11 | *Divider* — SỨC KHỎE VẬT LÝ | Divider |
+| 12 | 5 cấp độ vận động giúp thông minh hơn | 2.1 Vận động |
+| 13 | Cardio 20/80 | 2.1 Vận động |
+| 14 | Sức mạnh 20/80 | 2.1 Vận động |
+| 15 | Bằng chứng Naperville (30% vs 3%) | 2.1 Vận động |
+| 16 | Giấc ngủ: nghịch lý lớn nhất của tiến hóa? | 2.2 Giấc ngủ |
+| 17 | 4 chức năng của giấc ngủ | 2.2 Giấc ngủ |
+| 18 | Cái giá của việc ngủ thiếu (-40% trí nhớ, ×4 trầm cảm) | 2.2 Giấc ngủ |
+| 19 | Một đêm ngủ được tổ chức như thế nào (hypnogram) | 2.2 Giấc ngủ |
+| 20 | REM — Não hoạt động, cơ thể tê liệt | 2.2 Giấc ngủ |
+| 21 | Nhịp sinh học: Đồng hồ bên trong | 2.2 Giấc ngủ |
+| 22 | Làm thế nào để có một giấc ngủ hiệu quả? | 2.2 Giấc ngủ |
+| 23 | Tại sao ngủ trưa quan trọng | 2.2 Giấc ngủ |
+| 24 | Ngủ trưa sao cho hiệu quả (Power Nap & Coffee Nap) | 2.2 Giấc ngủ |
+| 25 | Ba trụ cột: Vận động · Nghỉ ngơi · Ăn uống | Chuyển tiếp |
+| 26 | Khoa học giả (mở màn phần dinh dưỡng) | 2.3 Dinh dưỡng |
+| 27 | Đếm calo là khoa học lỗi thời | 2.3 Dinh dưỡng |
+| 28 | Nghiện đường | 2.3 Dinh dưỡng |
+| 29 | Đường ẩn: đọc nhãn | 2.3 Dinh dưỡng |
+| 30 | 5 mẹo cắt đường | 2.3 Dinh dưỡng |
+| 31 | Glucose & Insulin (cơ chế) | 2.3 Dinh dưỡng |
+| 32 | 6 mẹo kiểm soát glucose | 2.3 Dinh dưỡng |
+| 33 | 3 quy tắc chọn thực phẩm | 2.3 Dinh dưỡng |
+| 34 | Siêu thực phẩm cho não | 2.3 Dinh dưỡng |
+| 35 | Trái cây & Đạm | 2.3 Dinh dưỡng |
+| 36 | Timing bữa ăn | 2.3 Dinh dưỡng |
+| 37 | Nấu ăn · Ăn ngoài · Ăn vặt | 2.3 Dinh dưỡng |
+| 38 | Hệ vi sinh đường ruột | 2.4 Đường ruột |
+| 39 | Subtract before you add (Bớt đi trước khi thêm vào) | 2.3 Dinh dưỡng |
+| 40 | *Divider* — SỨC KHỎE TINH THẦN | Divider |
+| 41 | Cảm xúc là cổng vào của tư duy (TẠI SAO) | 3. Tinh thần |
+| 42 | Không phải mọi stress đều xấu (Yerkes–Dodson) | 3. Tinh thần |
+| 43 | Cái giá của cảm xúc tiêu cực kéo dài (CÁI GIÁ) | 3. Tinh thần |
+| 44 | Vận động = Liều thuốc tâm thần (cầu nối) | 3. Tinh thần |
+| 45 | Nút 1 — Cơ thể / Interoception | 3. Tinh thần |
+| 46 | Nút 2 — Ngôn ngữ | 3. Tinh thần |
+| 47 | Nút 3 — Kết nối | 3. Tinh thần |
+| 48 | 7 bài tập tinh thần (HÀNH ĐỘNG) | 3. Tinh thần |
+| 49 | Thói quen bảo vệ (HÀNH ĐỘNG) | 3. Tinh thần |
+| 50 | Nghỉ ngơi không phải là lười biếng (HÀNH ĐỘNG) | 3. Tinh thần |
+| 51 | Bắt đầu từ đâu? | Kết |
+| 52 | Cảm ơn / Q&A | Kết |
 
 
 
 ---
 
-## PHẦN 1 — MỞ ĐẦU (Slides 1–3)
+## PHẦN 1 — MỞ ĐẦU (Slides 1–5)
 
-### Slide 1 — Title: Khỏe mạnh để Thông minh hơn
+### Slide 1 — Thông báo: Chia sẻ từ tìm hiểu cá nhân
+
+**Trên slide:** Badge "📋 Thông báo trước khi bắt đầu", tiêu đề "Chia sẻ từ tìm hiểu cá nhân", lead "Không có cơ quan y tế hay chuyên gia nào kiểm chứng nội dung này — và nó không thay thế lời khuyên của bác sĩ." Kèm 3 gạch đầu dòng, ô nhắc "Không tự ý bỏ thuốc, đổi liều, hay thay đổi điều trị đang áp dụng" và ảnh kính lúp tra cứu tài liệu (biểu tượng "tự tìm hiểu") bên phải, dòng chữ chồng trên ảnh: "Không phải kiến thức từ chuyên gia và bác sĩ".
+
+**Ý chính:** Đặt kỳ vọng đúng từ đầu — mọi nội dung phía sau là tìm hiểu cá nhân, chỉ mang tính tham khảo, không phải lời khuyên y khoa.
+
+**Cách nói:** Mở đầu thành thật, ngắn gọn: *"Mọi thứ bạn sắp nghe là tìm hiểu cá nhân của tôi — chưa được cơ quan hay chuyên gia nào kiểm chứng, và không thay thế lời khuyên của bác sĩ. Hãy xem như chất liệu để tham khảo; với sức khỏe của bạn, hãy dựa vào chuyên gia."*
+
+*(Ảnh minh họa: "Magnifying glass2.jpg" — public domain, Wikimedia Commons.)*
+
+### Slide 2 — Cảm ơn anh Lưu Hiếu
+
+**Trên slide:** Badge "🤝 Cảm ơn", tiêu đề "Cảm ơn anh Lưu Hiếu", lead giới thiệu Lumi-wiki & skill /slidewright, 2 gạch đầu dòng tóm tắt từng công cụ, và ảnh logo Lumi-wiki bên phải (khung trắng).
+
+**Ý chính:** Ghi nhận công của tác giả đã tạo công cụ giúp mình dựng bài thuyết trình — mở đầu bằng sự chân thành.
+
+**Cách nói:** Ngắn gọn, tự nhiên: *"Trước khi bắt đầu, cho tôi gửi lời cảm ơn anh Lưu Hiếu — người tạo ra Lumi-wiki và skill /slidewright, nhờ đó mà bộ trình bày hôm nay được dựng nên."*
+
+---
+
+### Slide 3 — Title: Khỏe mạnh để Thông minh hơn
 
 **Trên slide:** Ảnh *The Odyssey* (tượng lực sĩ), câu Thales: *"Trí tuệ minh mẫn trong một cơ thể cường tráng — thân tâm hợp nhất."* (624–546 TCN).
 
@@ -79,7 +105,7 @@
 
 ---
 
-### Slide 2 — Những bộ óc vĩ đại đều đề cao thân thể
+### Slide 4 — Những bộ óc vĩ đại đều đề cao thân thể
 
 **Trên slide:** Ảnh Discobolus + câu Juvenal *"Mens sana in corpore sano"*, và 4 thẻ nhân vật.
 
@@ -99,7 +125,7 @@
 
 ---
 
-### Slide 3 — Não bộ không đứng yên
+### Slide 5 — Não bộ không đứng yên
 
 **Trên slide:** 2 cột — *3 cơ chế tái tạo não* (trái) và *tác nhân kích hoạt + số liệu Erikson 2011* (phải).
 
@@ -134,7 +160,7 @@
 
 > **Lưu ý về nhịp:** Ba slide này là phần "nặng bằng chứng" nhất của bài. Đừng đọc hết chi tiết — mỗi slide chọn **1 con số** và **1 câu kết luận**. Khoảng 1,5–2 phút mỗi slide.
 
-### Slide 4 — Nghiên cứu 1: TS. John Ratey (Harvard) — Zero Hour
+### Slide 6 — Nghiên cứu 1: TS. John Ratey (Harvard) — Zero Hour
 
 **Trên slide:** Chương trình Zero Hour LRPE · cơ chế BDNF · kết quả TIMSS 1999.
 
@@ -159,7 +185,7 @@
 
 ---
 
-### Slide 5 — Nghiên cứu 2: TS. Wendy Suzuki (NYU) — Thay đổi cấu trúc não
+### Slide 7 — Nghiên cứu 2: TS. Wendy Suzuki (NYU) — Thay đổi cấu trúc não
 
 **Trên slide:** Thử nghiệm fMRI trước–sau · kết quả hippocampus + prefrontal cortex · kết luận về *fluid intelligence*.
 
@@ -186,7 +212,7 @@
 
 ---
 
-### Slide 6 — Nghiên cứu 3: TS. Arthur Kramer (UIUC) — Đảo ngược lão hóa não
+### Slide 8 — Nghiên cứu 3: TS. Arthur Kramer (UIUC) — Đảo ngược lão hóa não
 
 **Trên slide:** Thử nghiệm nhóm 60–79 tuổi · fMRI chất xám/chất trắng · cơ chế tăng sinh mạch máu.
 
@@ -218,7 +244,7 @@
 
 ---
 
-### Slide 7 — Công thức trí thông minh
+### Slide 9 — Công thức trí thông minh
 
 **Trên slide:** 50% Học tập + 30% Tập luyện + 20% Dinh dưỡng.
 
@@ -236,7 +262,7 @@
 
 ---
 
-### Slide 8 — Roadmap: Sức khỏe = Vật lý + Tinh thần
+### Slide 10 — Roadmap: Sức khỏe = Vật lý + Tinh thần
 
 **Trên slide:** Hai trụ cột — 🏃 Vật lý (Vận động · Giấc ngủ · Dinh dưỡng · Đường ruột) và 🧠 Tinh thần (Interoception · Cảm xúc · Thói quen · Nghỉ ngơi).
 
@@ -250,7 +276,7 @@
 
 ## PHẦN 2 — SỨC KHỎE VẬT LÝ (Slides 9–29)
 
-### Slide 9 — *Divider*: SỨC KHỎE VẬT LÝ
+### Slide 11 — *Divider*: SỨC KHỎE VẬT LÝ
 
 **Trên slide:** Tiêu đề lớn + "Chiếm 50% công thức trí thông minh" + 4 thẻ trụ cột.
 
@@ -260,7 +286,7 @@
 
 ### ── 2.1 VẬN ĐỘNG (Slides 11–14) ──
 
-### Slide 11 — 5 cấp độ vận động giúp thông minh hơn
+### Slide 12 — 5 cấp độ vận động giúp thông minh hơn
 
 **Ý chính:** Vận động tác động lên não qua 5 cấp độ, từ ngắn hạn đến dài hạn.
 
@@ -281,7 +307,7 @@
 
 ---
 
-### Slide 12 — Cardio 20/80: Trái tim khỏe — Não minh mẫn
+### Slide 13 — Cardio 20/80: Trái tim khỏe — Não minh mẫn
 
 **Ý chính:** Cardio là nền tảng — đo bằng VO₂ max và nhịp tim lúc nghỉ, không phải cân nặng.
 
@@ -309,7 +335,7 @@
 
 ---
 
-### Slide 13 — Sức mạnh 20/80: Cơ bắp — Lá chắn sức khỏe
+### Slide 14 — Sức mạnh 20/80: Cơ bắp — Lá chắn sức khỏe
 
 **Ý chính:** Tập sức mạnh không phải để đẹp — mà để sống lâu và bảo vệ não.
 
@@ -339,7 +365,7 @@
 
 ---
 
-### Slide 14 — Bằng chứng Naperville
+### Slide 15 — Bằng chứng Naperville
 
 **Trên slide:** So sánh trực quan **30% (trung bình Mỹ) vs 3% (Naperville)** học sinh béo phì + thanh highlight TIMSS 1999 (#1 Khoa học, #6 Toán, "Vượt Nhật Bản, Hàn Quốc, Singapore").
 
@@ -364,7 +390,7 @@
 
 > **Đổi trục kể chuyện (30/07/2026):** phần này trước đây mở thẳng bằng "ngủ thế nào" (kỹ thuật), khiến khán giả chưa hiểu *vì sao* phải quan tâm đã bị dội số liệu chu kỳ 90 phút. Bản mới đi theo trục **Tại sao → Chức năng → Cái giá → Cơ chế → Hành động**, thêm 3 slide mở đầu (15–17) trước khi vào phần cơ chế/kỹ thuật cũ (18–21). Nguồn cho 3 slide mới: *Why We Sleep* (Matthew Walker) — **sách này chưa được ingest vào wiki**, nội dung dưới đây dựa trên kiến thức phổ thông về cuốn sách; nên ingest `raw/sources/16-05-2021-080425Why-We-Sleep-Unlocking-the-Power-of-Sleep.pdf` để có trích dẫn xác minh trước khi thuyết trình chính thức.
 
-### Slide 15 — Tại sao chúng ta lại ngủ?
+### Slide 16 — Tại sao chúng ta lại ngủ?
 
 **Trên slide:** Câu hỏi lớn, chữ to, không biểu đồ — slide "thở" để khán giả suy nghĩ.
 
@@ -378,7 +404,7 @@
 
 ---
 
-### Slide 16 — Ngủ không phải tắt máy — 4 chức năng của giấc ngủ
+### Slide 17 — Ngủ không phải tắt máy — 4 chức năng của giấc ngủ
 
 **Trên slide:** Lưới 2×2, mỗi ô một chức năng (Củng cố trí nhớ · Dọn rác não · Điều tiết cảm xúc · Phục hồi cơ thể).
 
@@ -397,7 +423,7 @@
 
 ---
 
-### Slide 17 — Cái giá của việc ngủ thiếu
+### Slide 18 — Cái giá của việc ngủ thiếu
 
 **Trên slide:** Hai con số lớn: **-40%** trí nhớ, **×4** nguy cơ trầm cảm.
 
@@ -412,7 +438,7 @@
 
 ---
 
-### Slide 18 — Một đêm ngủ được tổ chức như thế nào
+### Slide 19 — Một đêm ngủ được tổ chức như thế nào
 
 **Trên slide:** Danh sách 5 điểm + biểu đồ hypnogram (chu kỳ ngủ 23h–5h, REM dài dần về cuối đêm).
 
@@ -446,7 +472,7 @@
 
 ---
 
-### Slide 19 — REM: Não hoạt động, cơ thể tê liệt
+### Slide 20 — REM: Não hoạt động, cơ thể tê liệt
 
 **Ý chính:** REM là giai đoạn não xử lý thông tin, sáng tạo và phục hồi tinh thần.
 
@@ -473,7 +499,7 @@
 
 ---
 
-### Slide 20 — Nhịp sinh học: Đồng hồ bên trong
+### Slide 21 — Nhịp sinh học: Đồng hồ bên trong
 
 **Ý chính:** Hai yếu tố điều khiển giấc ngủ — Melatonin và Adenosine.
 
@@ -497,7 +523,7 @@
 
 ---
 
-### Slide 21 — Làm thế nào để có một giấc ngủ hiệu quả?
+### Slide 22 — Làm thế nào để có một giấc ngủ hiệu quả?
 
 **Ý chính:** Chốt phần cơ chế (REM, nhịp sinh học) bằng một slide hành động — 6 thói quen chia làm hai nhóm: điều chỉnh ban ngày và điều chỉnh buổi tối. Đây là "viên đạn bạc không tồn tại, chỉ có thói quen nhất quán" — nhấn mạnh điều này khi mở slide, vì nó nối thẳng với thông điệp "giờ ngủ cố định" đã gieo từ đầu phần giấc ngủ.
 
@@ -519,7 +545,7 @@
 
 ---
 
-### Slide 22 — Power Nap & Coffee Nap
+### Slide 24 — Power Nap & Coffee Nap
 
 **Ý chính:** Hai kỹ thuật ngủ ngắn để tăng năng suất — **bổ sung cho giấc ngủ đêm, không phải cách để bù cho ngủ thiếu triền miên.** Nên nói rõ điều này khi mở slide, vì slide 15–17 vừa nhấn mạnh cái giá của thiếu ngủ.
 
@@ -544,7 +570,7 @@
 
 ### ── 2.3 DINH DƯỠNG (Slides 22–28) ──
 
-### Slide 23 — Siêu thực phẩm cho não
+### Slide 34 — Siêu thực phẩm cho não
 
 **Ý chính:** Một số nhóm thực phẩm có tác động đặc biệt đến chức năng não. Dinh dưỡng = 20% công thức.
 
@@ -562,7 +588,7 @@
 
 ---
 
-### Slide 24 — Timing bữa ăn
+### Slide 36 — Timing bữa ăn
 
 **Ý chính:** Ăn gì quan trọng, nhưng ăn khi nào cũng quan trọng không kém.
 
@@ -584,7 +610,7 @@
 
 ---
 
-### Slide 25 — Glucose & Insulin: Chìa khóa chuyển hóa
+### Slide 31 — Glucose & Insulin: Chìa khóa chuyển hóa
 
 **Trên slide:** Biểu đồ so sánh đường cong ổn định (xanh) vs đường cong đỉnh nhọn (đỏ) + 2 khối "gây hại" và "mục tiêu".
 
@@ -611,7 +637,7 @@
 
 ---
 
-### Slide 26 — 6 mẹo kiểm soát glucose
+### Slide 32 — 6 mẹo kiểm soát glucose
 
 **Ý chính:** Áp dụng đủ 6 điều có thể giảm tới **75%** đỉnh đường huyết.
 
@@ -686,7 +712,7 @@
 
 ---
 
-### Slide 29 — 5 mẹo cắt đường
+### Slide 30 — 5 mẹo cắt đường
 
 **Ý chính:** Cách giảm đường thực tế, bền vững — không dựa vào ý chí.
 
@@ -704,7 +730,7 @@
 
 ### ── 2.4 ĐƯỜNG RUỘT (Slide 30) ──
 
-### Slide 30 — Hệ vi sinh đường ruột: "Bộ não thứ hai"
+### Slide 38 — Hệ vi sinh đường ruột: "Bộ não thứ hai"
 
 **Trên slide:** Sơ đồ trục Não–Ruột (dây thần kinh phế vị đi lên, serotonin/dopamine đi xuống, 70% hệ miễn dịch) + ảnh thực phẩm lên men + 2 khối text.
 
@@ -740,7 +766,7 @@
 
 ## PHẦN 3 — SỨC KHỎE TINH THẦN (Slides 30–35)
 
-### Slide 31 — *Divider*: SỨC KHỎE TINH THẦN
+### Slide 40 — *Divider*: SỨC KHỎE TINH THẦN
 
 **Trên slide:** 4 trụ cột (Interoception · Cảm xúc · Thói quen · Nghỉ ngơi) + dòng kết: *"vận động là phương thức điều trị tâm thần tốt nhất"*.
 
@@ -748,7 +774,7 @@
 
 ---
 
-### Slide 32 — Interoception: Giác quan thứ sáu
+### Slide 45 — Interoception: Giác quan thứ sáu
 
 **Ý chính:** Khả năng cảm nhận tín hiệu bên trong cơ thể — và dùng cơ thể để điều khiển cảm xúc.
 
@@ -770,7 +796,7 @@
 
 ---
 
-### Slide 33 — Vận động = Liều thuốc tâm thần tốt nhất
+### Slide 44 — Vận động = Liều thuốc tâm thần tốt nhất
 
 **Ý chính:** Vận động là phương pháp cải thiện sức khỏe tinh thần hiệu quả và an toàn nhất.
 
@@ -793,7 +819,7 @@
 
 ---
 
-### Slide 34 — 7 bài tập tinh thần
+### Slide 48 — 7 bài tập tinh thần
 
 **Ý chính:** Những hoạt động đơn giản, chi phí thấp nhưng hiệu quả cao.
 
@@ -811,7 +837,7 @@
 
 ---
 
-### Slide 35 — Cảm xúc tiêu cực & Thói quen bảo vệ
+### Slide 49 — Cảm xúc tiêu cực & Thói quen bảo vệ
 
 **Ý chính:** Cảm xúc tiêu cực gây hại **thể chất** đến não. Cần thói quen bảo vệ, không chỉ "cố nghĩ tích cực".
 
@@ -831,7 +857,7 @@
 
 ---
 
-### Slide 36 — Nghỉ ngơi không phải là lười biếng
+### Slide 50 — Nghỉ ngơi không phải là lười biếng
 
 **Trên slide:** Hai cột đối lập — ✗ Nghỉ ngơi thụ động vs ✓ Nghỉ ngơi chủ động + câu Gary Keller.
 
@@ -860,7 +886,7 @@
 
 ## PHẦN KẾT (Slides 36–37)
 
-### Slide 37 — Bắt đầu từ đâu?
+### Slide 51 — Bắt đầu từ đâu?
 
 **Ý chính:** Lộ trình hành động cụ thể theo 4 mốc thời gian.
 
@@ -885,7 +911,7 @@
 
 ---
 
-### Slide 38 — Cảm ơn / Q&A
+### Slide 52 — Cảm ơn / Q&A
 
 **Trên slide:** *"Một cơ thể khỏe mạnh là ngôi nhà xứng đáng cho một bộ não thông minh"* + Q&A + nguồn.
 

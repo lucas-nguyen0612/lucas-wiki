@@ -1,20 +1,20 @@
 {
   "main": {
-    "id": "e6b48713e22569a3",
+    "id": "a07415e0b1e9da35",
     "type": "split",
     "children": [
       {
-        "id": "67fc6b47012fd690",
+        "id": "3b166c421deab706",
         "type": "tabs",
         "children": [
           {
-            "id": "3046cac127ebe91c",
+            "id": "1ac7d8416dd8a369",
             "type": "leaf",
             "state": {
-              "type": "graph",
+              "type": "empty",
               "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "icon": "lucide-file",
+              "title": "New tab"
             }
           }
         ]
@@ -23,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "9601471cb8699505",
+    "id": "354a0c6fdb6e2c92",
     "type": "split",
     "children": [
       {
-        "id": "5b8f85d10ba8bbe4",
+        "id": "9dafc62216e12de8",
         "type": "tabs",
         "children": [
           {
-            "id": "e7496b97fb577b7a",
+            "id": "2dae9faeda5aafb4",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +46,7 @@
             }
           },
           {
-            "id": "ae048ed286fd2883",
+            "id": "668748bfdb3fd6b8",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -63,11 +63,14 @@
             }
           },
           {
-            "id": "de4965f9660b7a33",
+            "id": "0b8e4c808469c300",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "Bookmarks"
             }
@@ -76,18 +79,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 268.5
+    "width": 300
   },
   "right": {
-    "id": "58dac07eba0bf921",
+    "id": "6ebe2d887b0f1fd5",
     "type": "split",
     "children": [
       {
-        "id": "277dcbea02c3cf28",
+        "id": "f3ab2f23df02e8f5",
         "type": "tabs",
         "children": [
           {
-            "id": "a80d9c392305d24a",
+            "id": "dc15847d0dac4b59",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -105,7 +108,7 @@
             }
           },
           {
-            "id": "0849124720c244fb",
+            "id": "8b029e0ab800ecc4",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -118,7 +121,7 @@
             }
           },
           {
-            "id": "1233811c89e44811",
+            "id": "af2a6010db016f0f",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -133,7 +136,7 @@
             }
           },
           {
-            "id": "7c3dd282d3dae591",
+            "id": "9cb655de8c0911aa",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -147,7 +150,7 @@
             }
           },
           {
-            "id": "afb156af084302dd",
+            "id": "2a7f51b7d36ee1dc",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -178,54 +181,6 @@
       "bases:Create new base": false
     }
   },
-  "active": "3046cac127ebe91c",
-  "lastOpenFiles": [
-    "Untitled.canvas",
-    "slides/khoe-manh-de-thong-minh-hon/assets/khong_thay_the_bs.png",
-    "slides/khoe-manh-de-thong-minh-hon/assets/thank-luu-hieu.png",
-    "slides/khoe-manh-de-thong-minh-hon/assets/disclaimer-research.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/slide-map.txt.tmp.82526.a61f478ef894",
-    "wiki/sources/how-to-lie-with-statistics.md.tmp",
-    "wiki/concepts/trung-binh-thong-ke.md.tmp",
-    "wiki/concepts/thien-lech-mau.md.tmp",
-    "wiki/concepts/trung-binh-thong-ke.md",
-    "wiki/concepts/y-nghia-thong-ke.md",
-    "wiki/concepts/thao-tung-thong-ke.md",
-    "wiki/concepts/tuong-quan-va-nhan-qua.md",
-    "wiki/concepts/thien-lech-mau.md",
-    "wiki/people/darrell-huff.md",
-    "wiki/readings/how-to-lie-with-statistics/10-how-to-talk-back-to-a-statistic.md",
-    "wiki/readings/how-to-lie-with-statistics/09-how-to-statisticulate.md",
-    "wiki/readings/how-to-lie-with-statistics/08-post-hoc-rides-again.md",
-    "wiki/readings/how-to-lie-with-statistics/07-semi-attached-figure.md",
-    "wiki/readings/how-to-lie-with-statistics/06-one-dimensional-picture.md",
-    "wiki/readings/how-to-lie-with-statistics/05-gee-whiz-graph.md",
-    "wiki/readings/how-to-lie-with-statistics/04-much-ado-about-practically-nothing.md",
-    "wiki/readings/how-to-lie-with-statistics/03-little-figures-not-there.md",
-    "wiki/readings/how-to-lie-with-statistics/02-well-chosen-average.md",
-    "wiki/readings/how-to-lie-with-statistics/01-sample-with-built-in-bias.md",
-    "wiki/readings/how-to-lie-with-statistics/00-introduction.md",
-    "wiki/readings/how-to-lie-with-statistics",
-    "wiki/sources/how-to-lie-with-statistics.md",
-    "_lumina/_state/ingest-HowToLieWithStatistics.pdf.json",
-    "raw/tmp/HowToLieWithStatistics-ocr.pdf",
-    "raw/sources/HowToLieWithStatistics.pdf",
-    "slides/khoe-manh-de-thong-minh-hon/slide-map.txt",
-    "slides/khoe-manh-de-thong-minh-hon/assets/play.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/stress.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/phone-social.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/journal.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/connection.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/pills.jpg",
-    "slides/khoe-manh-de-thong-minh-hon/assets/burger.jpg",
-    "Untitled 1.canvas",
-    "wiki/concepts/quan-he-lieu-luong-dap-ung.md",
-    "wiki/concepts/ban-nang-tiet-kiem-nang-luong.md",
-    "wiki/sources/exercised.md",
-    "_lumina/_state/lumi-verify-20260730T064053Z.json",
-    "wiki/people/ralph-paffenbarger.md",
-    "wiki/concepts/san-bat-bang-truy-duoi.md",
-    "wiki/concepts/gia-thuyet-ong-ba-nang-dong.md",
-    "wiki/concepts/mismatch-tien-hoa.md"
-  ]
+  "active": "1ac7d8416dd8a369",
+  "lastOpenFiles": []
 }

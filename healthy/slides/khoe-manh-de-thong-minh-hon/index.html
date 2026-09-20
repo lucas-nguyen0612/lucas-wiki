@@ -208,8 +208,56 @@
     PHẦN 1 — MỞ ĐẦU: ĐẶT VẤN ĐỀ
     ═════════════════════════════════════════════ -->
 
-    <!-- SLIDE 1 — Title -->
-    <section class="slide active" style="justify-content:space-between; overflow:hidden;">
+    <!-- SLIDE 1 — Thông báo: Chia sẻ từ tìm hiểu cá nhân -->
+    <section class="slide active" style="gap:clamp(14px,2vh,26px); justify-content:center;">
+      <div style="display:flex; gap:clamp(12px,1.5vw,24px);">
+        <span class="badge">📋 Thông báo trước khi bắt đầu</span>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:center; flex:1;">
+        <div style="flex:1.45; display:flex; flex-direction:column; gap:clamp(16px,2.2vh,30px); justify-content:center;">
+          <h2 style="font-size:clamp(38px,3.6vw,64px); line-height:1.15;">Chia sẻ từ <span style="color:var(--accent);">tìm hiểu cá nhân</span></h2>
+          <p class="lead" style="font-size:clamp(24px,2.1vw,36px); line-height:1.45;">
+            Không có cơ quan y tế hay chuyên gia nào kiểm chứng nội dung này — và nó <strong>không thay thế</strong> lời khuyên của bác sĩ.
+          </p>
+          <ul style="gap:clamp(10px,1.4vh,18px); font-size:clamp(22px,1.95vw,34px);">
+            <li><strong>Chỉ mang tính tham khảo</strong> — mỗi cơ thể là một thế giới riêng</li>
+            <li><strong>Lắng nghe chính mình</strong> — chỉ áp dụng điều thật sự phù hợp</li>
+            <li><strong>Vấn đề sức khỏe cụ thể?</strong> — hãy hỏi bác sĩ, đừng tự đoán</li>
+          </ul>
+          <p class="pill-warn" style="display:block; border-radius:1em; padding:.6em .85em; font-size:clamp(19px,1.55vw,28px); line-height:1.4;"><strong>Không tự ý</strong> bỏ thuốc, đổi liều, hay thay đổi điều trị đang áp dụng.</p>
+        </div>
+        <div class="responsive-image-container" style="flex:.75; border-radius:1.4em; overflow:hidden; position:relative;">
+          <img src="assets/khong_thay_the_bs.png" alt="Kính lúp tra cứu tài liệu — nội dung từ tìm hiểu cá nhân, không phải kiến thức từ chuyên gia và bác sĩ" style="width:100%; height:100%; object-fit:cover;" loading="lazy"/>
+          <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(26,46,38,.35) 0%, transparent 45%);"></div>
+      
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 2 — Cảm ơn anh Lưu Hiếu -->
+    <section class="slide" style="gap:clamp(14px,2vh,26px); justify-content:center;">
+      <div style="display:flex; gap:clamp(12px,1.5vw,24px);">
+        <span class="badge">🤝 Cảm ơn</span>
+      </div>
+      <div class="responsive-split" style="display:flex; gap:clamp(24px,3.5vw,52px); align-items:center; flex:1;">
+        <div style="flex:1.25; display:flex; flex-direction:column; gap:clamp(14px,2vh,28px); justify-content:center;">
+          <h2 style="font-size:clamp(40px,4vw,68px); line-height:1.15;">Cảm ơn anh <span style="color:var(--accent);">Lưu Hiếu</span></h2>
+          <p class="lead" style="font-size:clamp(24px,2.1vw,36px); line-height:1.45;">
+            Người tạo ra <strong>Lumi-wiki</strong> và skill <strong>/slidewright</strong> — nhờ đó bài thuyết trình này được dựng nên.
+          </p>
+          <ul style="gap:clamp(10px,1.4vh,18px); font-size:clamp(22px,1.95vw,34px);">
+            <li><strong>Lumi-wiki</strong> — nền tảng wiki cá nhân để thu thập & kết nối tri thức</li>
+            <li><strong>/slidewright</strong> — dựng bài trình bày chuyên nghiệp, chiếu trực tiếp</li>
+          </ul>
+        </div>
+        <div class="responsive-image-container" style="flex:1; border-radius:1.4em; overflow:hidden; position:relative; background:#fff;">
+          <img src="assets/thank-luu-hieu.png" alt="Logo Lumi-wiki" style="width:100%; height:100%; object-fit:contain; padding:clamp(12px,2vh,24px);" loading="lazy"/>
+        </div>
+      </div>
+    </section>
+
+    <!-- SLIDE 3 — Title -->
+    <section class="slide" style="justify-content:space-between; overflow:hidden;">
       <!-- Discobolus — tượng lực sĩ ném đĩa Hy Lạp cổ đại, biểu tượng của cơ thể cường tráng -->
       <div style="position:absolute; right:0; top:0; bottom:0; width:44%; z-index:0; overflow:hidden;" aria-hidden="true">
         <div style="position:absolute; inset:0; background:linear-gradient(to right, var(--bg) 0%, transparent 35%, transparent 100%); z-index:2;"></div>
@@ -480,7 +528,7 @@
         <div style="display:flex;flex-direction:column;align-items:center;gap:clamp(8px,1.2vh,18px);">
           <span style="font-size:clamp(56px,6vw,100px);">🧠</span>
           <p style="font-size:clamp(30px,2.6vw,46px); font-weight:800;">Sức khỏe tinh thần</p>
-          <p style="font-size:clamp(22px,1.8vw,32px); color:rgba(245,250,247,.6);">Interoception · Cảm xúc · Thói quen · Nghỉ ngơi</p>
+          <p style="font-size:clamp(22px,1.8vw,32px); color:rgba(245,250,247,.6);"> Hơi thở · Ngôn ngữ · Kết nối · Nghỉ ngơi</p>
         </div>
       </div>
     </section>
