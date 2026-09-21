@@ -9,16 +9,22 @@ Managed by the Lumina installer. Open this file when README.md instructs.
 
 ```yaml
 ---
-type: source
+id: source-slug       # bare kebab-case slug; must match the filename
 title: "Full title here"
-slug: source-slug
-date_added: YYYY-MM-DD
+type: source
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
 authors:
   - Author Name
-source_type: paper   # paper | article | book | podcast | note | other
+year: 2026
+source_type: paper   # paper | article | book | podcast | note | other — free-form label, not schema-validated
 importance: 3        # 1=niche  2=useful  3=field-standard  4=influential  5=seminal
-confidence: high     # high | medium | low
-tags: []
+provenance: missing  # replayable | partial | missing
+confidence: high     # high | medium | low | unverified
+tags: []             # free-form; not schema-validated
+pending_citations: []  # entries are {ns, value, title?}, e.g. {ns: doi, value: "10.1145/...", title: "Cited paper title"}.
+  # Written by `wiki.mjs add-citation-by-id`; drained automatically into a
+  # real citation when the cited work is ingested.
 ranking:             # optional; written by /lumi-research-rank. Omit until the paper is ranked.
   # Flat map of scalars (one level only, like external_ids). Only include keys you have.
   influential_citations: 42   # Semantic Scholar influentialCitationCount
@@ -61,12 +67,15 @@ ranking:             # optional; written by /lumi-research-rank. Omit until the 
 
 ```yaml
 ---
-type: concept
+id: concept-slug        # bare kebab-case slug; must match the filename
 title: "Concept name"
-slug: concept-slug
-date_added: YYYY-MM-DD
-confidence: high
-tags: []
+type: concept
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+key_sources: []         # wikilink slugs of sources that introduce or use this concept
+related_concepts: []   # wikilink slugs of related concepts
+confidence: high        # high | medium | low | unverified
+tags: []                # free-form; not schema-validated
 ---
 ```
 
@@ -84,12 +93,14 @@ tags: []
 
 ```yaml
 ---
-type: person
+id: person-slug          # bare kebab-case slug; must match the filename
 title: "Person Name"
-slug: person-slug
-date_added: YYYY-MM-DD
-affiliation: ""
-tags: []
+type: person
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+key_sources: []          # wikilink slugs of sources authored by or featuring this person
+affiliations: []         # optional; list of affiliations
+tags: []                 # free-form; not schema-validated
 ---
 ```
 
@@ -105,12 +116,13 @@ tags: []
 
 ```yaml
 ---
-type: summary
+id: summary-slug         # bare kebab-case slug; must match the filename
 title: "Area summary title"
-slug: summary-slug
-date_added: YYYY-MM-DD
-confidence: medium
-tags: []
+type: summary
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+covers: []               # wikilink slugs of the sources and concepts this summary synthesizes
+tags: []                 # free-form; not schema-validated
 ---
 ```
 
@@ -162,11 +174,14 @@ Created via `/lumi-research-topic`.
 
 ```yaml
 ---
-type: topic
+id: topic-slug           # bare kebab-case slug; must match the filename
 title: "Topic name"
-slug: topic-slug
-date_added: YYYY-MM-DD
-tags: []
+type: topic
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+key_sources: []          # wikilink slugs of sources included in this topic
+compiled_at: YYYY-MM-DD  # date the compiled zone below was last rewritten by a /lumi-research-topic refresh
+tags: []                 # free-form; not schema-validated
 ---
 ```
 
@@ -175,6 +190,25 @@ tags: []
 - `## Key sources`
 - `## Key concepts`
 - `## Open questions`
+- `## Timeline` — the managed region below the compiled zone, bounded by
+  `<!-- lumina:timeline -->` and `<!-- /lumina:timeline -->`. Entries are one
+  line each, English, appended in arrival order:
+  `- **YYYY-MM-DD** | ingest|correction|note | [[sources/<slug>]] — text`.
+
+The page has two zones with different write rules:
+
+| Zone | Sections | Rule |
+|---|---|---|
+| Compiled | Description, Key sources, Key concepts, Open questions | Rewritten wholesale on `/lumi-research-topic` refresh |
+| Timeline | Timeline (marker region) | Append-only — written only by `wiki.mjs timeline-add`, never edited or reordered |
+
+```markdown
+## Timeline
+
+<!-- lumina:timeline -->
+- **2026-09-16** | ingest | [[sources/attention-is-all-you-need]] — Self-attention replaces recurrence
+<!-- /lumina:timeline -->
+```
 
 ---
 
@@ -184,12 +218,13 @@ Terminal pages — receive inward links but do not write reverse links.
 
 ```yaml
 ---
-type: foundation
+id: foundation-slug      # bare kebab-case slug; must match the filename
 title: "Foundation concept"
-slug: foundation-slug
-date_added: YYYY-MM-DD
-tags: []
-aliases: []
+type: foundation
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags: []                 # free-form; not schema-validated
+aliases: []              # optional; alternate names for this foundation
 ---
 ```
 
@@ -263,6 +298,30 @@ book: book-slug
 - `## Description`
 - `## Evidence` — chapters and scenes where this theme appears
 - `## Related themes`
+- `## Notes`
+
+---
+
+## Plot page — `wiki/plot/<book-slug>/ch<N>-beats.md` (reading pack)
+
+Written by `/lumi-reading-chapter-ingest` — one plot-beats page per chapter, holding
+the chapter's events in narrative order so `/lumi-reading-plot-recap` can build
+spoiler-safe recaps from them.
+
+```yaml
+---
+id: plot/<book-slug>/ch<N>-beats
+title: "Plot beats: Chapter N"
+type: plot
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+book: book-slug
+up_to_chapter: N
+---
+```
+
+**Sections:**
+- `## Beats` — 3-7 one-sentence event summaries, in narrative order
 - `## Notes`
 
 ---

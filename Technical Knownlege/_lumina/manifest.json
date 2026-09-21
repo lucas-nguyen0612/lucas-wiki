@@ -1,24 +1,24 @@
 {
   "schemaVersion": 4,
-  "packageVersion": "1.10.1",
-  "locale": "en",
+  "packageVersion": "1.14.0",
+  "locale": "vi",
   "installedAt": "2026-07-26T08:25:08.814Z",
-  "updatedAt": "2026-07-26T08:25:08.814Z",
+  "updatedAt": "2026-09-21T06:32:20.965Z",
   "packs": {
     "core": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "research": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "reading": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "learning": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     }
   },
@@ -51,10 +51,10 @@
     "lumi-learning-reflect": "symlink"
   },
   "resolvedPaths": {
-    "projectRoot": "/Users/lucas/Documents/Lucas/lucas-wiki/technical",
-    "wiki": "/Users/lucas/Documents/Lucas/lucas-wiki/technical/wiki",
-    "raw": "/Users/lucas/Documents/Lucas/lucas-wiki/technical/raw",
-    "agents": "/Users/lucas/Documents/Lucas/lucas-wiki/technical/.agents",
-    "lumina": "/Users/lucas/Documents/Lucas/lucas-wiki/technical/_lumina"
+    "projectRoot": "/Users/lucas/Documents/Lucas/lucas-wiki/Technical Knownlege",
+    "wiki": "/Users/lucas/Documents/Lucas/lucas-wiki/Technical Knownlege/wiki",
+    "raw": "/Users/lucas/Documents/Lucas/lucas-wiki/Technical Knownlege/raw",
+    "agents": "/Users/lucas/Documents/Lucas/lucas-wiki/Technical Knownlege/.agents",
+    "lumina": "/Users/lucas/Documents/Lucas/lucas-wiki/Technical Knownlege/_lumina"
   }
 }

@@ -9,16 +9,22 @@ Managed by the Lumina installer. Open this file when README.md instructs.
 
 ```yaml
 ---
-type: source
+id: source-slug       # bare kebab-case slug; must match the filename
 title: "Full title here"
-slug: source-slug
-date_added: YYYY-MM-DD
+type: source
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
 authors:
   - Author Name
-source_type: paper   # paper | article | book | podcast | note | other
+year: 2026
+source_type: paper   # paper | article | book | podcast | note | other — free-form label, not schema-validated
 importance: 3        # 1=niche  2=useful  3=field-standard  4=influential  5=seminal
-confidence: high     # high | medium | low
-tags: []
+provenance: missing  # replayable | partial | missing
+confidence: high     # high | medium | low | unverified
+tags: []             # free-form; not schema-validated
+pending_citations: []  # entries are {ns, value, title?}, e.g. {ns: doi, value: "10.1145/...", title: "Cited paper title"}.
+  # Written by `wiki.mjs add-citation-by-id`; drained automatically into a
+  # real citation when the cited work is ingested.
 ranking:             # optional; written by /lumi-research-rank. Omit until the paper is ranked.
   # Flat map of scalars (one level only, like external_ids). Only include keys you have.
   influential_citations: 42   # Semantic Scholar influentialCitationCount
@@ -61,12 +67,15 @@ ranking:             # optional; written by /lumi-research-rank. Omit until the 
 
 ```yaml
 ---
-type: concept
+id: concept-slug        # bare kebab-case slug; must match the filename
 title: "Concept name"
-slug: concept-slug
-date_added: YYYY-MM-DD
-confidence: high
-tags: []
+type: concept
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+key_sources: []         # wikilink slugs of sources that introduce or use this concept
+related_concepts: []   # wikilink slugs of related concepts
+confidence: high        # high | medium | low | unverified
+tags: []                # free-form; not schema-validated
 ---
 ```
 
@@ -84,12 +93,14 @@ tags: []
 
 ```yaml
 ---
-type: person
+id: person-slug          # bare kebab-case slug; must match the filename
 title: "Person Name"
-slug: person-slug
-date_added: YYYY-MM-DD
-affiliation: ""
-tags: []
+type: person
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+key_sources: []          # wikilink slugs of sources authored by or featuring this person
+affiliations: []         # optional; list of affiliations
+tags: []                 # free-form; not schema-validated
 ---
 ```
 
@@ -105,12 +116,13 @@ tags: []
 
 ```yaml
 ---
-type: summary
+id: summary-slug         # bare kebab-case slug; must match the filename
 title: "Area summary title"
-slug: summary-slug
-date_added: YYYY-MM-DD
-confidence: medium
-tags: []
+type: summary
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+covers: []               # wikilink slugs of the sources and concepts this summary synthesizes
+tags: []                 # free-form; not schema-validated
 ---
 ```
 

@@ -3,6 +3,430 @@
 All notable changes to Lumina-Wiki are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [Unreleased]
+
+## [1.14.0] - 2026-09-17
+
+### Added
+
+- Topic pages now keep a dated, append-only timeline of sources that arrive
+  after the topic was last refreshed; `/lumi-ingest` appends to it
+  automatically and `/lumi-research-topic` refresh folds the entries into the
+  summary and marks it current. Lint L21 warns when a topic summary is behind
+  its timeline.
+- Citations to works not yet in the wiki are recorded and linked
+  automatically when that work is ingested (`add-citation-by-id`,
+  `resolve-pending-citations`). Lint L22 lists the ones still waiting, as
+  information only.
+- `/lumi-edit` records why a claim was corrected and adds a correction entry
+  to the topics the page belongs to; `/lumi-research-topic` refresh proposes
+  conflicting-claim pairs for confirmation; `/lumi-ask` reads topic summaries
+  before individual sources.
+
+## [1.13.2] - 2026-09-15
+
+### Changed
+
+- Lumina-Wiki now requires Node.js 24 or later, the only version CI tests
+  (#57). Node 20 is end-of-life. On Node 20 or 22, npm prints an
+  `EBADENGINE` warning and installs anyway, but those versions are no longer
+  supported.
+- Removed the `wiki.slug_style` and `wiki.graph.edge_types_core` keys from
+  `_lumina/config/lumina.config.yaml`. Nothing read them, so editing them had
+  no effect. The next install or upgrade drops them from existing configs
+  (#49).
+- The installer and `wikis doctor` now read the workspace directory list from
+  one place, so they cannot drift apart (#48).
+
+## [1.13.1] - 2026-09-14
+
+### Fixed
+
+- Lint now fails visibly when `wiki/graph/edges.jsonl` cannot be read instead
+  of treating the graph as empty (#54). It also reports dangling citation
+  endpoints in `wiki/graph/citations.jsonl` as L20 errors and never rewrites
+  those citations automatically (#53).
+- `lint --fix` now replaces a required YAML key with no value in place rather
+  than appending a duplicate key (#46), and its L03 rename repair updates
+  qualified wikilinks while leaving fenced examples unchanged (#45).
+- Citation types are rejected inside `removeEdge` and `replaceEdge`, keeping
+  their helper APIs aligned with CLI validation (#47). Lint messages now use
+  plain field wording rather than internal implementation vocabulary (#55).
+- Development Python setup now uses a virtual environment and the repository's
+  requirements file (#51).
+
+## [1.13.0] - 2026-09-12
+
+### Added
+
+- Lint check L18: warns when a page's frontmatter `id` no longer names the
+  file it lives in. This is the only way to find a wiki damaged by the L03
+  rename bug fixed below — a page whose `id` had drifted from its filename
+  gave no other visible symptom. Never auto-repaired: resolving it means
+  deciding whether to fix the `id` or rename the file, which only a person
+  can judge. The pre-v0.1 legacy `id` form (`<own-entity-dir>/<slug>`) is
+  still tolerated and left alone, but only when the prefix matches the
+  page's own entity type — `id: sources/foo` on a page in `concepts/` names
+  the wrong page type and is reported.
+- Lint check L19: flags a citation that was written into
+  `wiki/graph/edges.jsonl` as a `cites`/`cited_by` row instead of
+  `wiki/graph/citations.jsonl` — the corruption the `add-edge` bug fixed
+  below could produce. `lint.mjs --fix` now migrates each affected row into
+  `citations.jsonl`, always storing it as the `cites` direction (a
+  `cited_by` row has its endpoints swapped on the way in) and deduping
+  against citations already recorded there. Endpoints are resolved the same
+  way checks L05 and L17 resolve them, so a legacy bare-slug citation
+  (`src-a` rather than `sources/src-a`) migrates correctly. A row whose
+  endpoint no longer names a real wiki file is left in `edges.jsonl` and
+  reported unfixable rather than silently moved somewhere nothing checks.
+
+### Fixed
+
+- `/lumi-init` (`wiki.mjs init`) was silently skipping `wiki/readings/` when
+  scaffolding a fresh workspace, even though `npx lumina-wiki install`
+  always created it and the reading-notes ingest path writes into it — the
+  hardcoded directory list backing `init` had drifted out of sync with the
+  schema. Fresh workspaces created via `/lumi-init` now get all seven core
+  directories.
+- `wiki.mjs set-meta <slug> <key> ''` silently turned a string field into an
+  empty list instead of setting it to an empty string: writing an empty
+  value produced a bare `key:` line, which the frontmatter reader treats as
+  the start of a list, so the very next read came back as `[]` while the
+  command still reported success. Setting a field to `''` now round-trips
+  as an actual empty string.
+- `/lumi-check` (lint check L17) flagged every edge written with a bare
+  slug (e.g. `add-edge src-a related_to src-b`) as a dangling reference,
+  even when the target page existed, because L17 compared endpoints against
+  a set of full wiki-relative paths without resolving bare slugs first —
+  any hand-written or bare-slug edge failed lint on an otherwise-healthy
+  wiki. L17 now resolves endpoints the same way broken-wikilink check L05
+  does, and an ambiguous bare slug is reported with the candidates it
+  matches instead of being reported as matching nothing. That resolution is
+  restricted to bare endpoints: an endpoint that already names a directory
+  (`sources/lora`) must match exactly, so a deleted page is no longer
+  silently resolved to an unrelated file that happens to share its basename
+  (`concepts/lora`). Wikis that were lint-clean only because of that
+  fallback will see new L17 findings after upgrading — those edges were
+  always dangling.
+- `wiki.mjs checkpoint-read` and `checkpoint-write` interpolated their
+  `<skill>` and `<phase>` arguments straight into a filename with no
+  validation, so a value containing `/` or `\` in either argument escaped
+  `_lumina/_state` entirely: `checkpoint-write '../../../ESCAPED' phase1
+  file.json` wrote three directories above the project root, and
+  `checkpoint-read '../../../OUTSIDE' x` printed the contents of an
+  arbitrary JSON file to the caller. `<phase>` is not a hypothetical risk —
+  the ingest skill passes it the basename of whatever file the user dropped
+  into `raw/`. Both commands now reject a `skill`/`phase` value containing
+  `/`, `\`, or a NUL byte with exit code 2; ordinary basenames (spaces,
+  dots, parentheses — e.g. `Paper (2017).pdf`) are unaffected, and a
+  project mounted at a filesystem root (POSIX `/`, or a Windows drive root)
+  is handled correctly rather than having every checkpoint path rejected.
+- `/lumi-check` (`lint.mjs --fix`) could silently destroy a page while
+  repairing a non-kebab-case filename (check L03): if two pages' basenames
+  kebab-cased to the same slug, renaming the second one overwrote the
+  first with no warning — exit 0, `fix_applied: true`, the first page's
+  contents gone. `--fix` now refuses the rename when the destination name
+  is already taken and leaves the finding standing with an explanation for
+  a person to resolve — merge the two pages, or rename one by hand.
+- `/lumi-check` (`lint.mjs --fix`) also aborted the entire run partway
+  through when more than one non-kebab-case filename needed repair in the
+  same pass: the file list was captured before any rename happened, so
+  once the first rename moved a file, the next finding's pass tried to
+  re-read the now-missing old path and threw — exit 3, no JSON on stdout,
+  and every later finding left unrepaired with no indication why. All L03
+  renames in a run are now planned and applied together in a single pass.
+- The L03 rename fixer built its new filename with a kebab-case transform
+  that stripped non-ASCII characters instead of decomposing them, so a
+  page named e.g. `Nhà-Nguyễn.md` was renamed to `nh-nguyn.md` — not the
+  name `wiki.mjs slug` would ever produce for that title, and not
+  reversible. The fixer now shares the exact slug logic `wiki.mjs slug`
+  uses, verified unchanged over 20,000 sample inputs.
+- Two more L03 edge cases: a basename made entirely of punctuation (e.g.
+  `___.md`) kebab-cased to an empty string and was renamed to `.md`,
+  removing the page from the wiki outright; and a page's own `id` field
+  was never updated after a rename, so its frontmatter kept naming a file
+  that no longer existed — invisibly, since L03 stops firing once the
+  filename itself is kebab-case. An all-punctuation basename now refuses
+  the rename instead of erasing the page, and the fixer updates `id` (and
+  any legacy `slug`) to match the new filename.
+- If a file `--fix` was renaming for L03 turned out not to be writable,
+  the resulting error used to escape and abort the entire lint run,
+  discarding every other finding's results. The error is now caught per
+  file and reported against that specific finding instead.
+- `/lumi-check` (`lint.mjs --fix`) rebuilt `wiki/index.md` (check L09) from
+  a file listing captured before any L03 renames in the same run, so a
+  single `--fix` pass could leave the index pointing at filenames the
+  renames had just changed. L09 now renders from the post-rename file
+  list.
+- `wiki.mjs add-edge` and `batch-edges` accepted the citation edge types
+  `cites`/`cited_by` and wrote them into `wiki/graph/edges.jsonl` as
+  ordinary graph edges — `remove-edge` and `replace-edge` had refused these
+  types since they were written, but the guard was never added to the
+  commands that create edges. The rows were unrecoverable through any
+  supported command (`remove-edge` refuses the type; `remove-citation`
+  only reads `citations.jsonl` and reports `{"removed":0}`) and invisible
+  to `read-citations`, which never looks at `edges.jsonl` — so a citation
+  recorded this way silently vanished from the citation graph while
+  corrupting the edge graph, with no lint check ever looking for it.
+  `docs/project-context.md` had documented this as intended design; that
+  has been corrected. `add-edge` and `batch-edges` now reject citation
+  types the same way `remove-edge`/`replace-edge` already did. No shipped
+  skill ever called `add-edge` with a citation type, so no working
+  workflow is affected.
+- Lint checks L06, L07, and L08 now treat `cites`/`cited_by` rows in
+  `edges.jsonl` as belonging to the citation graph, not the edge graph, so
+  they no longer try to auto-repair them as ordinary edges — which would
+  otherwise recreate the exact `cited_by` corruption the `add-edge` guard
+  above exists to prevent. L17 still checks citation rows, since a citation
+  pointing at a deleted page needs to be caught before L19 migrates it into
+  `citations.jsonl`, a file no other check reads. L06 and L07 also re-derive
+  their edge list from the content actually being written in a `--fix`
+  pass, so a single pass converges instead of reverting the L19 migration
+  it had just applied.
+- The `citations.jsonl` reader treated any read error as "file empty"
+  rather than only a missing file. Because `--fix` rewrites that file
+  wholesale, a `citations.jsonl` that was merely unreadable — not absent —
+  had every citation it already held replaced with just the rows written in
+  that run. Only a missing file is now treated as "nothing recorded yet."
+- `lint.mjs`'s own copy of `atomicWrite` was missing the `fd.datasync()`
+  call this project's durability guarantee depends on, despite a docstring
+  claiming it already happened — so every `lint.mjs --fix` write skipped
+  the fsync every other write path uses. Consolidating the duplicated
+  helper definitions into one shared implementation closed this gap;
+  `--fix` output is otherwise unchanged.
+- `lint.mjs --suggest` truncated the list of valid values it printed for
+  an enum field instead of showing all of them, and `fetchSource('rss')`
+  crashed via `spawnSync(undefined)` instead of raising a clear error when
+  no RSS fetcher was configured.
+
+### CI
+
+- Bumped `actions/checkout` (v4 to v7), `actions/setup-node` (v4 to v7),
+  and `actions/setup-python` (v5 to v7), which GitHub now force-runs on the
+  deprecated Node 20 Actions runtime otherwise.
+- Moved the test matrix from Node 20 to Node 24 across Ubuntu, macOS, and
+  Windows. Node 22 stays excluded (an upstream `node:test`
+  structured-clone IPC bug). `engines.node` in `package.json` stays
+  `>=20.0.0` so existing installs on older Node are not locked out, which
+  means Node 20 to 23 are declared-supported but no longer covered by CI
+  (tracked in issue #57).
+- Corrected several CI-process references in `docs/project-context.md`,
+  `docs/project-overview-pdr.md`, and `docs/project-roadmap.md` that had
+  gone stale after the Node 24 move — including a step count, Python
+  version, and idempotency-scenario count that no longer matched `ci.yml`.
+
+### Migration
+
+- If your workspace was created with `/lumi-init` (rather than
+  `npx lumina-wiki install`) before this release, it may be missing
+  `wiki/readings/`. Re-run `/lumi-init` (idempotent) or create the
+  directory by hand before using the reading-notes pack.
+- If your wiki has any `cites`/`cited_by` rows in `wiki/graph/edges.jsonl`
+  from before this release, run `node _lumina/scripts/lint.mjs --fix` (or
+  `/lumi-check`) to migrate them into `citations.jsonl` automatically.
+- If your wiki relied on lint check L17 staying quiet about a
+  directory-qualified edge whose target page was deleted but shared a
+  basename with an unrelated file elsewhere, expect a new L17 finding for
+  it after upgrading — it was always dangling.
+- `wiki.mjs add-edge`/`batch-edges` now reject `cites`/`cited_by`, and
+  `checkpoint-read`/`checkpoint-write` now reject `skill`/`phase` values
+  containing `/`, `\`, or NUL. Both previously succeeded. Any automation of
+  your own that relied on either will now exit non-zero instead of
+  corrupting the graph or escaping the project root.
+
+## [1.12.0] - 2026-08-12
+
+> This release also carries everything prepared for 1.11.0 on 2026-07-27:
+> that version was bumped and documented but never tagged, so it never
+> reached npm. The last published version was 1.10.1.
+
+### Added
+
+- Pre-release publishing channel. A tag whose version carries a pre-release
+  identifier (`v1.12.0-next.0`, `v1.12.0-rc.1`) now publishes to an npm
+  dist-tag of that name instead of `latest`, so a build can be handed to
+  testers with `npx lumina-wiki@next install` without touching what everyone
+  else installs. The channel is derived from the version alone — an
+  identifier that cannot be read as one fails the publish rather than
+  guessing — and such releases are marked as pre-releases on GitHub.
+  Documented in `docs/DEVELOPMENT.md` §6.
+- Published packages now carry npm provenance. Every publish from the
+  release workflow is signed with its OIDC identity, so npm records which
+  repository, commit and workflow run produced the tarball; `npm audit
+  signatures` verifies it and npmjs.com links back to the build. This does
+  not block a publish made with a stolen token — npm still accepts an
+  unsigned one — but such a package arrives with no attestation at all,
+  and that absence is visible to anyone who looks.
+- The six page templates above now match the wiki's frontmatter rules
+  exactly, and a new automated test compares every template against the
+  schema so they can't silently drift out of sync again.
+- `lint.mjs --fix` recovers more on its own now: an empty list for
+  list-type fields, a date recovered from an older field name or the
+  file's own save timestamp, a page's `id` recovered from an older field
+  name or its file path, its `type` from the folder it lives in, and its
+  title from the page's own heading. Where no safe value exists — a
+  publication year, an importance rating — it leaves the field reported as
+  missing instead of guessing, so a wrong value never quietly passes as
+  fixed.
+- `lint.mjs --fix` gained two further repairs: it corrects fields holding
+  the wrong kind of value (including rebuilding a page's source list and
+  related-concepts list straight from the link graph, which already held
+  the real answer), and it fixes wiki links that are missing their folder
+  name whenever exactly one page could be the intended target — never when
+  more than one page could match.
+- `lint.mjs --suggest` now actually does something. It had been accepted as
+  a flag since it shipped but silently did nothing; it now lists a concrete
+  next step for every finding the automatic repair could not resolve on its
+  own.
+- `lint.mjs --fix` now clears out an old field name once its replacement is
+  confirmed to hold the same information — for example, once a page's `id`
+  is in place, a leftover, older `slug` field carrying the identical value
+  is removed instead of being reported forever. "Matches" now also covers
+  the most common near-miss found in real wikis: an `id` that names both
+  its own folder and the old `slug` value together (for example
+  `concepts/ab-testing` next to a `slug` of `ab-testing`) counts as a
+  match, since the shorter value is fully contained inside the longer one
+  — nothing is lost by keeping the longer `id` and dropping the duplicate
+  `slug`. This only happens when the replacement field is present, holds a
+  valid value, and matches the old one this way; if the two genuinely
+  disagree, both are left in place and the warning keeps showing, because
+  that mismatch needs a person to look at it, not an automatic guess.
+- The notice shown after an upgrade now separates what will be repaired
+  automatically from what still needs a person's judgment, and only names
+  the commands that actually apply to what was found — instead of always
+  suggesting the same two commands regardless of what is wrong.
+- `/lumi-ingest` now checks its own new and updated pages before marking an
+  entry done, instead of trusting that the step succeeded.
+  `/lumi-migrate-legacy` now also picks up the specific findings the
+  automatic repair leaves standing (an ambiguous link, a rating with no
+  safe default), not only the fields a Lumina version explicitly renamed.
+
+### Fixed
+
+- The update check compared versions by their numeric core only, so anyone
+  running a pre-release build was never told about the stable release it led
+  to: `1.12.0-next.0` and `1.12.0` looked identical to it. Version comparison
+  now follows semver precedence — stable outranks its own pre-releases,
+  numeric identifiers compare numerically, and build metadata is ignored.
+- Six page templates (source, concept, person, summary, topic, foundation)
+  had drifted out of step with the wiki's own rules: each one was missing
+  required frontmatter fields (`id`, `created`, `updated`) and instead
+  carried two fields that were never part of the rules at all (`slug`,
+  `date_added`). Every page written from these templates started life
+  incomplete, without anyone noticing until lint caught it.
+- Once a page was incomplete, `lint.mjs --fix` used to patch every kind of
+  missing field with the placeholder word `TODO` — that satisfied the
+  "something is there" check but permanently failed the "is it the right
+  kind of value" check, since `TODO` is never a valid date or number. Once a
+  page reached this state, nothing could repair it automatically, and the
+  notice shown after an upgrade recommended a command that could not help
+  either. `--fix` no longer writes `TODO` under any circumstances.
+- A page whose `id`, `type`, or `title` still carried that same `TODO`
+  placeholder from an older run of the repair above was invisible to every
+  check — a placeholder word looks exactly like ordinary text, so nothing
+  ever flagged it. Lint now treats `TODO` as never a real value, for any
+  field the wiki tracks, and reports it; `--fix` recovers the real value
+  the same way it already does for a genuinely missing field — from an
+  older field name, from the page's file path, or from its own heading —
+  wherever that recovery is possible, and, if recovering `id` this way
+  also means an old `slug` field is now a confirmed duplicate, that old
+  field is cleared out in the same pass.
+- `wiki.mjs set-meta` used to save whatever value it was given, even one
+  that plainly didn't match what the field expects (text where a date
+  belongs, for example). It now checks the value against the field's
+  expected type first and refuses to save one that doesn't fit.
+- The page check also stopped skipping one kind of field, so a page that
+  was reported as fine before may now be reported as needing attention.
+  Nothing on the page changed — the problem was always there and simply
+  wasn't being looked at.
+- A repaired link is now reported as repaired even when the same link
+  appears more than once on a page. Before, only the first one counted,
+  so a page that had been fully fixed could still be listed as needing
+  work, and the check could end with a failure notice after a successful
+  repair.
+- Example links written inside a code block are now left alone. They are
+  illustrations of how to write a link, not links, so they are no longer
+  reported as broken and no longer rewritten.
+- A link pointing at a page whose file name was about to be tidied up is no
+  longer touched twice in the same pass. Previously the two repairs worked
+  against each other and could leave the link pointing at a page that no
+  longer existed, with no way to recover it afterwards.
+- A value that is clearly wrong for its field, such as a year typed where a
+  list of authors belongs, is now kept and reported instead of being
+  replaced with an empty list. Nothing you wrote is thrown away just
+  because the repair could not interpret it.
+- Repairs are now checked before they are saved: if the repaired value would
+  not read back exactly as intended, it is not written at all and is
+  reported for you to decide instead. This stops a repair from quietly
+  changing a title that contains quotation marks, or from writing one that
+  the next check would reject forever.
+- Notes filed under a parent, such as reading notes belonging to a book, keep
+  the parent in their identifier. An older field naming only the short form
+  is no longer trusted over the file's own location, and is no longer
+  removed when the two disagree.
+- Links that already name a section of the wiki, and links that are actually
+  web addresses, are no longer redirected to a similarly named page in a
+  different section. They are reported with a note naming the near match so
+  you can decide.
+- Links relating to pages recorded in the connection map are only filled in
+  when the page still exists, and a page is never linked to itself.
+- A page's title is no longer taken from a comment inside a code block, or
+  from the paragraph after an empty heading.
+- Padded links and links written with a `.md` ending are now repaired rather
+  than reported as repairable and then skipped on every run.
+- A problem the repair could not actually resolve is no longer still labelled
+  repairable afterwards. This is what previously caused the follow-up steps
+  to skip real work, and left the advice option silent about it.
+- Asking for advice alone now reports advice for everything the repair could
+  not handle, without changing any file.
+- An optional field can be cleared again, and a rejected value now says how
+  to supply it as written text.
+- Saving an entry no longer stalls when the automatic repair had already
+  cleaned up every problem it found. The step deciding whether an entry is
+  finished was still counting problems that had just been repaired, so a
+  clean entry could be left marked unfinished and you would be asked to
+  resolve something that was no longer wrong. The same miscount affected
+  editing a page and three of the research steps, and is fixed in all of
+  them.
+- The command that changes a single field now refuses the placeholder word
+  `TODO`, the same way the page check already rejects it. This was the last
+  remaining way to write that placeholder back into a page and recreate the
+  exact problem the rest of this release removes. The refusal message says
+  to supply a real value rather than suggesting a way of quoting it, which
+  could not have helped here.
+- The notice shown after an upgrade works again on wikis larger than a few
+  dozen pages. Its reading of the wiki was being cut short partway through
+  with no sign that anything had gone wrong, so on most real wikis the
+  notice simply never appeared at all. It also now confirms which problems
+  the automatic repair can genuinely resolve before recommending it, rather
+  than trusting an early guess, so it no longer points you at a repair that
+  would decline the work.
+
+### Migration
+
+- If your wiki was created or upgraded before this release, some pages may
+  already carry the `TODO` placeholder — in a date or number field, or in a
+  page's own `id`, `type`, or `title` — left behind by an older, less
+  careful repair. Run `node _lumina/scripts/lint.mjs --fix` (or ask your AI
+  agent to run `/lumi-check`) to clean up everything that can be recovered
+  safely — empty lists, dates, page ids, types, and titles are handled
+  automatically, and lists such as key sources or related concepts are
+  rebuilt from your wiki's existing links. A small number of fields, such
+  as a publication year or an importance rating, cannot be safely guessed
+  and will still be reported afterward — run
+  `node _lumina/scripts/lint.mjs --suggest` or `/lumi-migrate-legacy` to see
+  exactly what each one needs. Expect to make the final call yourself on
+  those; that is expected, not a sign anything went wrong.
+- The same repair also clears out older, duplicate field names left behind
+  by earlier upgrades (an old `slug` once `id` is set — including when
+  `id` also names its own folder — an old `date_added` once `created` is
+  set, and so on), so the number of warnings you see after running it
+  should drop sharply on a long-lived wiki, often to a small handful.
+  Anything still reported after that run is a genuine disagreement between
+  an old field and its replacement, not something the tool missed — it
+  needs you to decide which value is right, and that decision is the point,
+  not a sign anything went wrong.
+
 ## [1.10.1] - 2026-07-26
 
 ### Changed
@@ -849,7 +1273,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-[Unreleased]: https://github.com/tronghieu/lumina-wiki/compare/v1.5.0...HEAD
+[Unreleased]: https://github.com/tronghieu/lumina-wiki/compare/v1.14.0...HEAD
+[1.14.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.13.2...v1.14.0
+[1.13.2]: https://github.com/tronghieu/lumina-wiki/compare/v1.13.1...v1.13.2
+[1.13.1]: https://github.com/tronghieu/lumina-wiki/compare/v1.13.0...v1.13.1
+[1.13.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.10.1...v1.13.0
+[1.12.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.10.1...archive/1.12.0
 [1.5.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.4.0...v1.5.0
 [1.4.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.3.0...v1.4.0
 [1.3.0]: https://github.com/tronghieu/lumina-wiki/compare/v1.2.0...v1.3.0

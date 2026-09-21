@@ -73,11 +73,45 @@ const LINK_SYNTAX = /** @type {const} */ (['obsidian']);
 /** Supported slug normalisation styles. */
 const SLUG_STYLE = /** @type {const} */ (['kebab-case']);
 
+/**
+ * Valid `confidence` values on a graph EDGE. Distinct from the page-level
+ * `confidence` frontmatter enum below, which also admits 'unverified'.
+ * wiki.mjs validates writes against this; lint.mjs's L08 reports on it.
+ */
+export const EDGE_CONFIDENCE = /** @type {const} */ (['high', 'medium', 'low']);
+
+// ---------------------------------------------------------------------------
+// TOPIC TIMELINE
+// Topic pages (research pack) have two zones: a compiled zone on top that is
+// rewritten only by `/lumi-research-topic` refresh, and an append-only
+// timeline zone at the bottom bounded by these markers. `wiki.mjs timeline-add`
+// is the only writer of the timeline zone; lint L21 warns when the timeline
+// has entries newer than the page's `compiled_at`.
+// ---------------------------------------------------------------------------
+
+/** @type {string} */
+export const TIMELINE_MARKER_OPEN = '<!-- lumina:timeline -->';
+/** @type {string} */
+export const TIMELINE_MARKER_CLOSE = '<!-- /lumina:timeline -->';
+/** Entry kinds accepted by `timeline-add`. */
+export const TIMELINE_KINDS = Object.freeze(['ingest', 'correction', 'note']);
+
+/**
+ * Safe fallback values for enum fields that have one. wiki.mjs writes them in
+ * `migrate --add-defaults`; lint.mjs's fixL01 writes them for a missing key.
+ * The two used to keep private copies synced by hand.
+ */
+export const LEGACY_ENUM_DEFAULTS = {
+  sources:  { provenance: 'missing', confidence: 'unverified' },
+  concepts: { confidence: 'unverified' },
+};
+
 export const ENUMS = {
   IMPORTANCE,
   BIDI_MODES,
   LINK_SYNTAX,
   SLUG_STYLE,
+  EDGE_CONFIDENCE,
 };
 
 // ---------------------------------------------------------------------------
@@ -298,6 +332,9 @@ export const REQUIRED_FRONTMATTER = {
     { key: 'external_ids', type: 'object', required: false },
     { key: 'sources',      type: 'array',  required: false },
     { key: 'ranking',      type: 'object', required: false },
+    // Citations to works not yet in the wiki: [{ns, value, title?}]. Written by
+    // `add-citation-by-id`, drained by `resolve-pending-citations`.
+    { key: 'pending_citations', type: 'array', required: false },
   ],
 
   // Concept page
@@ -364,6 +401,9 @@ export const REQUIRED_FRONTMATTER = {
     { key: 'created',     type: 'iso-date', required: true,  pack: 'research' },
     { key: 'updated',     type: 'iso-date', required: true,  pack: 'research' },
     { key: 'key_sources', type: 'array',    required: true,  pack: 'research' },
+    // Date the compiled zone was last rewritten; timeline entries newer than
+    // this trigger lint L21. Absent on pages that predate the timeline.
+    { key: 'compiled_at', type: 'iso-date', required: false, pack: 'research' },
   ],
 
   // Reading pack: chapter page

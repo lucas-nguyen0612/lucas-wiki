@@ -13,3 +13,4 @@ _Append-only. Format: `## [YYYY-MM-DD] skill | details`_
 ## [2026-07-31] edit | session:f67d3673 | Sửa câu định nghĩa concepts/adenosine.md cho dễ hiểu hơn (bỏ thuật ngữ 'hormone nội sinh', diễn đạt cụ thể nguyên nhân-kết quả)
 ## [2026-07-31] ingest | session:052162a7 | Added "How to Lie with Statistics" → 19 pages touched
 ## [2026-07-31] check | session:e300052c | 0 errors, 0 warnings. 95 files scanned.
+## [2026-09-21] installer | session:32a3c712 | upgrade v1.10.1->v1.14.0: 452 errors, 112 warnings — all auto-fixable via lint --fix

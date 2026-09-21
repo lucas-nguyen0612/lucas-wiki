@@ -1,24 +1,24 @@
 {
   "schemaVersion": 4,
-  "packageVersion": "1.10.1",
-  "locale": "en",
+  "packageVersion": "1.14.0",
+  "locale": "vi",
   "installedAt": "2026-07-26T07:33:39.876Z",
-  "updatedAt": "2026-07-26T07:33:50.104Z",
+  "updatedAt": "2026-09-21T06:32:12.790Z",
   "packs": {
     "core": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "research": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "reading": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     },
     "learning": {
-      "version": "1.10.1",
+      "version": "1.14.0",
       "source": "built-in"
     }
   },
