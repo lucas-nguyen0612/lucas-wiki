@@ -1,1 +1,9 @@
 ## [2026-09-21] installer | session:6eb6e1c4 | upgrade v1.10.1->v1.14.0: 68 errors, 0 warnings — 0 auto-fixable via lint --fix, 68 need /lumi-migrate-legacy
+## [2026-09-21] verify | session:7c899cdc | Verified 1 entries: 0 passed, 1 findings, 0 skipped, 0 drift. (sources/system-design, grounding-only: 2 patch findings)
+## [2026-09-21] verify | session:426a0b40 | Verified 1 entries: 1 passed, 0 findings, 0 skipped, 0 drift. (sources/system-design, grounding-only, 2 dismiss notes)
+## [2026-09-21] ingest | session:063a851d | Added "Thiết kế hệ thống (System Design) — Karan Pratap Singh" → 21 pages touched (1 source, 8 concepts, 1 person, 11 reading notes)
+## [2026-09-21] check | session:1d99b32b | 0 errors, 0 warnings. Content cross-check vs System_design.pdf: 39/39 quotes grounded (2 dùng ký tự Ð sai), 129 con số khớp trang trích dẫn; gợi ý: backlink concept↔reading, thêm concept mới.
+## [2026-09-21] edit | session:fad806f2 | Cải thiện wiki System Design: sửa ký tự Đ trong 2 ghi chú đọc; làm dày 8 trang khái niệm (đánh đổi, case study, liên kết ghi chú đọc); thêm 11 khái niệm mới (load-balancing, consistent-hashing, database-indexing, distributed-transactions, microservices, event-driven-architecture, api-design, real-time-communication, rate-limiting, circuit-breaker, geospatial-indexing); liên kết hai chiều concept↔reading; cập nhật trang nguồn và mục lục.
+## [2026-10-02] wiki-save | session:ee49eeeb | Thêm concepts/npkill (công cụ CLI dọn node_modules) + raw/notes/2026-10-02-npkill.md
+## [2026-10-07] wiki-save | session:f317dbba | Thêm concepts/yopmail (email tạm thời) + raw/notes/2026-10-07-yopmail.md
+## [2026-10-07] wiki-save | session:48a05a4d | Thêm concepts/supabase (tổng quan khả năng Supabase); cập nhật liên kết ngược ở api-design, real-time-communication, database-replication
